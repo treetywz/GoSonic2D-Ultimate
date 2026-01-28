@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://objects/hud/Debug.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/hud/GameOver.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/hud/MobileControls.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/hud/HUD.tscn" type="PackedScene" id=4]
+
+[node name="HeadsUpDisplay" type="CanvasLayer"]
+process_mode = 3
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="Debug" parent="." instance=ExtResource( 1 )]
+process_mode = 3
+zone_path = NodePath("../..")
+
+[node name="GameOver" parent="." instance=ExtResource( 2 )]
+
+[node name="MobileControls" parent="." instance=ExtResource( 3 )]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )

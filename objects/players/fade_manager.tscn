@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://cin460l18vpoa"]
+
+[ext_resource type="Shader" uid="uid://kjbppml0i3jx" path="res://shaders/shader.tres" id="1"]
+[ext_resource type="Script" uid="uid://ctub5sbyeju4c" path="res://scripts/managers/fade_manager.gd" id="2"]
+
+[sub_resource type="Animation" id="3"]
+resource_name = "fade_in"
+length = 100.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fader/Control/ColorRect:material:shader_parameter/frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 0.0]
+}
+
+[sub_resource type="Animation" id="6"]
+resource_name = "fade_out"
+length = 100.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fader/Control/ColorRect:material:shader_parameter/frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 2.0]
+}
+
+[sub_resource type="Animation" id="8"]
+resource_name = "prefadeout"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fader/Control/ColorRect:material:shader_parameter/frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="2"]
+resource_name = "reset"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fader/Control/ColorRect:material:shader_parameter/frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ccql"]
+_data = {
+&"fade_in": SubResource("3"),
+&"fade_out": SubResource("6"),
+&"prefadeout": SubResource("8"),
+&"reset": SubResource("2")
+}
+
+[sub_resource type="ShaderMaterial" id="7"]
+shader = ExtResource("1")
+shader_parameter/frame = 2.0
+
+[node name="FadeManager" type="Node2D" unique_id=616380606]
+process_mode = 3
+script = ExtResource("2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1515213493]
+libraries/ = SubResource("AnimationLibrary_4ccql")
+
+[node name="Fader" type="CanvasLayer" parent="." unique_id=914308526]
+layer = 100
+
+[node name="Control" type="Control" parent="Fader" unique_id=332893571]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Fader/Control" unique_id=1691798460]
+material = SubResource("7")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

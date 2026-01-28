@@ -1,0 +1,212 @@
+[gd_scene format=3 uid="uid://bsb1nvcyw3hbg"]
+
+[ext_resource type="Texture2D" uid="uid://1grtnm6myj2o" path="res://sprites/hud/mobile_controls/transform-neutral.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bs2iwmbtr6lx0" path="res://sprites/hud/mobile_controls/transform-pressed.png" id="2"]
+[ext_resource type="Script" uid="uid://bd0517bf71pnf" path="res://scripts/hud/mobile_controls.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://7dr5lgt8ojp7" path="res://sprites/hud/mobile_controls/a-neutral.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://c3apuxu4ilfe3" path="res://sprites/hud/mobile_controls/dpad-up.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://cs3bjgwp7k6nj" path="res://sprites/hud/mobile_controls/dpad-left.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://c1v6jkuyyubev" path="res://sprites/hud/mobile_controls/dpad-down.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://c0uaqm5coffqa" path="res://sprites/hud/mobile_controls/a-pressed.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://lbjhs358vuwp" path="res://sprites/hud/mobile_controls/dpad-right.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://byd4boe0iuuea" path="res://sprites/hud/mobile_controls/dpad-neutral.png" id="10"]
+[ext_resource type="FontFile" uid="uid://152m6ve5kca6" path="res://fonts/title_screen.fnt" id="11"]
+[ext_resource type="Texture2D" uid="uid://c83jh4kxb5782" path="res://sprites/hud/mobile_controls/b-pressed.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://cwse27npkaa31" path="res://sprites/hud/mobile_controls/b-neutral.png" id="13"]
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(43.508, 60.788)
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(19.436, 33.492)
+
+[sub_resource type="Animation" id="4"]
+resource_name = "down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7")]
+}
+
+[sub_resource type="Animation" id="5"]
+resource_name = "left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6")]
+}
+
+[sub_resource type="Animation" id="8"]
+resource_name = "neutral"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10")]
+}
+
+[sub_resource type="Animation" id="6"]
+resource_name = "right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9")]
+}
+
+[sub_resource type="Animation" id="7"]
+resource_name = "up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jxtb6"]
+_data = {
+&"down": SubResource("4"),
+&"left": SubResource("5"),
+&"neutral": SubResource("8"),
+&"right": SubResource("6"),
+&"up": SubResource("7")
+}
+
+[sub_resource type="RectangleShape2D" id="9"]
+size = Vector2(139.588, 72.21)
+
+[node name="MobileControls" type="Control" unique_id=1822549877]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("3")
+
+[node name="Dpad" type="TextureRect" parent="." unique_id=1472468971]
+layout_mode = 0
+anchor_left = 0.0680751
+anchor_top = 0.629167
+anchor_right = 0.269953
+anchor_bottom = 0.9875
+offset_right = -22.0
+offset_bottom = -21.9999
+texture = ExtResource("10")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Right" type="TouchScreenButton" parent="Dpad" unique_id=1175015271]
+position = Vector2(36, 11.641)
+scale = Vector2(0.631, 0.631)
+shape = SubResource("2")
+passby_press = true
+action = "player_right"
+
+[node name="Left" type="TouchScreenButton" parent="Dpad" unique_id=577725472]
+position = Vector2(-4, 11)
+scale = Vector2(0.631, 0.631)
+shape = SubResource("2")
+passby_press = true
+action = "player_left"
+
+[node name="Down" type="TouchScreenButton" parent="Dpad" unique_id=772388210]
+position = Vector2(21.096, 42)
+scale = Vector2(1.041, 0.631)
+shape = SubResource("3")
+passby_press = true
+action = "player_down"
+
+[node name="Up" type="TouchScreenButton" parent="Dpad" unique_id=1207147309]
+position = Vector2(22, -1)
+scale = Vector2(1.001, 0.631)
+shape = SubResource("3")
+passby_press = true
+action = "player_up"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dpad" unique_id=2080180404]
+libraries/ = SubResource("AnimationLibrary_jxtb6")
+
+[node name="Buttons" type="Control" parent="." unique_id=558366230]
+anchors_preset = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+
+[node name="A" type="TouchScreenButton" parent="Buttons" unique_id=241853432]
+position = Vector2(-41, -39)
+texture_normal = ExtResource("4")
+texture_pressed = ExtResource("8")
+action = "player_a"
+
+[node name="B" type="TouchScreenButton" parent="Buttons" unique_id=1673264465]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-104, -39)
+texture_normal = ExtResource("1")
+texture_pressed = ExtResource("2")
+action = "player_b"
+
+[node name="Debug" type="TouchScreenButton" parent="." unique_id=792468421]
+position = Vector2(-20, -13)
+shape = SubResource("9")
+action = "player_debug"
+
+[node name="F3" type="Control" parent="." unique_id=628174784]
+anchors_preset = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = -120.0
+offset_right = 213.0
+offset_bottom = 120.0
+
+[node name="Button" type="TouchScreenButton" parent="F3" unique_id=876235050]
+position = Vector2(194, 165)
+texture_normal = ExtResource("13")
+texture_pressed = ExtResource("12")
+action = "ui_debug"
+
+[node name="Label" type="Label" parent="F3/Button" unique_id=409284123]
+offset_left = 4.0
+offset_top = 20.0
+offset_right = 44.0
+offset_bottom = 34.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11")
+text = "debug"

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b7oav23etodxd"]
+
+[ext_resource type="Script" uid="uid://c8hx0widt3dy7" path="res://scripts/player/player_death_checker.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://dpmesj4cor37n" path="res://audios/musics/game_over_1-2.wav" id="2"]
+
+[node name="DeathChecker" type="Node2D" unique_id=68537942]
+process_mode = 3
+script = ExtResource("1")
+game_over = ExtResource("2")

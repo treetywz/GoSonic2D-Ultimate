@@ -1,0 +1,776 @@
+[gd_scene format=3 uid="uid://1dixtleyhosv"]
+
+[ext_resource type="Script" uid="uid://ds4s3ss56eqol" path="res://scripts/hud/hud_warning.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bcmyklo22tanf" path="res://sprites/hud/hud.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://d07g35x8nyghd" path="res://sprites/hud/hud_time_warning.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://rwjj6eqtnr7m" path="res://sprites/hud/hud_rings_warning.png" id="5"]
+[ext_resource type="FontFile" uid="uid://p3rv1t38fijn" path="res://fonts/hud_numbers.fnt" id="6"]
+[ext_resource type="Script" uid="uid://ccrisc8ycai4r" path="res://scripts/hud/hud.gd" id="7"]
+[ext_resource type="FontFile" uid="uid://c20q5nj7k856r" path="res://fonts/system.fnt" id="8"]
+[ext_resource type="Shader" uid="uid://cs86f1r5t4cun" path="res://shaders/sonicPalette.tres" id="8_g5e8l"]
+[ext_resource type="Texture2D" uid="uid://b7wv11thpa6u0" path="res://sprites/hud/icons.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://0jg53x8g40af" path="res://sprites/hud/names.png" id="11"]
+
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("11")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource("11")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("11")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource("11")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="SpriteFrames" id="15"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("13")
+}, {
+"duration": 1.0,
+"texture": SubResource("14")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="23"]
+shader = ExtResource("8_g5e8l")
+shader_parameter/original_0 = Color(0.423529, 0.423529, 0.988235, 1)
+shader_parameter/original_1 = Color(0.141176, 0.282353, 0.847059, 1)
+shader_parameter/original_2 = Color(0.141176, 0.141176, 0.564706, 1)
+shader_parameter/original_3 = Color(0, 0, 0, 1)
+shader_parameter/replace_0 = Color(0.988235, 0.988235, 0.705882, 1)
+shader_parameter/replace_1 = Color(0.988235, 0.988235, 0.564706, 1)
+shader_parameter/replace_2 = Color(0.847059, 0.847059, 0.423529, 1)
+shader_parameter/replace_3 = Color(0, 0, 0, 1)
+shader_parameter/precision = 0.1
+
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("10")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("10")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("10")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("10")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="10"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="16"]
+resource_name = "Knuckles"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Name:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="20"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Name:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon:material:shader_parameter/replace_0")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.988235, 0.988235, 0.705882, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon:material:shader_parameter/replace_1")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.988235, 0.988235, 0.564706, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon:material:shader_parameter/replace_2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.847059, 0.847059, 0.423529, 1)]
+}
+
+[sub_resource type="Animation" id="18"]
+resource_name = "Sonic"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Name:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon:material:shader_parameter/replace_0")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.423529, 0.423529, 0.988235, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon:material:shader_parameter/replace_1")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.141176, 0.282353, 0.847059, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon:material:shader_parameter/replace_2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.141176, 0.141176, 0.564706, 1)]
+}
+
+[sub_resource type="Animation" id="21"]
+resource_name = "Super Sonic"
+length = 0.45
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Name:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon:material:shader_parameter/replace_0")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(0.988235, 0.988235, 0.847059, 1), Color(0.988235, 0.988235, 0.705882, 1), Color(0.988235, 0.988235, 0.564706, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon:material:shader_parameter/replace_1")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(0.988235, 0.988235, 0.847059, 1), Color(0.988235, 0.988235, 0.564706, 1), Color(0.988235, 0.988235, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon:material:shader_parameter/replace_2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(0.988235, 0.988235, 0.705882, 1), Color(0.847059, 0.847059, 0.423529, 1), Color(0.705882, 0.705882, 0, 1)]
+}
+
+[sub_resource type="Animation" id="19"]
+resource_name = "Tails"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Name:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y8fpd"]
+_data = {
+&"Knuckles": SubResource("16"),
+&"RESET": SubResource("20"),
+&"Sonic": SubResource("18"),
+&"Super Sonic": SubResource("21"),
+&"Tails": SubResource("19")
+}
+
+[sub_resource type="Animation" id="24"]
+resource_name = "Knuckles"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Name:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="25"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Name:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon:material:shader_parameter/replace_0")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.988235, 0.988235, 0.705882, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon:material:shader_parameter/replace_1")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.988235, 0.988235, 0.564706, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon:material:shader_parameter/replace_2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.847059, 0.847059, 0.423529, 1)]
+}
+
+[sub_resource type="Animation" id="26"]
+resource_name = "Sonic"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Name:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon:material:shader_parameter/replace_0")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.423529, 0.423529, 0.988235, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon:material:shader_parameter/replace_1")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.141176, 0.282353, 0.847059, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon:material:shader_parameter/replace_2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.141176, 0.141176, 0.564706, 1)]
+}
+
+[sub_resource type="Animation" id="27"]
+resource_name = "Super Sonic"
+length = 0.45
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Name:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon:material:shader_parameter/replace_0")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(0.988235, 0.988235, 0.847059, 1), Color(0.988235, 0.988235, 0.705882, 1), Color(0.988235, 0.988235, 0.564706, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon:material:shader_parameter/replace_1")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(0.988235, 0.988235, 0.847059, 1), Color(0.988235, 0.988235, 0.564706, 1), Color(0.988235, 0.988235, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon:material:shader_parameter/replace_2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(0.988235, 0.988235, 0.705882, 1), Color(0.847059, 0.847059, 0.423529, 1), Color(0.705882, 0.705882, 0, 1)]
+}
+
+[sub_resource type="Animation" id="28"]
+resource_name = "Tails"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Name:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g5e8l"]
+_data = {
+&"Knuckles": SubResource("24"),
+&"RESET": SubResource("25"),
+&"Sonic": SubResource("26"),
+&"Super Sonic": SubResource("27"),
+&"Tails": SubResource("28")
+}
+
+[node name="HUD" type="Control" unique_id=2041266721]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7")
+
+[node name="Score" type="TextureRect" parent="." unique_id=466488816]
+process_mode = 3
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 98.0
+offset_bottom = 58.0
+texture = ExtResource("2")
+
+[node name="Score" type="Label" parent="Score" unique_id=1465909565]
+process_mode = 3
+layout_mode = 0
+offset_left = 32.0
+offset_top = -1.0
+offset_right = 96.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("6")
+text = "0"
+horizontal_alignment = 2
+
+[node name="Rings" type="Label" parent="Score" unique_id=387029378]
+process_mode = 3
+layout_mode = 0
+offset_left = 56.0
+offset_top = 31.0
+offset_right = 96.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("6")
+text = "0"
+horizontal_alignment = 2
+
+[node name="Timer" type="Control" parent="Score" unique_id=1154414672]
+process_mode = 3
+anchors_preset = 0
+offset_left = 48.0
+offset_top = 16.0
+offset_right = 104.0
+offset_bottom = 32.0
+
+[node name="Minutes" type="Label" parent="Score/Timer" unique_id=1399857697]
+process_mode = 3
+layout_mode = 0
+offset_left = -16.0
+offset_top = -1.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("6")
+text = "0"
+horizontal_alignment = 2
+
+[node name="Seconds" type="Label" parent="Score/Timer" unique_id=1291028639]
+process_mode = 3
+layout_mode = 0
+offset_left = 8.0
+offset_top = -1.0
+offset_right = 24.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("6")
+text = "00"
+horizontal_alignment = 2
+
+[node name="Milliseconds" type="Label" parent="Score/Timer" unique_id=190590423]
+process_mode = 3
+layout_mode = 0
+offset_left = 32.0
+offset_top = -1.0
+offset_right = 48.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("6")
+text = "00"
+horizontal_alignment = 2
+
+[node name="Warnings" type="Control" parent="Score" unique_id=584185645]
+process_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Time" type="TextureRect" parent="Score/Warnings" unique_id=1700009716]
+process_mode = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4")
+stretch_mode = 1
+
+[node name="Rings" type="TextureRect" parent="Score/Warnings" unique_id=2100403212]
+process_mode = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5")
+stretch_mode = 1
+
+[node name="Lives" type="Control" parent="." unique_id=1036934158]
+anchors_preset = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -240.0
+offset_right = 426.0
+
+[node name="Name" type="AnimatedSprite2D" parent="Lives" unique_id=1204696326]
+position = Vector2(47, 219)
+sprite_frames = SubResource("15")
+
+[node name="Icon" type="AnimatedSprite2D" parent="Lives" unique_id=650937207]
+material = SubResource("23")
+position = Vector2(23, 219)
+sprite_frames = SubResource("10")
+frame = 3
+
+[node name="Counter" type="Label" parent="Lives" unique_id=1777500837]
+process_mode = 3
+layout_mode = 0
+offset_left = 43.0
+offset_top = 220.0
+offset_right = 63.0
+offset_bottom = 234.0
+theme_override_colors/font_shadow_color = Color(0.282353, 0.282353, 0.423529, 1)
+theme_override_fonts/font = ExtResource("8")
+text = "0"
+horizontal_alignment = 2
+
+[node name="NameHandler" type="AnimationPlayer" parent="Lives" unique_id=2075783044]
+libraries/ = SubResource("AnimationLibrary_y8fpd")
+
+[node name="MobileLifes" type="Control" parent="." unique_id=282327744]
+anchors_preset = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -74.0
+offset_top = -3.0
+offset_right = -74.0
+offset_bottom = -3.0
+
+[node name="Name" type="AnimatedSprite2D" parent="MobileLifes" unique_id=1745371858]
+position = Vector2(40, 23)
+sprite_frames = SubResource("15")
+
+[node name="Icon" type="AnimatedSprite2D" parent="MobileLifes" unique_id=1106891893]
+material = SubResource("23")
+position = Vector2(16, 23)
+sprite_frames = SubResource("10")
+frame = 3
+
+[node name="Counter" type="Label" parent="MobileLifes" unique_id=860496663]
+process_mode = 3
+layout_mode = 0
+offset_left = 36.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 38.0
+theme_override_colors/font_shadow_color = Color(0.282353, 0.282353, 0, 1)
+theme_override_fonts/font = ExtResource("8")
+text = "0"
+horizontal_alignment = 2
+
+[node name="NameHandler" type="AnimationPlayer" parent="MobileLifes" unique_id=1772815199]
+libraries/ = SubResource("AnimationLibrary_g5e8l")

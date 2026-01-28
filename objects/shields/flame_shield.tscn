@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://byya3du86arfg"]
+
+[ext_resource type="AudioStream" uid="uid://88urj6ci4tou" path="res://audios/effects/flame_shield.wav" id="1"]
+[ext_resource type="Texture2D" uid="uid://bt2r6hwxwo37p" path="res://sprites/shields/flame_shield.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cfkolb5ds6rne" path="res://sprites/shields/flame_shield_attack.png" id="3"]
+[ext_resource type="AudioStream" uid="uid://c4gph0jucgu0o" path="res://audios/effects/fire_attack.wav" id="4"]
+[ext_resource type="Script" uid="uid://dl6ynltopcyfj" path="res://scripts/shields/flame_shield.gd" id="5"]
+
+[sub_resource type="Animation" id="21"]
+resource_name = "default"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 0, 4, 2, 5, 6, 9, 6, 10, 7, 11, 8, 15, 12, 16, 13, 17, 14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyvnr"]
+_data = {
+&"default": SubResource("21")
+}
+
+[sub_resource type="Animation" id="22"]
+resource_name = "default"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ddl5"]
+_data = {
+&"default": SubResource("22")
+}
+
+[node name="FlameShield" type="Node2D" unique_id=1047444204]
+script = ExtResource("5")
+invincible = false
+activation_audio_path = NodePath("FlameShield")
+action_audio_path = NodePath("FireAttack")
+
+[node name="ShieldSprite" type="Sprite2D" parent="." unique_id=424478781]
+visible = false
+z_index = 1
+texture = ExtResource("2")
+hframes = 6
+vframes = 3
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ShieldSprite" unique_id=606028180]
+libraries/ = SubResource("AnimationLibrary_uyvnr")
+speed_scale = 3.0
+
+[node name="AttackingSprite" type="Sprite2D" parent="." unique_id=370481286]
+visible = false
+z_index = 1
+texture = ExtResource("3")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AttackingSprite" unique_id=1737003168]
+libraries/ = SubResource("AnimationLibrary_2ddl5")
+speed_scale = 3.0
+
+[node name="FlameShield" type="AudioStreamPlayer" parent="." unique_id=1902676066]
+stream = ExtResource("1")
+
+[node name="FireAttack" type="AudioStreamPlayer" parent="." unique_id=1994982377]
+stream = ExtResource("4")

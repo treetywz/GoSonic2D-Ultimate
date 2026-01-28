@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://b42w0bdplmxdx"]
+
+[ext_resource type="Texture2D" uid="uid://db66hu3dxyvyr" path="res://sprites/shields/insta_shield.png" id="1"]
+[ext_resource type="Script" uid="uid://co3uqlc8udlp7" path="res://scripts/shields/insta_shield.gd" id="2"]
+[ext_resource type="PackedScene" path="res://objects/audios/insta_shield_audio.tscn" id="3"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "default"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_de7pf"]
+_data = {
+&"default": SubResource("1")
+}
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(48, 48)
+
+[node name="InstaShield" type="Node2D" unique_id=502392450]
+script = ExtResource("2")
+action_audio_path = NodePath("InstaShieldAudio")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1409490678]
+visible = false
+z_index = 1
+texture = ExtResource("1")
+hframes = 6
+frame = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=36953047]
+libraries/ = SubResource("AnimationLibrary_de7pf")
+speed_scale = 3.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=943264448]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=12044557]
+shape = SubResource("2")
+disabled = true
+
+[node name="InstaShieldAudio" parent="." unique_id=468331016 instance=ExtResource("3")]

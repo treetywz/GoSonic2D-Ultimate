@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://p3rv1t38fijn"
+path="res://.godot/imported/hud_numbers.fnt-143259627ab81e336217ce9911f358e7.fontdata"
+
+[deps]
+
+source_file="res://fonts/hud_numbers.fnt"
+dest_files=["res://.godot/imported/hud_numbers.fnt-143259627ab81e336217ce9911f358e7.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2
