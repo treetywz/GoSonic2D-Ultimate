@@ -1,11 +1,6 @@
-> [!WARNING]
-> This is a legacy project and it will no longer recieve future updates. This framework is **unstable**, nor is it suitable for real fan game development. An optimized, much cleaner revision of the whole source code with even more features is currently in development.
-
-![cool logo](https://github.com/son-ray/Sonic-Godot-Physics/blob/main/read_me/logo.png)
+![cool logo](https://github.com/treetywz/GoSonic2D-Ultimate/blob/main/read_me/logo.png)
 ## About the project
-A Sonic the Hedgehog framework forked from marimitoTH's [GoSonic2D](https://github.com/marmitoTH/GoSonic2D) that aims to add more features from the classic Sonic games. This framework uses Godot Engine v3.5.1 for development.
-
-At its current state, it is not compatible with Godot version 4 and up.
+A Sonic the Hedgehog framework forked from marimitoTH's [GoSonic2D](https://github.com/marmitoTH/GoSonic2D) that aims to add more features from the classic Sonic games. This framework uses Godot Engine v4.6 for development.
 
 ## Added features
 
