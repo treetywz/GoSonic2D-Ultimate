@@ -108,11 +108,12 @@ _data = {
 size = Vector2(139.588, 72.21)
 
 [node name="MobileControls" type="Control" unique_id=1822549877]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3")
 
 [node name="Dpad" type="TextureRect" parent="." unique_id=1472468971]
@@ -128,28 +129,28 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Right" type="TouchScreenButton" parent="Dpad" unique_id=1175015271]
-position = Vector2(36, 11.641)
+position = Vector2(56.000015, 30.9999)
 scale = Vector2(0.631, 0.631)
 shape = SubResource("2")
 passby_press = true
 action = "player_right"
 
 [node name="Left" type="TouchScreenButton" parent="Dpad" unique_id=577725472]
-position = Vector2(-4, 11)
+position = Vector2(7.0000076, 28.999908)
 scale = Vector2(0.631, 0.631)
 shape = SubResource("2")
 passby_press = true
 action = "player_left"
 
 [node name="Down" type="TouchScreenButton" parent="Dpad" unique_id=772388210]
-position = Vector2(21.096, 42)
+position = Vector2(31.000008, 55.99991)
 scale = Vector2(1.041, 0.631)
 shape = SubResource("3")
 passby_press = true
 action = "player_down"
 
 [node name="Up" type="TouchScreenButton" parent="Dpad" unique_id=1207147309]
-position = Vector2(22, -1)
+position = Vector2(32.000008, 4.9999084)
 scale = Vector2(1.001, 0.631)
 shape = SubResource("3")
 passby_press = true
@@ -181,7 +182,7 @@ texture_pressed = ExtResource("2")
 action = "player_b"
 
 [node name="Debug" type="TouchScreenButton" parent="." unique_id=792468421]
-position = Vector2(-20, -13)
+position = Vector2(-8, 5)
 shape = SubResource("9")
 action = "player_debug"
 

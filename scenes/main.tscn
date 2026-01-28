@@ -233,7 +233,7 @@ limit_bottom = 717
 script = ExtResource("19_0ld40")
 
 [node name="StartPoint" type="Node2D" parent="." unique_id=1919003104]
-position = Vector2(603, 511)
+position = Vector2(74, 654)
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=1710464419]
 layer = -7
