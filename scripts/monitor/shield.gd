@@ -18,4 +18,4 @@ func add_score(player):
 		player.shields.change(shields.BubbleShield)
 	elif shield_type == "Super":
 		player.change_state("Transform")
-		score_manager.add_ring(15)
+		score_manager.add_ring(50)

@@ -4,6 +4,8 @@ class_name TransformPlayerState
 
 func exit(player: Player):
 	player.skin.transitioning_pallete = false
+	player.is_rolling = false
+	player.is_jumping = false
 
 func enter(player: Player):
 	player.vulnerable = false
