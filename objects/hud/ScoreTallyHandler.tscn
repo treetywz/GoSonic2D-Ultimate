@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene format=3 uid="uid://dsy33gvrbypvm"]
 
-[ext_resource path="res://objects/hud/ScoreTally.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/hud/score_tally_handler.gd" type="Script" id=2]
+[ext_resource type="PackedScene" uid="uid://c3gpll855qbey" path="res://objects/hud/ScoreTally.tscn" id="1"]
+[ext_resource type="Script" uid="uid://doq412wbugg77" path="res://scripts/hud/score_tally_handler.gd" id="2"]
 
-[node name="ScoreTallyHandler" type="CanvasLayer"]
-script = ExtResource( 2 )
+[node name="ScoreTallyHandler" type="CanvasLayer" unique_id=902617637]
+script = ExtResource("2")
 
-[node name="ScoreTally" parent="." instance=ExtResource( 1 )]
+[node name="ScoreTally" parent="." unique_id=83675858 instance=ExtResource("1")]
+grow_horizontal = 2
+grow_vertical = 2

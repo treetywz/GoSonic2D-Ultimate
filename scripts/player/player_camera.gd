@@ -110,6 +110,37 @@ func set_limits(left: int, right: int, top: int, bottom: int):
 	limit_right = right
 	limit_top = top
 	limit_bottom = bottom
+	
+func set_limits_from_resource(limits: CameraLimits, change_limit_left : bool = false):
+	if change_limit_left:
+		limit_left = limits.limit_left
+	limit_right = limits.limit_right
+	limit_top = limits.limit_top
+	limit_bottom = limits.limit_bottom
+
+func tween_limits(left: int, right: int, top: int, bottom: int, duration: float = 2, change_limit_left : bool = false):
+	var tween = create_tween()
+	tween.set_parallel(true)  # All tweens happen at the same time
+	
+	if change_limit_left:
+		tween.tween_property(self, "limit_left", left, duration)
+	tween.tween_property(self, "limit_right", right, duration)
+	tween.tween_property(self, "limit_top", top, duration)
+	tween.tween_property(self, "limit_bottom", bottom, duration)
+	
+	return tween
+
+func tween_limits_from_resource(limits: CameraLimits, duration: float = 2, change_limit_left : bool = false):
+	var tween = create_tween()
+	tween.set_parallel(true)
+	
+	if change_limit_left:
+		tween.tween_property(self, "limit_left", limits.limit_left, duration)
+	tween.tween_property(self, "limit_right", limits.limit_right, duration)
+	tween.tween_property(self, "limit_top", limits.limit_top, duration)
+	tween.tween_property(self, "limit_bottom", limits.limit_bottom, duration)
+	
+	return tween
 
 func handle_horizontal_borders(delta: float):
 	var target = player.get_player_position().x

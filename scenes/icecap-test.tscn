@@ -1,284 +1,285 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene format=3 uid="uid://d4nl5n6mrypxs"]
 
-[ext_resource path="res://scripts/zone/zone.gd" type="Script" id=1]
-[ext_resource path="res://audios/musics/be_cool_wild_groovy-ice_cap.ogg" type="AudioStream" id=2]
-[ext_resource path="res://objects/rings/Ring.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/players/camera.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objects/players/fade_manager.tscn" type="PackedScene" id=5]
-[ext_resource path="res://objects/players/sonic.tscn" type="PackedScene" id=6]
-[ext_resource path="res://objects/players/death_handler.tscn" type="PackedScene" id=7]
-[ext_resource path="res://audios/musics/act-clear.wav" type="AudioStream" id=8]
-[ext_resource path="res://sprites/zones/ice_cap/intro/hill7.png" type="Texture2D" id=9]
-[ext_resource path="res://sprites/zones/ice_cap/intro/hill5.png" type="Texture2D" id=10]
-[ext_resource path="res://sprites/zones/ice_cap/intro/hill1.png" type="Texture2D" id=11]
-[ext_resource path="res://sprites/zones/ice_cap/intro/hill3.png" type="Texture2D" id=12]
-[ext_resource path="res://sprites/zones/ice_cap/intro/hill2.png" type="Texture2D" id=13]
-[ext_resource path="res://sprites/zones/ice_cap/intro/hill4.png" type="Texture2D" id=14]
-[ext_resource path="res://objects/signpost/sign_post.tscn" type="PackedScene" id=15]
-[ext_resource path="res://objects/monitors/RingMonitor.tscn" type="PackedScene" id=16]
-[ext_resource path="res://objects/hud/hud_zone.tscn" type="PackedScene" id=17]
-[ext_resource path="res://scripts/spikes/kickoff-board.gd" type="Script" id=18]
-[ext_resource path="res://sprites/zones/ice_cap/placeholder.png" type="Texture2D" id=19]
+[ext_resource type="Script" uid="uid://dpjc0yu8s0log" path="res://scripts/zone/zone.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dxri0c4a4d3r5" path="res://objects/rings/Ring.tscn" id="3"]
+[ext_resource type="Script" uid="uid://cqtrnkln07w16" path="res://scripts/zone/camera_limits.gd" id="5_ins8a"]
+[ext_resource type="PackedScene" uid="uid://b70x82dmmi3g" path="res://objects/players/sonic.tscn" id="6"]
+[ext_resource type="AudioStream" uid="uid://bneoaxvac3fbm" path="res://audios/music/th06_05.ogg" id="6_b51td"]
+[ext_resource type="Script" uid="uid://c0ffbrwdqsjna" path="res://scripts/zone/limits_visualizer.gd" id="6_fyiyw"]
+[ext_resource type="AudioStream" uid="uid://dyivovn348c1j" path="res://audios/musics/act-clear.wav" id="8"]
+[ext_resource type="Texture2D" uid="uid://da00fdhfqjebe" path="res://sprites/zones/ice_cap/intro/hill7.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://dletfrervms43" path="res://sprites/zones/ice_cap/intro/hill5.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://0knftgbcwbru" path="res://sprites/zones/ice_cap/intro/hill1.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://hh78v6ucc2rx" path="res://sprites/zones/ice_cap/intro/hill3.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://bsohvn30ttqlu" path="res://sprites/zones/ice_cap/intro/hill2.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://dfkxte7fgtaud" path="res://sprites/zones/ice_cap/intro/hill4.png" id="14"]
+[ext_resource type="PackedScene" uid="uid://dww6pdxovqda0" path="res://objects/signpost/sign_post.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://b5l6kkhli0gx0" path="res://objects/monitors/RingMonitor.tscn" id="16"]
+[ext_resource type="Script" uid="uid://ch3sfkguo5k5n" path="res://scripts/spikes/kickoff-board.gd" id="18"]
+[ext_resource type="Texture2D" uid="uid://ca3nfp40ojs4b" path="res://sprites/zones/ice_cap/placeholder.png" id="19"]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 49.5, 10 )
+[sub_resource type="Resource" id="Resource_qm8xb"]
+script = ExtResource("5_ins8a")
+limit_right = 13957
+limit_bottom = 10732
+metadata/_custom_type_script = "uid://cqtrnkln07w16"
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10, 198.5 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(99, 20)
 
-[node name="Zone" type="Node2D"]
-script = ExtResource( 1 )
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(20, 397)
+
+[node name="Zone" type="Node2D" unique_id=1186193101]
+script = ExtResource("1")
 zone_name = "Ice Cap"
-act_number = 2
-next_scene = "res://scenes/no_way.tscn"
-zone_path = "res://scenes/icecap-test.tscn"
-player_resource = ExtResource( 6 )
-camera_resource = ExtResource( 4 )
-death_handler_resource = ExtResource( 7 )
-fade_manager_resource = ExtResource( 5 )
-zone_music = ExtResource( 2 )
-victory_music = ExtResource( 8 )
-zone_hud = ExtResource( 17 )
+act_number = 1
+next_scene = "res://scenes/title.tscn"
+player_resource = ExtResource("6")
+zone_music = ExtResource("6_b51td")
+victory_music = ExtResource("8")
 snowboard_level = true
-limit_right = 13950.0
-limit_bottom = 10732.0
+acts = Array[Object]([SubResource("Resource_qm8xb")])
 
-[node name="StartPoint" type="Node2D" parent="."]
-position = Vector2( -28, -34 )
+[node name="LimitsVisualizer" type="Node2D" parent="." unique_id=132722258]
+script = ExtResource("6_fyiyw")
 
-[node name="IntroSegment" type="StaticBody2D" parent="."]
-position = Vector2( -155, -203 )
+[node name="StartPointAct1" type="Node2D" parent="." unique_id=2028095604]
+position = Vector2(-28, -34)
+
+[node name="IntroSegment" type="StaticBody2D" parent="." unique_id=1666755776]
+position = Vector2(-155, -203)
 collision_layer = 65535
 collision_mask = 65535
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="IntroSegment"]
-polygon = PackedVector2Array( 0, 92, 142, 94, 142, 128, 115, 136, 115, 154, 131, 186, 165, 220, 803, 1496, 2595, 3290, 4639, 4312, 4900, 4443, 5918, 5464, 6178, 5593, 8230, 6106, 8450, 6217, 8736, 6359, 9763, 7385, 10564, 7789, 10561, 7829, 11172, 9050, 12307, 10191, 13339, 10457, 13426, 10517, 13442, 10553, 13601, 10714, 13859, 10841, 13867, 10844, 14113, 10847, 14114, 10937, -2022, 10892, -220, 90 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="IntroSegment" unique_id=1472878428]
+polygon = PackedVector2Array(0, 92, 142, 94, 142, 128, 115, 136, 115, 154, 131, 186, 165, 220, 803, 1496, 2595, 3290, 4639, 4312, 4900, 4443, 5918, 5464, 6178, 5593, 8230, 6106, 8450, 6217, 8736, 6359, 9763, 7385, 10564, 7789, 10561, 7829, 11172, 9050, 12307, 10191, 13339, 10457, 13426, 10517, 13442, 10553, 13601, 10714, 13859, 10841, 13867, 10844, 14113, 10847, 14114, 10937, -2022, 10892, -220, 90)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="IntroSegment"]
-position = Vector2( 4690.5, 4324 )
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IntroSegment" unique_id=1207935559]
+position = Vector2(4690.5, 4324)
+shape = SubResource("1")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="IntroSegment"]
-position = Vector2( 8509, 6233 )
-shape = SubResource( 1 )
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="IntroSegment" unique_id=2035223835]
+position = Vector2(8509, 6233)
+shape = SubResource("1")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="IntroSegment"]
-position = Vector2( 13345, 10470 )
-shape = SubResource( 1 )
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="IntroSegment" unique_id=1893915011]
+position = Vector2(13345, 10470)
+shape = SubResource("1")
 
-[node name="Hill1" type="Sprite2D" parent="IntroSegment"]
-position = Vector2( 475, 922 )
-texture = ExtResource( 11 )
+[node name="Hill1" type="Sprite2D" parent="IntroSegment" unique_id=316683124]
+position = Vector2(475, 922)
+texture = ExtResource("11")
 
-[node name="Hill2" type="Sprite2D" parent="IntroSegment"]
-position = Vector2( 2298, 2778 )
-texture = ExtResource( 13 )
+[node name="Hill2" type="Sprite2D" parent="IntroSegment" unique_id=1604827183]
+position = Vector2(2298, 2778)
+texture = ExtResource("13")
 
-[node name="Hill3" type="Sprite2D" parent="IntroSegment"]
-position = Vector2( 5362, 4826 )
-texture = ExtResource( 12 )
+[node name="Hill3" type="Sprite2D" parent="IntroSegment" unique_id=654949210]
+position = Vector2(5362, 4826)
+texture = ExtResource("12")
 
-[node name="Hill4" type="Sprite2D" parent="IntroSegment"]
-position = Vector2( 8531, 6874 )
-texture = ExtResource( 14 )
+[node name="Hill4" type="Sprite2D" parent="IntroSegment" unique_id=2004670105]
+position = Vector2(8531, 6874)
+texture = ExtResource("14")
 
-[node name="Hill5" type="Sprite2D" parent="IntroSegment"]
-position = Vector2( 11227, 8922 )
-texture = ExtResource( 10 )
+[node name="Hill5" type="Sprite2D" parent="IntroSegment" unique_id=1719133074]
+position = Vector2(11227, 8922)
+texture = ExtResource("10")
 
-[node name="Hill7" type="Sprite2D" parent="IntroSegment"]
-position = Vector2( 12898, 10442 )
-texture = ExtResource( 9 )
+[node name="Hill7" type="Sprite2D" parent="IntroSegment" unique_id=1534001473]
+position = Vector2(12898, 10442)
+texture = ExtResource("9")
 
-[node name="ColorRect" type="ColorRect" parent="IntroSegment"]
+[node name="ColorRect" type="ColorRect" parent="IntroSegment" unique_id=2119907966]
 offset_left = -277.0
 offset_top = 1687.0
 offset_right = 825.0
 offset_bottom = 3860.0
-color = Color( 0.988235, 0.988235, 0.988235, 1 )
+color = Color(0.988235, 0.988235, 0.988235, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="IntroSegment"]
+[node name="ColorRect2" type="ColorRect" parent="IntroSegment" unique_id=116242245]
 offset_left = -334.0
 offset_top = 3780.0
 offset_right = 3257.0
 offset_bottom = 5987.0
-color = Color( 0.988235, 0.988235, 0.988235, 1 )
+color = Color(0.988235, 0.988235, 0.988235, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="IntroSegment"]
+[node name="ColorRect3" type="ColorRect" parent="IntroSegment" unique_id=1631276195]
 offset_left = -419.0
 offset_top = 5787.0
 offset_right = 6550.0
 offset_bottom = 8165.0
-color = Color( 0.988235, 0.988235, 0.988235, 1 )
+color = Color(0.988235, 0.988235, 0.988235, 1)
 
-[node name="ColorRect4" type="ColorRect" parent="IntroSegment"]
+[node name="ColorRect4" type="ColorRect" parent="IntroSegment" unique_id=1759524049]
 offset_left = -419.0
 offset_top = 7829.0
 offset_right = 10400.0
 offset_bottom = 10241.0
-color = Color( 0.988235, 0.988235, 0.988235, 1 )
+color = Color(0.988235, 0.988235, 0.988235, 1)
 
-[node name="ColorRect5" type="ColorRect" parent="IntroSegment"]
+[node name="ColorRect5" type="ColorRect" parent="IntroSegment" unique_id=733035946]
 offset_left = -419.0
 offset_top = 9843.0
 offset_right = 11688.0
 offset_bottom = 10937.0
-color = Color( 0.988235, 0.988235, 0.988235, 1 )
+color = Color(0.988235, 0.988235, 0.988235, 1)
 
-[node name="SignPost" parent="." instance=ExtResource( 15 )]
-position = Vector2( 13815, 10616 )
+[node name="SignPost" parent="." unique_id=926646817 instance=ExtResource("15")]
+position = Vector2(13815, 10616)
 
-[node name="Rings" type="Node2D" parent="."]
+[node name="Rings" type="Node2D" parent="." unique_id=888608935]
 
-[node name="Ring" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 905, 1524 )
+[node name="Ring" parent="Rings" unique_id=2001693130 instance=ExtResource("3")]
+position = Vector2(905, 1524)
 
-[node name="Ring2" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 934, 1548 )
+[node name="Ring2" parent="Rings" unique_id=193815312 instance=ExtResource("3")]
+position = Vector2(934, 1548)
 
-[node name="Ring3" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 958, 1578 )
+[node name="Ring3" parent="Rings" unique_id=248742669 instance=ExtResource("3")]
+position = Vector2(958, 1578)
 
-[node name="Ring4" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 985, 1608 )
+[node name="Ring4" parent="Rings" unique_id=2069017 instance=ExtResource("3")]
+position = Vector2(985, 1608)
 
-[node name="Ring5" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 1011, 1635 )
+[node name="Ring5" parent="Rings" unique_id=1200212586 instance=ExtResource("3")]
+position = Vector2(1011, 1635)
 
-[node name="Ring6" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 5019, 4476 )
+[node name="Ring6" parent="Rings" unique_id=1755138180 instance=ExtResource("3")]
+position = Vector2(5019, 4476)
 
-[node name="Ring7" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 5048, 4500 )
+[node name="Ring7" parent="Rings" unique_id=2041353022 instance=ExtResource("3")]
+position = Vector2(5048, 4500)
 
-[node name="Ring8" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 5072, 4530 )
+[node name="Ring8" parent="Rings" unique_id=1124454929 instance=ExtResource("3")]
+position = Vector2(5072, 4530)
 
-[node name="Ring9" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 5099, 4560 )
+[node name="Ring9" parent="Rings" unique_id=661866884 instance=ExtResource("3")]
+position = Vector2(5099, 4560)
 
-[node name="Ring10" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 5125, 4587 )
+[node name="Ring10" parent="Rings" unique_id=1204124620 instance=ExtResource("3")]
+position = Vector2(5125, 4587)
 
-[node name="Ring11" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 5500, 4942 )
+[node name="Ring11" parent="Rings" unique_id=1758301533 instance=ExtResource("3")]
+position = Vector2(5500, 4942)
 
-[node name="Ring12" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 5529, 4966 )
+[node name="Ring12" parent="Rings" unique_id=1366811000 instance=ExtResource("3")]
+position = Vector2(5529, 4966)
 
-[node name="Ring13" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 5553, 4996 )
+[node name="Ring13" parent="Rings" unique_id=2135578968 instance=ExtResource("3")]
+position = Vector2(5553, 4996)
 
-[node name="Ring14" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 5580, 5026 )
+[node name="Ring14" parent="Rings" unique_id=1159454235 instance=ExtResource("3")]
+position = Vector2(5580, 5026)
 
-[node name="Ring16" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 5890, 5293 )
+[node name="Ring16" parent="Rings" unique_id=1225483899 instance=ExtResource("3")]
+position = Vector2(5890, 5293)
 
-[node name="Ring17" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 5920, 5311 )
+[node name="Ring17" parent="Rings" unique_id=1871006475 instance=ExtResource("3")]
+position = Vector2(5920, 5311)
 
-[node name="Ring18" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 5942, 5327 )
+[node name="Ring18" parent="Rings" unique_id=2059106853 instance=ExtResource("3")]
+position = Vector2(5942, 5327)
 
-[node name="Ring19" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 5968, 5345 )
+[node name="Ring19" parent="Rings" unique_id=139371146 instance=ExtResource("3")]
+position = Vector2(5968, 5345)
 
-[node name="Ring20" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 6130, 5381 )
+[node name="Ring20" parent="Rings" unique_id=509437827 instance=ExtResource("3")]
+position = Vector2(6130, 5381)
 
-[node name="Ring21" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 6162, 5395 )
+[node name="Ring21" parent="Rings" unique_id=10819356 instance=ExtResource("3")]
+position = Vector2(6162, 5395)
 
-[node name="Ring22" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 6195, 5406 )
+[node name="Ring22" parent="Rings" unique_id=1396839726 instance=ExtResource("3")]
+position = Vector2(6195, 5406)
 
-[node name="Ring23" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 6224, 5415 )
+[node name="Ring23" parent="Rings" unique_id=101262713 instance=ExtResource("3")]
+position = Vector2(6224, 5415)
 
-[node name="Ring24" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 6606, 5502 )
+[node name="Ring24" parent="Rings" unique_id=395679008 instance=ExtResource("3")]
+position = Vector2(6606, 5502)
 
-[node name="Ring25" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 6638, 5516 )
+[node name="Ring25" parent="Rings" unique_id=1314844491 instance=ExtResource("3")]
+position = Vector2(6638, 5516)
 
-[node name="Ring26" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 6671, 5527 )
+[node name="Ring26" parent="Rings" unique_id=1653003992 instance=ExtResource("3")]
+position = Vector2(6671, 5527)
 
-[node name="Ring27" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 6700, 5536 )
+[node name="Ring27" parent="Rings" unique_id=1739946769 instance=ExtResource("3")]
+position = Vector2(6700, 5536)
 
-[node name="Ring28" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 7854, 5814 )
+[node name="Ring28" parent="Rings" unique_id=105106294 instance=ExtResource("3")]
+position = Vector2(7854, 5814)
 
-[node name="Ring29" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 7886, 5828 )
+[node name="Ring29" parent="Rings" unique_id=147210881 instance=ExtResource("3")]
+position = Vector2(7886, 5828)
 
-[node name="Ring30" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 7919, 5839 )
+[node name="Ring30" parent="Rings" unique_id=1932425347 instance=ExtResource("3")]
+position = Vector2(7919, 5839)
 
-[node name="Ring31" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 7948, 5848 )
+[node name="Ring31" parent="Rings" unique_id=156218684 instance=ExtResource("3")]
+position = Vector2(7948, 5848)
 
-[node name="Ring32" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 8492, 6024 )
+[node name="Ring32" parent="Rings" unique_id=1890998511 instance=ExtResource("3")]
+position = Vector2(8492, 6024)
 
-[node name="Ring33" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 8524, 6038 )
+[node name="Ring33" parent="Rings" unique_id=117613483 instance=ExtResource("3")]
+position = Vector2(8524, 6038)
 
-[node name="Ring34" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 8557, 6049 )
+[node name="Ring34" parent="Rings" unique_id=184990985 instance=ExtResource("3")]
+position = Vector2(8557, 6049)
 
-[node name="Ring35" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 8586, 6058 )
+[node name="Ring35" parent="Rings" unique_id=1159977668 instance=ExtResource("3")]
+position = Vector2(8586, 6058)
 
-[node name="Ring15" parent="Rings" instance=ExtResource( 3 )]
-position = Vector2( 5606, 5053 )
+[node name="Ring15" parent="Rings" unique_id=1572688596 instance=ExtResource("3")]
+position = Vector2(5606, 5053)
 
-[node name="Monitors" type="Node2D" parent="."]
+[node name="Monitors" type="Node2D" parent="." unique_id=693090501]
 
-[node name="RingMonitor" parent="Monitors" instance=ExtResource( 16 )]
-position = Vector2( 697, 1329 )
+[node name="RingMonitor" parent="Monitors" unique_id=194855106 instance=ExtResource("16")]
 z_index = -1
+position = Vector2(697, 1329)
 
-[node name="RingMonitor2" parent="Monitors" instance=ExtResource( 16 )]
-position = Vector2( 4744, 4138 )
+[node name="RingMonitor2" parent="Monitors" unique_id=1426471401 instance=ExtResource("16")]
 z_index = -1
+position = Vector2(4744, 4138)
 
-[node name="Hazards" type="Node2D" parent="."]
+[node name="Hazards" type="Node2D" parent="." unique_id=962620227]
 
-[node name="KickoffBoard" type="Area2D" parent="Hazards"]
-position = Vector2( 13946, 10554 )
-script = ExtResource( 18 )
+[node name="KickoffBoard" type="Area2D" parent="Hazards" unique_id=220886869]
+position = Vector2(13946, 10554)
+script = ExtResource("18")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/KickoffBoard"]
-position = Vector2( 0, -45.5 )
-shape = SubResource( 2 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/KickoffBoard" unique_id=1837909921]
+position = Vector2(0, -45.5)
+shape = SubResource("2")
 
-[node name="BG" type="CanvasLayer" parent="."]
+[node name="BG" type="CanvasLayer" parent="." unique_id=1236148037]
 layer = -5
 
-[node name="Sprite2D" type="Sprite2D" parent="BG"]
-position = Vector2( -194, 110 )
-texture = ExtResource( 19 )
+[node name="Sprite2D" type="Sprite2D" parent="BG" unique_id=1390994988]
+position = Vector2(-194, 110)
+texture = ExtResource("19")
 
-[node name="Sprite2" type="Sprite2D" parent="BG"]
-position = Vector2( 126, 110 )
-texture = ExtResource( 19 )
+[node name="Sprite2" type="Sprite2D" parent="BG" unique_id=1891371459]
+position = Vector2(126, 110)
+texture = ExtResource("19")
 
-[node name="Sprite3" type="Sprite2D" parent="BG"]
-position = Vector2( 446, 110 )
-texture = ExtResource( 19 )
+[node name="Sprite3" type="Sprite2D" parent="BG" unique_id=1173920490]
+position = Vector2(446, 110)
+texture = ExtResource("19")
 
-[node name="Sprite4" type="Sprite2D" parent="BG"]
-position = Vector2( 766, 110 )
-texture = ExtResource( 19 )
+[node name="Sprite4" type="Sprite2D" parent="BG" unique_id=231588676]
+position = Vector2(766, 110)
+texture = ExtResource("19")
 
-[node name="ColorRect" type="ColorRect" parent="BG"]
+[node name="ColorRect" type="ColorRect" parent="BG" unique_id=1565400038]
 offset_left = -140.0
 offset_top = 206.0
 offset_right = 733.0
 offset_bottom = 340.0
-color = Color( 0.705882, 0.988235, 0.988235, 1 )
+color = Color(0.705882, 0.988235, 0.988235, 1)
 
 [connection signal="area_entered" from="Hazards/KickoffBoard" to="Hazards/KickoffBoard" method="_on_area_entered"]

@@ -1,6 +1,13 @@
 extends Node2D
 class_name Signpost
 
+# Properties
+## The act that the sign post will be enabled in.
+@export var act_number : int = 1
+## Determines if the player keeps their rings after this sign post (provided there is an additional act afterwards).
+## In the original games, the player's ring count is always reset to zero.
+@export var keep_rings : bool = false
+
 # Constants
 const PLAYER_LOCK_OFFSET = 426
 const POST_SPIN_DELAY = 2.0
@@ -14,20 +21,31 @@ const POLL_INTERVAL = 0.1
 # Cached references
 var player: Player
 var camera: PlayerCamera
-var zone: Zone
 
 # State
 var routined = false
 var displayed = false
 
 # Node references
+@onready var zone : Zone = get_tree().root.get_node("Zone")
 @onready var anim_player = $AnimationPlayer
 @onready var spin_audio = $Spin
 
 
 func _ready():
-	zone = get_parent()
+	zone.reset_signposts.connect(_reset_signpost)
+	_reset_signpost()
 
+func _reset_signpost():
+	await get_tree().create_timer(POLL_INTERVAL).timeout # Wait 0.1 seconds for player to be ready
+	if act_number != zone.act_number:
+		routined = true
+		displayed = true
+		_display_character_plate(player.player_id)
+	else:
+		routined = false
+		displayed = false
+		_display_character_plate("Eggman")
 
 func _physics_process(_delta):
 	if routined:
@@ -82,7 +100,7 @@ func _setup_player_victory():
 	player.spun_sign_post = true
 	player.skin.off_screen = true
 	player.set_super_state(false)
-	ScoreManager.stop_time_goal()
+	ScoreManager.stop_time()
 	
 	# Get the viewport width
 	var viewport_width = get_viewport_rect().size.x
@@ -128,8 +146,19 @@ func _complete_score_tally():
 	while ScoreTally.is_tallying():
 		await get_tree().create_timer(POLL_INTERVAL).timeout
 
+func initialize_next_act(act_limits):
+	if !keep_rings:
+		ScoreManager.reset_score(false, false, true)
+	player.change_state("Regular")
+	zone._zone_music()
+	zone._reset_signposts()
+	player.lock_to_limits(player.limit_left, act_limits.limit_right)
+	camera.tween_limits_from_resource(act_limits)
+	ScoreManager.reset_time_and_start()
 
 func _exit_and_transition():
+	var go_next_scene = zone.act_number + 1 > zone.amount_of_acts
+
 	ScoreTally.exit()
 	await get_tree().create_timer(FADE_DELAY).timeout
 	
@@ -137,8 +166,12 @@ func _exit_and_transition():
 	if player.state_machine.current_state == "Dead":
 		return
 	
-	FadeManager.fade_in()
-	await get_tree().create_timer(FADE_DURATION).timeout
-	
-	go_data.save_file()
-	global_load.load_scene(get_tree().root.get_node("Zone"), zone.next_scene)
+	if go_next_scene:
+		FadeManager.fade_in()
+		await get_tree().create_timer(FADE_DURATION).timeout
+		go_data.save_file()
+		global_load.load_scene(get_tree().root.get_node("Zone"), zone.next_scene)
+	else:
+		zone.act_number += 1
+		var act_limits = zone.get_current_act_limits()
+		initialize_next_act(act_limits)

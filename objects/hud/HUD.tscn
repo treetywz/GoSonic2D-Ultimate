@@ -617,10 +617,10 @@ script = ExtResource("7")
 
 [node name="Score" type="TextureRect" parent="." unique_id=466488816]
 process_mode = 3
-layout_mode = 0
+layout_mode = 1
 offset_left = 12.0
 offset_top = 12.0
-offset_right = 98.0
+offset_right = 115.0
 offset_bottom = 58.0
 texture = ExtResource("2")
 
@@ -710,11 +710,13 @@ texture = ExtResource("5")
 stretch_mode = 1
 
 [node name="Lives" type="Control" parent="." unique_id=1036934158]
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -240.0
 offset_right = 426.0
+grow_vertical = 0
 
 [node name="Name" type="AnimatedSprite2D" parent="Lives" unique_id=1204696326]
 position = Vector2(47, 219)

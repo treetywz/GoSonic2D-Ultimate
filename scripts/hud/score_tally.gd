@@ -59,6 +59,7 @@ var time_bonus: int = 0
 var cool_bonus: int = 0
 var total: int = 0
 var tallying: bool = false
+var pressed_mob = false
 
 
 func _process(_delta):
@@ -78,30 +79,47 @@ func setup_tally():
 	cool_bonus = _calculate_cool_bonus()
 	total = 0
 
+func _input(event):
+	if event.is_pressed() and event is InputEventScreenTouch:
+		if tallying:
+			pressed_mob = true
 
 func tally_total():
 	tallying = true
 	
 	while ring_bonus > 0 or time_bonus > 0 or cool_bonus > 0:
+		if Input.is_action_just_pressed("player_a") or pressed_mob:
+			pressed_mob = false
+			# Add all remaining bonuses immediately
+			total += ring_bonus + time_bonus + cool_bonus
+			ScoreManager.add_score(ring_bonus + time_bonus + cool_bonus)
+			ring_bonus = 0
+			time_bonus = 0
+			cool_bonus = 0
+			break
+		
 		await get_tree().create_timer(TALLY_INTERVAL).timeout
 		
-		var added_this_frame = false
+		var added_this_frame = 0
 		
 		if ring_bonus > 0:
-			ring_bonus -= TALLY_INCREMENT
-			added_this_frame = true
+			var amount = min(ring_bonus, TALLY_INCREMENT)
+			ring_bonus -= amount
+			added_this_frame += amount
 		
 		if time_bonus > 0:
-			time_bonus -= TALLY_INCREMENT
-			added_this_frame = true
+			var amount = min(time_bonus, TALLY_INCREMENT)
+			time_bonus -= amount
+			added_this_frame += amount
 		
 		if cool_bonus > 0:
-			cool_bonus -= TALLY_INCREMENT
-			added_this_frame = true
+			var amount = min(cool_bonus, TALLY_INCREMENT)
+			cool_bonus -= amount
+			added_this_frame += amount
 		
-		if added_this_frame:
-			total += TALLY_INCREMENT
-			ScoreManager.add_score(TALLY_INCREMENT)
+		if added_this_frame > 0:
+			total += added_this_frame
+			ScoreManager.add_score(added_this_frame)
 			count_audio.play()
 	
 	total_audio.play()

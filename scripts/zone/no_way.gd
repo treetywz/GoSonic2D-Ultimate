@@ -23,4 +23,4 @@ func _process(_delta):
 		await get_tree().create_timer(2).timeout
 		global_load.load_scene(self,"res://scenes/main.tscn")
 		ScoreManager.reset_score(true, true, true)
-		ScoreManager.time_stopped_goal = false
+		ScoreManager.time_stopped = false

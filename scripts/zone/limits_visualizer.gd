@@ -12,11 +12,27 @@ func _draw():
 	if !zone:
 		return
 	
-	# Get limit values with defaults
-	var limit_left = zone.get("limit_left") if zone.get("limit_left") != null else 0
-	var limit_right = zone.get("limit_right") if zone.get("limit_right") != null else 10000
-	var limit_top = zone.get("limit_top") if zone.get("limit_top") != null else 0
-	var limit_bottom = zone.get("limit_bottom") if zone.get("limit_bottom") != null else 10000
+	# Get the acts array and current act number
+	var acts = zone.get("acts")
+	var act_number = zone.get("act_number") if zone.get("act_number") != null else 1
+	
+	if !acts or acts.is_empty():
+		return
+	
+	# Get the current act's limits (act_number is 1-based, array is 0-based)
+	var act_index = act_number - 1
+	if act_index < 0 or act_index >= acts.size():
+		act_index = 0  # Default to first act if invalid
+	
+	var current_act = acts[act_index]
+	if !current_act:
+		return
+	
+	# Get limit values from the current act
+	var limit_left = current_act.get("limit_left") if current_act.get("limit_left") != null else 0
+	var limit_right = current_act.get("limit_right") if current_act.get("limit_right") != null else 10000
+	var limit_top = current_act.get("limit_top") if current_act.get("limit_top") != null else 0
+	var limit_bottom = current_act.get("limit_bottom") if current_act.get("limit_bottom") != null else 10000
 	
 	var limit_color = Color(1, 0.2, 0.2, 1)
 	var limit_width = 3.0

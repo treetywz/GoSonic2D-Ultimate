@@ -153,7 +153,6 @@ _data = {
 }
 
 [node name="SignPost" type="Node2D" unique_id=903138320]
-position = Vector2(6696, 554)
 script = ExtResource("1")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1936178044]

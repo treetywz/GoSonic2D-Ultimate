@@ -117,15 +117,18 @@ grow_vertical = 2
 script = ExtResource("3")
 
 [node name="Dpad" type="TextureRect" parent="." unique_id=1472468971]
-layout_mode = 0
-anchor_left = 0.0680751
-anchor_top = 0.629167
-anchor_right = 0.269953
-anchor_bottom = 0.9875
-offset_right = -22.0
-offset_bottom = -21.9999
+modulate = Color(1, 1, 1, 0.2784314)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -131.0
+offset_right = 94.0
+offset_bottom = -67.0
+grow_vertical = 0
+scale = Vector2(1.765, 1.765)
 texture = ExtResource("10")
-expand_mode = 1
 stretch_mode = 5
 
 [node name="Right" type="TouchScreenButton" parent="Dpad" unique_id=1175015271]
@@ -198,7 +201,7 @@ offset_right = 213.0
 offset_bottom = 120.0
 
 [node name="Button" type="TouchScreenButton" parent="F3" unique_id=876235050]
-position = Vector2(194, 165)
+position = Vector2(213, 162)
 texture_normal = ExtResource("13")
 texture_pressed = ExtResource("12")
 action = "ui_debug"

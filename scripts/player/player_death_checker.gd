@@ -5,7 +5,7 @@ class_name DeathChecker
 const FADE_DURATION = 2.0
 const DEATH_DELAY = 1.0
 const OFFSCREEN_CHECK_INTERVAL = 0.1
-const GAME_OVER_SCENE = "res://scenes/no_way.tscn"
+const GAME_OVER_SCENE = "res://scenes/title.tscn"
 const DEFAULT_LIVES = 3
 
 # Exports
@@ -75,15 +75,16 @@ func _handle_death():
 	get_tree().paused = true
 	
 	ScoreManager.lifes -= 1
-	ScoreManager.time_stoped = true
+	ScoreManager.time_stopped = true
 	
-	_update_life_counters()
 	# Wait for player to go off screen
 	await _wait_for_player_offscreen()
 	await get_tree().create_timer(DEATH_DELAY).timeout
 	# Determine death type and handle accordingly
 	var death_type = _get_death_type()
+	_update_life_counters()
 	await _handle_death_type(death_type)
+	
 
 
 func _wait_for_player_offscreen():
@@ -160,4 +161,4 @@ func skip():
 
 func _reset_scores():
 	ScoreManager.reset_score(true, true, true)
-	ScoreManager.time_stoped = false
+	ScoreManager.time_stopped = false

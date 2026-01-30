@@ -38,7 +38,7 @@ func _process(_delta):
 func _setup_visibility():
 	var is_mobile = OS.get_name() in ["Android", "iOS"]
 	var _is_debug = OS.is_debug_build()
-	visible = is_mobile
+	visible = is_mobile# or _is_debug
 
 
 # Cache player and zone references

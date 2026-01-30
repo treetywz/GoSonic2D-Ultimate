@@ -5,8 +5,7 @@ var rings = 0
 var lifes = 3
 
 var time : float
-var time_stoped: bool
-var time_stopped_goal: bool
+var time_stopped: bool
 
 signal ring_added
 signal score_added
@@ -24,16 +23,16 @@ var life_for_every_score = 50000
 
 var times_hit : int
 
-func _process(delta):
+func _physics_process(delta):
 	handle_time(delta)
 
 func handle_time(delta: float):
-	if not time_stoped and !time_stopped_goal:
+	if not time_stopped:
 		var next_time = time + delta
 		if (next_time < TIME_LIMIT):
 			time += delta
 		else:
-			time_stoped = true
+			time_stopped = true
 			emit_signal("time_over")
 
 func add_score(amount = 1):
@@ -80,15 +79,14 @@ func reset_score(_reset_score, reset_time, reset_rings):
 		score = 0
 	if reset_rings:
 		rings = 0
+		emit_signal("ring_added", rings)
 	if reset_time:
 		time = 0
 	lifes_added = 1
+
+func stop_time():
+	time_stopped = true
 	
-func time_limit_over():
-	if time_stoped == true:
-		return true
-	else:
-		return false
-		
-func stop_time_goal():
-	time_stopped_goal = true
+func reset_time_and_start():
+	time = 0
+	time_stopped = false

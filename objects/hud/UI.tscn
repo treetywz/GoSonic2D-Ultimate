@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ckoygrvdjmjcy"]
+
+[ext_resource type="PackedScene" uid="uid://drmodxiw33lmn" path="res://objects/hud/Debug.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://codauofxyq6u0" path="res://objects/hud/GameOver.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bsb1nvcyw3hbg" path="res://objects/hud/MobileControls.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://1dixtleyhosv" path="res://objects/hud/HUD.tscn" id="4"]
+
+[node name="UI" type="CanvasLayer" unique_id=20294509]
+process_mode = 3
+
+[node name="HUD" parent="." unique_id=1705765395 instance=ExtResource("4")]
+
+[node name="Debug" parent="." unique_id=1689527633 instance=ExtResource("1")]
+process_mode = 3
+zone_path = NodePath("../..")
+
+[node name="GameOver" parent="." unique_id=1930401577 instance=ExtResource("2")]
+
+[node name="MobileControls" parent="." unique_id=1711157141 instance=ExtResource("3")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1809241745]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)

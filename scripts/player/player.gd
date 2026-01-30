@@ -102,6 +102,7 @@ var chaos_emeralds = globalvars.chaos_emeralds
 
 
 func _ready():
+	ScoreManager.time_over.connect(_on_time_over)
 	dash_dust.visible = false
 	initialize_collider()
 	initialize_resources()
@@ -119,16 +120,17 @@ func _physics_process(delta):
 	handle_skin(delta)
 	handle_super_sonic()
 
+func _on_time_over():
+	if state_machine.current_state != "Dead":
+		state_machine.change_state("Dead")
 
 func _process(_delta):
 	score_manager.extra_life(self)
-	if score_manager.time_limit_over():
-		if state_machine.current_state != "Dead":
-			state_machine.change_state("Dead")
 	
 	# Debug input
 	if Input.is_action_just_pressed("player_debug"):
-		iframes()
+		state_machine.change_state("Dead")
+		#iframes()
 	
 	# Update vulnerability when sign post is spun
 	if spun_sign_post:
@@ -200,14 +202,14 @@ func handle_super_sonic():
 			skin.set_pallete("normal")
 		skin.texture = sonic_texture
 		
-		if state_machine.current_state != "Transform":
+		if state_machine.current_state not in ["Transform", "Dead"]:
 			shields.visible = true
-			# Remove this line - don't force vulnerable true every frame!
-			# vulnerable = true  
 		
-		if state_machine.current_state != "Dead" and state_machine.current_state != "Victory":
-			if !spun_sign_post:
-				get_parent()._zone_music()
+		# why..? this is completely useless.. it's such a waste of memory.
+		# i have no idea what you were thinking, past me.
+		#if state_machine.current_state != "Dead" and state_machine.current_state != "Victory":
+			#if !spun_sign_post:
+				#get_parent()._zone_music()
 
 func set_super_state(value: bool):
 	if value:
@@ -307,11 +309,13 @@ func iframes():
 		if __is_grounded:
 			can_collect_rings = true
 		
+		
 		# Toggle visibility
 		skin.visible = !skin.visible
 		
 		# Exit early if super state activated
-		if super_state:
+		if super_state or state_machine.current_state == "Dead":
+			skin.visible = true
 			break
 		
 		await get_tree().create_timer(IFRAME_FLASH_INTERVAL).timeout
