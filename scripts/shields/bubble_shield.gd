@@ -88,6 +88,8 @@ func on_user_ground_enter():
 
 func _perform_bounce():
 	if !shield_user.super_state:
+		if shield_user.ground_colliding_object.get_parent() is SpikeObject:
+			return
 		animation_player.play("bounce")
 		special_audio.play()
 		shield_user.state_machine.change_state("Air")

@@ -1,38 +1,43 @@
 extends Node2D
+class_name SpikeObject
 
-# State
+const HURT_CHECK_INTERVAL = 0.01
+
 var is_hurting_player = false
-@export var track = false
-var tracking = false
-
-# Constants
-const HURT_CHECK_INTERVAL = 0.1
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("player_c") and track:
-		tracking = true
-	if tracking:
-		print(global_position.distance_to(get_parent().get_parent().player.global_position))
 
 func _on_solid_object_player_ground_collision(player: Player):
-	# Only hurt if player is touching from above (grounded on spikes)
-	_attempt_hurt_player(player)
+	if is_hurting_player:
+		return
+	
+	# Immediately push player up slightly to prevent visual clipping
+	if player.vulnerable and player.velocity.y > 0:
+		player.position.y -= 13
+	
+	is_hurting_player = true
+	_handle_ground_collision(player)
+	is_hurting_player = false
 
+func _handle_ground_collision(player: Player):
+	# Immediate hurt check
+	if player.vulnerable and _should_hurt_player(player):
+		player.hurt("spikes", self)
+		return
+	
+	# Wait if player is currently invulnerable
+	while !player.vulnerable:
+		if !player.__is_grounded:
+			return
+		await get_tree().create_timer(HURT_CHECK_INTERVAL).timeout
+	
+	# Check again after becoming vulnerable
+	if _should_hurt_player(player):
+		player.hurt("spikes", self)
 
-func _attempt_hurt_player(player: Player):
-	if player.state_machine.current_state != "Hurt":
-		is_hurting_player = true
-		
-		print("HURT")
-		
-		while !player.vulnerable:
-			if !player.__is_grounded:
-				return
-			await get_tree().create_timer(HURT_CHECK_INTERVAL).timeout
-		
-		# Check if player is still on the spikes
-		if is_hurting_player:
-			if (player.__is_grounded or player.shields.shields.BubbleShield.descending) and global_position.distance_to(player.global_position) < 40:
-				player.hurt("spikes", self)
-		
-		is_hurting_player = false
+func _should_hurt_player(player: Player) -> bool:
+	if !player.ground_colliding_object or !player.vulnerable:
+		return false
+	
+	var still_touching = player.ground_colliding_object.get_parent() == self
+	var bubble_descending = player.shields.shields.BubbleShield.descending
+	
+	return still_touching or bubble_descending

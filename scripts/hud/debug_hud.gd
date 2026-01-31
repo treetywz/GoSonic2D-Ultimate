@@ -24,29 +24,6 @@ class_name DebugHUD
 
 const FORMAT = "%.2f"
 
-const ANIMATION_STATES = {
-	0: "idle",
-	1: "walking",
-	2: "running",
-	3: "peel_out",
-	4: "rolling",
-	5: "skidding",
-	6: "corkscrew",
-	7: "crouch",
-	8: "spindash",
-	9: "lookup",
-	10: "dropdash",
-	11: "balance",
-	12: "panic_balance",
-	13: "idle_wait",
-	14: "pushing",
-	15: "dead",
-	16: "hurt",
-	17: "hurt_2",
-	18: "idle_super",
-	19: "balancing_super",
-	20: "transform"
-}
 
 var enabled = true
 var s  = false
@@ -90,7 +67,6 @@ func _process(_delta):
 		isrolling.text = str(zone.player.is_rolling)
 		isgrounded.text = str(zone.player.__is_grounded)
 		ispushing.text = str(zone.player.is_pushing)
-		#animstate.text = str(convertIntToString(zone.player.skin.current_state))
 		groundangle.text = str(abs(zone.player.ground_angle))
 		lifesadded.text = str(ScoreManager.lifes_added)
 		fps.text = str(Engine.get_frames_per_second())
@@ -102,9 +78,3 @@ func _process(_delta):
 			cstate.text = "PeelOut"
 		if lstate.text == "SuperPeelOut":
 			lstate.text = "PeelOut"
-
-func convertIntToString(state_id: int) -> String:
-	if state_id in ANIMATION_STATES:
-		return ANIMATION_STATES[state_id]
-	else:
-		return "Unknown State"

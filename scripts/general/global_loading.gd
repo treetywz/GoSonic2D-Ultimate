@@ -6,6 +6,8 @@ signal reload_call
 func load_scene(current_scene, next_scene):
 	current_scene.queue_free()
 	ScoreManager.reset_score(false, false, true)
+	MusicManager.stop_music()
+	MusicManager.reset_volume()
 	
 	# add loading scene to the root
 	var loading_scene_instance = loading_scene.instantiate()

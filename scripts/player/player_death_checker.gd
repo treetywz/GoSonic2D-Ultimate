@@ -42,7 +42,7 @@ func _process(_delta):
 func _cache_references():
 	var zone = get_parent()
 	player = zone.player
-	gameover = zone.gameover
+	gameover = UI.get_node("GameOver")
 	life_counter = UI.get_node("HUD/Lives/Counter")
 	mobile_life_counter = UI.get_node("HUD/MobileLifes/Counter")
 
@@ -52,6 +52,7 @@ func _skip_input_pressed() -> bool:
 
 
 func _execute_game_over_skip():
+	print("DED")
 	can_skip = false
 	MusicManager.fade_out(FADE_DURATION)
 	skip_gameover()

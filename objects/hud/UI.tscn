@@ -81,9 +81,6 @@ process_mode = 3
 [node name="MobileControls" parent="." unique_id=1711157141 instance=ExtResource("3")]
 
 [node name="ScoreTally" parent="." unique_id=2083258566 instance=ExtResource("6_s8p2n")]
-visible = true
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Fade" type="Control" parent="." unique_id=503605746]
 layout_mode = 3

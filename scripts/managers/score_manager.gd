@@ -85,6 +85,9 @@ func check_score_milestone():
 
 
 func reset_score(_reset_score, reset_time, reset_rings):
+	
+	times_hit = 0
+	
 	if _reset_score:
 		score = 0
 		lifes_added_score = 1

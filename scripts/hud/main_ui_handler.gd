@@ -16,7 +16,7 @@ func exit_titlecard():
 	titlecard.exit_title_card()
 
 func _reload_all_ui():
-	var to_reload = ["HUD", "Debug", "MobileControls"]
+	var to_reload = ["HUD", "Debug", "MobileControls", "GameOver", "ScoreTally"]
 	var zone_exists = Global.find_zone_from_root() != null
 	print("Reloading all UI...")
 	

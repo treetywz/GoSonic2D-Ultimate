@@ -2,7 +2,10 @@ extends PlayerState
 
 class_name TransformPlayerState
 
+signal transformed
+
 func exit(player: Player):
+	emit_signal("transformed")
 	player.skin.transitioning_pallete = false
 	player.is_rolling = false
 	player.is_jumping = false

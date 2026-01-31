@@ -12,7 +12,7 @@ class_name Shield
 @onready var action_audio = get_node_or_null(action_audio_path)
 
 var active: bool
-var shield_user
+var shield_user : Player
 
 func activate(player):
 	if not active:

@@ -62,6 +62,14 @@ var tallying: bool = false
 var pressed_mob = false
 
 
+func _disable():
+	visible = false
+	tallying = false
+	
+func _enable():
+	visible = true
+	anim.play("no")
+
 func _process(_delta):
 	_update_labels()
 
@@ -96,6 +104,9 @@ func tally_total():
 			ring_bonus = 0
 			time_bonus = 0
 			cool_bonus = 0
+			break
+		
+		if !tallying:
 			break
 		
 		await get_tree().create_timer(TALLY_INTERVAL).timeout
