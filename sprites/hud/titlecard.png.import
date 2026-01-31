@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuj1esom2e75c"
-path="res://.godot/imported/system_font.png-6eb78c4a51166aa439295bfb731c0c4a.ctex"
+uid="uid://cladyxbhaxm2h"
+path="res://.godot/imported/titlecard.png-0ba9385177847a61b016fa27f313152a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/fonts/system_font.png"
-dest_files=["res://.godot/imported/system_font.png-6eb78c4a51166aa439295bfb731c0c4a.ctex"]
+source_file="res://sprites/hud/titlecard.png"
+dest_files=["res://.godot/imported/titlecard.png-0ba9385177847a61b016fa27f313152a.ctex"]
 
 [params]
 

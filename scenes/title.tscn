@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dejsikv57oi2d" path="res://sprites/title/demo-start.png" id="14"]
 [ext_resource type="Texture2D" uid="uid://bg0wsbku17ne4" path="res://read_me/logo.png" id="15_kcc3o"]
 [ext_resource type="Script" uid="uid://bq0qkcff6vnmc" path="res://scripts/title/logoBob.gd" id="16_6rcc6"]
+[ext_resource type="FontFile" uid="uid://c20q5nj7k856r" path="res://fonts/system.fnt" id="16_ah8jo"]
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("2")
@@ -461,3 +462,17 @@ scale = Vector2(0.135, 0.135)
 pivot_offset = Vector2(1014.5, 278.5)
 texture = ExtResource("15_kcc3o")
 script = ExtResource("16_6rcc6")
+
+[node name="DevText" type="Label" parent="." unique_id=2106313620]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -27.0
+offset_right = 166.0
+offset_bottom = -4.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("16_ah8jo")
+text = "running in godot 4.6
+developed by treetywz"

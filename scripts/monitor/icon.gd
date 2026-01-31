@@ -12,7 +12,10 @@ var visible_timer: float
 
 @onready var shield_type = get_parent().shield_type
 
+@onready var zone = Global.find_zone_from_root()
+
 func _ready():
+	
 	destination = Vector2.UP * move_height
 	if get_parent().shield == true:
 		iconswap.play(shield_type)
@@ -22,8 +25,9 @@ func _process(delta):
 		handle_movement(delta)
 		handle_visibility(delta)
 	if get_parent().life_monitor == true:
-		if get_tree().root.get_node_or_null("Zone").player != null:
-			var player = get_tree().root.get_node("Zone").player
+		
+		if zone.player != null:
+			var player = zone.player
 			if player.player_id == "Sonic" and player.super_state:
 				iconswap.play("Super Sonic")
 			else:

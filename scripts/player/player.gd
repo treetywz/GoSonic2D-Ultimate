@@ -71,17 +71,19 @@ var is_looking_down: bool
 var is_looking_up: bool
 var is_control_locked: bool
 var is_locked_to_limits: bool
-var __is_grounded: bool
-var delay_cam = false
-var colliding = true
-var vulnerable = true
-var can_collect_rings = true
-var has_been_spiked = false
-var flashing = false
-var iframe_process = false
-var super_state = false
-var can_transform = false
-var spun_sign_post = false
+var __is_grounded : bool
+var delay_cam : bool = false
+var colliding : bool = true
+var vulnerable : bool = true
+var can_collect_rings : bool = true
+var has_been_spiked : bool = false
+var flashing : bool = false
+var iframe_process : bool = false
+var super_state : bool = false
+var can_transform : bool = false
+var spun_sign_post : bool = false
+var can_move : bool = true
+var gravity_affected : bool = true
 
 # Ring drop constants
 const RING_STARTING_ANGLE = deg_to_rad(101.25)
@@ -97,8 +99,8 @@ var ring_speed = RING_DEFAULT_SPEED
 var ring_flip = false
 
 # Super transformation requirements
-var super_em_requirement = globalvars.ch_emerald_super_requirement
-var chaos_emeralds = globalvars.chaos_emeralds
+var super_em_requirement = Global.ch_emerald_super_requirement
+var chaos_emeralds = Global.chaos_emeralds
 
 
 func _ready():
@@ -125,7 +127,7 @@ func _on_time_over():
 		state_machine.change_state("Dead")
 
 func _process(_delta):
-	score_manager.extra_life(self)
+	#score_manager.extra_life(self)
 	
 	# Debug input
 	if Input.is_action_just_pressed("player_debug"):
@@ -363,6 +365,8 @@ func is_grounded():
 
 # Input handling
 func handle_input():
+	if !can_move:
+		return
 	var right = Input.is_action_pressed("player_right")
 	var left = Input.is_action_pressed("player_left")
 	var up = Input.is_action_pressed("player_up")
@@ -576,7 +580,7 @@ func handle_slope(delta: float):
 
 
 func handle_gravity(delta: float):
-	if !__is_grounded:
+	if !__is_grounded and gravity_affected:
 		velocity.y += current_stats.gravity * delta
 
 
@@ -606,6 +610,9 @@ func handle_friction(delta: float):
 
 
 func handle_jump():
+	if !can_move:
+		return
+		
 	if __is_grounded and (Input.is_action_just_pressed("player_a") or Input.is_action_just_pressed("player_b")):
 		is_jumping = true
 		is_rolling = true
@@ -646,6 +653,7 @@ func handle_skin(delta):
 	
 	if is_rolling or abs(velocity.x) == 0:
 		skin.rotation_degrees = 0
+		
 		return
 	
 	if !__is_grounded:

@@ -9,6 +9,7 @@ func enter(player: Player):
 	player.is_looking_down = false
 	player.dash_dust.visible = true
 	player.audios.spindashcharge.play()
+	player.velocity = Vector2.ZERO
 	p = 0
 	player.is_rolling = true
 

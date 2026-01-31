@@ -41,6 +41,7 @@ func _physics_process(delta):
 	if player.delay_cam == true:
 		player.delay_cam = false
 		start_camera_delay()
+
 		
 	if player.is_looking_up:
 		if stop_scroll == "back":
@@ -70,6 +71,7 @@ func _physics_process(delta):
 	else:
 		if !stop_scroll == "back":
 			scroll("back")
+
 func initialize_camera():
 	enabled = true
 
@@ -100,18 +102,20 @@ func scroll(direction: String):
 	# Reset scrolled flags
 	scrolled_up = false
 	scrolled_down = false
-	
+
 func set_player(desired_player: Player):
 	player = desired_player
 	position = player.global_position
 
 func set_limits(left: int, right: int, top: int, bottom: int):
+	print("Set camera limits.")
 	limit_left = left
 	limit_right = right
 	limit_top = top
 	limit_bottom = bottom
 	
 func set_limits_from_resource(limits: CameraLimits, change_limit_left : bool = false):
+	print("Set camera limits from resource.")
 	if change_limit_left:
 		limit_left = limits.limit_left
 	limit_right = limits.limit_right
@@ -119,6 +123,7 @@ func set_limits_from_resource(limits: CameraLimits, change_limit_left : bool = f
 	limit_bottom = limits.limit_bottom
 
 func tween_limits(left: int, right: int, top: int, bottom: int, duration: float = 2, change_limit_left : bool = false):
+	print("Tweening camera limits.")
 	var tween = create_tween()
 	tween.set_parallel(true)  # All tweens happen at the same time
 	
@@ -130,7 +135,8 @@ func tween_limits(left: int, right: int, top: int, bottom: int, duration: float 
 	
 	return tween
 
-func tween_limits_from_resource(limits: CameraLimits, duration: float = 2, change_limit_left : bool = false):
+func tween_limits_from_resource(limits: CameraLimits, duration: float = 1, change_limit_left : bool = false):
+	print("Tweening camera limits from resource.")
 	var tween = create_tween()
 	tween.set_parallel(true)
 	

@@ -1,0 +1,262 @@
+[gd_scene format=3 uid="uid://cl3eona3gjwfb"]
+
+[ext_resource type="Script" uid="uid://bsv5v0f6eeagp" path="res://scripts/hud/title_card.gd" id="1_gn3qj"]
+[ext_resource type="Texture2D" uid="uid://cladyxbhaxm2h" path="res://sprites/hud/titlecard.png" id="2_ajrxo"]
+[ext_resource type="FontFile" uid="uid://c4vmn01mvioh3" path="res://fonts/title_card.fnt" id="3_ndsmt"]
+[ext_resource type="Texture2D" uid="uid://x6irbissojqq" path="res://sprites/scoretally/act1.png" id="4_3df6a"]
+
+[sub_resource type="Animation" id="Animation_ajrxo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/Red:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-81, -543)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container/ZoneName:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(273, 3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Container/ZoneText:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(249, 37)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Container/Act:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(340, 71)]
+}
+
+[sub_resource type="Animation" id="Animation_gn3qj"]
+resource_name = "enter"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/Red:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-81, -543), Vector2(-81, -271)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container/ZoneName:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(273, 3), Vector2(-103, 3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Container/ZoneText:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.39999998),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(249, 37), Vector2(-103, 37)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Container/Act:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(340, 71), Vector2(108, 71)]
+}
+
+[sub_resource type="Animation" id="Animation_ndsmt"]
+resource_name = "exit"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/Red:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-81, -271), Vector2(-81, -543)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container/ZoneName:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.099999994, 0.29999998),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-103, 3), Vector2(273, 3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Container/ZoneText:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.40000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-103, 37), Vector2(249, 37)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Container/Act:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(108, 71), Vector2(340, 71)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ajrxo"]
+_data = {
+&"RESET": SubResource("Animation_ajrxo"),
+&"enter": SubResource("Animation_gn3qj"),
+&"exit": SubResource("Animation_ndsmt")
+}
+
+[node name="TitleCard" type="Control" unique_id=274008361]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gn3qj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1655345722]
+libraries/ = SubResource("AnimationLibrary_ajrxo")
+autoplay = &"RESET"
+
+[node name="Container" type="Control" parent="." unique_id=288767503]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Red" type="TextureRect" parent="Container" unique_id=753169926]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -563.0
+offset_right = -16.999924
+offset_bottom = -203.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ajrxo")
+
+[node name="ZoneName" type="Label" parent="Container" unique_id=1269925085]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 253.0
+offset_top = -17.0
+offset_right = 525.0001
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ndsmt")
+theme_override_font_sizes/font_size = 78
+text = "ZONE NAME"
+horizontal_alignment = 2
+
+[node name="ZoneText" type="Label" parent="Container" unique_id=1849081675]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 229.0
+offset_top = 17.0
+offset_right = 501.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ndsmt")
+theme_override_font_sizes/font_size = 78
+text = "ZONE"
+horizontal_alignment = 2
+
+[node name="Act" type="TextureRect" parent="Container" unique_id=740429015]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 320.0
+offset_top = 51.0
+offset_right = 369.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.09, 1.09)
+texture = ExtResource("4_3df6a")

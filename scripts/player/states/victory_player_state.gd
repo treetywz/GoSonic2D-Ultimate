@@ -3,6 +3,7 @@ extends PlayerState
 class_name VictoryPlayerState
 
 func exit(_player: Player):
+	_player.vulnerable = true
 	pass
 
 func enter(player: Player):

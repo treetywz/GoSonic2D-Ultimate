@@ -25,9 +25,10 @@ var camera: PlayerCamera
 # State
 var routined = false
 var displayed = false
+var acting = false
 
 # Node references
-@onready var zone : Zone = get_tree().root.get_node("Zone")
+@onready var zone : Zone = Global.find_zone_from_root()
 @onready var anim_player = $AnimationPlayer
 @onready var spin_audio = $Spin
 
@@ -37,8 +38,9 @@ func _ready():
 	_reset_signpost()
 
 func _reset_signpost():
+	acting = false
 	await get_tree().create_timer(POLL_INTERVAL).timeout # Wait 0.1 seconds for player to be ready
-	if act_number != zone.act_number:
+	if act_number != Global.current_act:
 		routined = true
 		displayed = true
 		_display_character_plate(player.player_id)
@@ -46,6 +48,7 @@ func _reset_signpost():
 		routined = false
 		displayed = false
 		_display_character_plate("Eggman")
+	acting = true
 
 func _physics_process(_delta):
 	if routined:
@@ -61,7 +64,7 @@ func _physics_process(_delta):
 		return
 	
 	# Check if player reached the signpost
-	if player.global_position.x >= global_position.x:
+	if player.global_position.x >= global_position.x and acting:
 		_trigger_signpost()
 
 
@@ -124,7 +127,7 @@ func _start_music_transition():
 
 
 func _enter_score_tally():
-	ScoreTally.enter(player.player_id, zone.act_number)
+	UI.enter_tally(player.player_id, Global.current_act)
 
 
 func _wait_for_music_fade():
@@ -141,9 +144,9 @@ func _play_victory_music():
 
 
 func _complete_score_tally():
-	ScoreTally.tally_total()
+	UI.tally_total()
 	
-	while ScoreTally.is_tallying():
+	while UI.is_tallying():
 		await get_tree().create_timer(POLL_INTERVAL).timeout
 
 func initialize_next_act(act_limits):
@@ -155,11 +158,17 @@ func initialize_next_act(act_limits):
 	player.lock_to_limits(player.limit_left, act_limits.limit_right)
 	camera.tween_limits_from_resource(act_limits)
 	ScoreManager.reset_time_and_start()
+	_titlecard()
+
+func _titlecard():
+	UI.enter_titlecard(zone.zone_name)
+	await get_tree().create_timer(2.7).timeout
+	UI.exit_titlecard()
 
 func _exit_and_transition():
-	var go_next_scene = zone.act_number + 1 > zone.amount_of_acts
+	var go_next_scene = Global.current_act + 1 > zone.amount_of_acts
 
-	ScoreTally.exit()
+	UI.exit_tally()
 	await get_tree().create_timer(FADE_DELAY).timeout
 	
 	# Safety check - don't transition if player died
@@ -167,11 +176,12 @@ func _exit_and_transition():
 		return
 	
 	if go_next_scene:
-		FadeManager.fade_in()
+		Global.current_act = 1
+		UI.fade_in()
 		await get_tree().create_timer(FADE_DURATION).timeout
-		go_data.save_file()
-		global_load.load_scene(get_tree().root.get_node("Zone"), zone.next_scene)
+		GoData.save_file()
+		LoadingScreen.load_scene(Global.find_zone_from_root(), zone.next_scene)
 	else:
-		zone.act_number += 1
+		Global.current_act += 1
 		var act_limits = zone.get_current_act_limits()
 		initialize_next_act(act_limits)

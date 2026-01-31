@@ -19,6 +19,15 @@ var _player: Player
 var _zone: Node
 
 
+
+func _disable():
+	visible = false
+	
+func _enable():
+	visible = true
+	_ready()
+
+
 func _ready():
 	_setup_visibility()
 	_cache_references()
@@ -26,6 +35,8 @@ func _ready():
 
 func _process(_delta):
 	if !_player:
+		if Global.find_zone_from_root():
+			_player = Global.find_zone_from_root().player
 		return
 	
 	_update_b_button_visibility()
@@ -38,13 +49,14 @@ func _process(_delta):
 func _setup_visibility():
 	var is_mobile = OS.get_name() in ["Android", "iOS"]
 	var _is_debug = OS.is_debug_build()
-	visible = is_mobile# or _is_debug
+	visible = is_mobile #or _is_debug
 
 
 # Cache player and zone references
 func _cache_references():
-	_zone = get_parent().get_parent()
+	_zone = Global.find_zone_from_root()
 	if _zone:
+		print(_zone)
 		_player = _zone.player
 
 
@@ -73,9 +85,12 @@ func _should_show_b_button() -> bool:
 
 # Handle HUD fade on victory
 func _handle_hud_fade():
-	if modulate.a == ALPHA_MAX and !is_fading_hud:
-		if _player.state_machine.current_state == "Victory":
+	var victory = _player.state_machine.current_state == "Victory"
+	if round(modulate.a) == ALPHA_MAX and !is_fading_hud:
+		if victory:
 			_fade_hud(false)
+	elif modulate.a == ALPHA_MIN and !is_fading_hud and !victory:
+		_fade_hud(true)
 
 
 # Update D-pad animation based on input
@@ -116,6 +131,7 @@ func _fade_b_button(fade_in: bool):
 
 # Fade entire HUD in or out
 func _fade_hud(fade_in: bool):
+	print(fade_in)
 	is_fading_hud = true
 	var target_alpha = ALPHA_MAX if fade_in else ALPHA_MIN
 	

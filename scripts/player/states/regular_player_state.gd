@@ -60,7 +60,7 @@ func _handle_grounded_input(player: Player, delta: float):
 func _try_special_moves(player: Player, abs_velocity_x: float) -> bool:
 	var jump_pressed = Input.is_action_just_pressed("player_a") or Input.is_action_just_pressed("player_b")
 	
-	if !jump_pressed or player.is_pushing:
+	if !jump_pressed or player.is_pushing or !player.can_move:
 		return false
 	
 	# Spin Dash

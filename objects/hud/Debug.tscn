@@ -39,7 +39,8 @@ is pushing
 anim state
 ground angle
 lives added
-vulnerable"
+vulnerable
+has been spiked"
 
 [node name="FPS" type="Label" parent="Labels" unique_id=1009105874]
 layout_mode = 0
@@ -185,14 +186,14 @@ horizontal_alignment = 2
 
 [node name="ANIMSTATE" type="Label" parent="Labels" unique_id=141286509]
 layout_mode = 0
-offset_left = 106.0
+offset_left = 91.0
 offset_top = 131.0
 offset_right = 170.0
 offset_bottom = 139.0
 theme_override_colors/font_color = Color(0.878431, 0.894118, 0.878431, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2")
-text = "0.00"
+text = "deprecated"
 horizontal_alignment = 2
 
 [node name="GROUNDANGLE" type="Label" parent="Labels" unique_id=1200798059]
@@ -225,6 +226,18 @@ offset_left = 106.0
 offset_top = 164.0
 offset_right = 170.0
 offset_bottom = 172.0
+theme_override_colors/font_color = Color(0.878431, 0.894118, 0.878431, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2")
+text = "false"
+horizontal_alignment = 2
+
+[node name="SPIKED" type="Label" parent="Labels" unique_id=1741630905]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 175.0
+offset_right = 170.0
+offset_bottom = 183.0
 theme_override_colors/font_color = Color(0.878431, 0.894118, 0.878431, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2")

@@ -99,7 +99,7 @@ func _handle_gravity():
 	velocity.y += GRAVITY
 	
 	if is_on_floor():
-		if globalvars.ring_drop:
+		if Global.ring_drop:
 			if _should_bounce():
 				_bounce()
 			else:

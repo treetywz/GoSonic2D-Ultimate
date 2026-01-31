@@ -8,8 +8,8 @@ var activated_godot : bool = false
 var loop = true
 
 func _ready():
-	go_data.load_file()
-	FadeManager.fade_out()
+	GoData.load_file()
+	UI.fade_out()
 	MusicManager.play_music(music)
 	$Start.visible = true
 	
@@ -18,9 +18,9 @@ func _process(_delta):
 		$Start/AnimationPlayer.play("blink")
 		$sound.play()
 		await get_tree().create_timer(2).timeout
-		FadeManager.fade_in()
+		UI.fade_in()
 		MusicManager.fade_out(2)
 		await get_tree().create_timer(2).timeout
-		global_load.load_scene(self,"res://scenes/main.tscn")
+		LoadingScreen.load_scene(self,"res://scenes/main.tscn")
 		ScoreManager.reset_score(true, true, true)
 		ScoreManager.time_stopped = false

@@ -14,6 +14,7 @@ func enter(host: Player):
 	charge_timer = CHARGE_TIME
 	animation_speed = 1.0
 	host.audios.peeloutcharge.play()
+	host.velocity = Vector2.ZERO
 
 func step(host: Player, delta):
 	host.is_looking_up = false

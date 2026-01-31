@@ -5,7 +5,6 @@ class_name Monitor
 @export var gravity: float = 700
 @export var ground_distance: float = 16
 @export var shield: bool
-@export var s_monitor: bool
 @export var life_monitor: bool
 @export_flags_2d_physics var ground_layer = 1
 @export_enum("BlueShield", "ThunderShield", "FlameShield", "BubbleShield", "Super") var shield_type: String
@@ -84,8 +83,6 @@ func handle_item(player):
 		score_controller.add_score(player)
 	else:
 		score_controller.add_score()
-		if s_monitor and !player.super_state:
-			player.state_machine.change_state("Transform3D")
 
 func bump_up():
 	allow_movement = true

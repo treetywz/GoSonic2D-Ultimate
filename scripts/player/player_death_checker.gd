@@ -19,7 +19,6 @@ var can_time_skip = false
 
 # Cached References
 var player: Player
-var hud: Control
 var gameover: Control
 var life_counter: Label
 var mobile_life_counter: Label
@@ -44,9 +43,8 @@ func _cache_references():
 	var zone = get_parent()
 	player = zone.player
 	gameover = zone.gameover
-	hud = zone.hud
-	life_counter = hud.get_node("Lives/Counter")
-	mobile_life_counter = hud.get_node("MobileLifes/Counter")
+	life_counter = UI.get_node("HUD/Lives/Counter")
+	mobile_life_counter = UI.get_node("HUD/MobileLifes/Counter")
 
 
 func _skip_input_pressed() -> bool:
@@ -143,19 +141,19 @@ func _play_game_over_screen(type: String):
 
 
 func skip_gameover():
-	FadeManager.fade_in()
+	UI.fade_in()
 	await get_tree().create_timer(FADE_DURATION).timeout
 	get_tree().paused = false
-	global_load.load_scene(get_tree().root.get_node("Zone"), GAME_OVER_SCENE)
+	LoadingScreen.load_scene(Global.find_zone_from_root(), GAME_OVER_SCENE)
 	_reset_scores()
 	ScoreManager.lifes = DEFAULT_LIVES
 
 
 func skip():
-	FadeManager.fade_in()
+	UI.fade_in()
 	await get_tree().create_timer(FADE_DURATION).timeout
 	get_tree().paused = false
-	global_load.load_scene(get_tree().root.get_node("Zone"), zone_to_reload)
+	LoadingScreen.load_scene(Global.find_zone_from_root(), zone_to_reload)
 	_reset_scores()
 
 

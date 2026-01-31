@@ -1,4 +1,4 @@
-extends Node
+extends Control
 class_name HUD
 
 # Constants
@@ -32,18 +32,30 @@ var _is_mobile: bool
 var _last_player_id: String = ""
 var _last_super_state: bool = false
 
+var enabled = true
+
+func _disable():
+	enabled = false
+	visible = false
+	
+func _enable():
+	enabled = true
+	visible = true
+	_ready()
 
 func _ready():
-	_is_mobile = _check_if_mobile()
-	_setup_platform_ui()
-	_connect_signals()
-	_initialize_labels()
+	if Global.find_zone_from_root():
+		_is_mobile = _check_if_mobile()
+		_setup_platform_ui()
+		_connect_signals()
+		_initialize_labels()
 
 
 func _process(_delta):
-	_update_player_reference()
-	_update_timer()
-	_update_player_icon()
+	if enabled:
+		_update_player_reference()
+		_update_timer()
+		_update_player_icon()
 
 
 func _check_if_mobile() -> bool:
@@ -57,7 +69,7 @@ func _setup_platform_ui():
 
 
 func _update_player_reference():
-	var zone = get_node_or_null("/root/Zone")
+	var zone = Global.find_zone_from_root()
 	if zone:
 		player = zone.player
 
@@ -91,9 +103,12 @@ func _update_player_icon():
 
 
 func _connect_signals():
-	score_manager.score_added.connect(_on_score_added)
-	score_manager.ring_added.connect(_on_ring_added)
-	score_manager.life_added.connect(_on_life_added)
+	if not score_manager.score_added.is_connected(_on_score_added):
+		score_manager.score_added.connect(_on_score_added)
+	if not score_manager.ring_added.is_connected(_on_ring_added):
+		score_manager.ring_added.connect(_on_ring_added)
+	if not score_manager.life_added.is_connected(_on_life_added):
+		score_manager.life_added.connect(_on_life_added)
 
 
 func _initialize_labels():

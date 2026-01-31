@@ -1,25 +1,116 @@
 [gd_scene format=3 uid="uid://ckoygrvdjmjcy"]
 
 [ext_resource type="PackedScene" uid="uid://drmodxiw33lmn" path="res://objects/hud/Debug.tscn" id="1"]
+[ext_resource type="Script" uid="uid://rhowx5o685j3" path="res://scripts/hud/main_ui_handler.gd" id="1_s8p2n"]
 [ext_resource type="PackedScene" uid="uid://codauofxyq6u0" path="res://objects/hud/GameOver.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://bsb1nvcyw3hbg" path="res://objects/hud/MobileControls.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://1dixtleyhosv" path="res://objects/hud/HUD.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cl3eona3gjwfb" path="res://objects/hud/TitleCard.tscn" id="5_kjcse"]
+[ext_resource type="PackedScene" uid="uid://c3gpll855qbey" path="res://objects/hud/ScoreTally.tscn" id="6_s8p2n"]
+[ext_resource type="Shader" uid="uid://kjbppml0i3jx" path="res://shaders/shader.tres" id="8_lqwx8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxe6n"]
+shader = ExtResource("8_lqwx8")
+shader_parameter/frame = 0.0
+
+[sub_resource type="Animation" id="Animation_4ccql"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade/ColorRect:material:shader_parameter/frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="3"]
+resource_name = "fade_in"
+length = 100.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade/ColorRect:material:shader_parameter/frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 0.0]
+}
+
+[sub_resource type="Animation" id="6"]
+resource_name = "fade_out"
+length = 100.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade/ColorRect:material:shader_parameter/frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 2.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqwx8"]
+_data = {
+&"RESET": SubResource("Animation_4ccql"),
+&"fade_in": SubResource("3"),
+&"fade_out": SubResource("6")
+}
 
 [node name="UI" type="CanvasLayer" unique_id=20294509]
 process_mode = 3
+script = ExtResource("1_s8p2n")
 
 [node name="HUD" parent="." unique_id=1705765395 instance=ExtResource("4")]
 
 [node name="Debug" parent="." unique_id=1689527633 instance=ExtResource("1")]
 process_mode = 3
-zone_path = NodePath("../..")
 
 [node name="GameOver" parent="." unique_id=1930401577 instance=ExtResource("2")]
 
 [node name="MobileControls" parent="." unique_id=1711157141 instance=ExtResource("3")]
 
+[node name="ScoreTally" parent="." unique_id=2083258566 instance=ExtResource("6_s8p2n")]
+visible = true
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fade" type="Control" parent="." unique_id=503605746]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Fade" unique_id=269114967]
+material = SubResource("ShaderMaterial_uxe6n")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fade" unique_id=1401282520]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_lqwx8")
+autoplay = &"RESET"
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1809241745]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 1)
+
+[node name="TitleCard" parent="." unique_id=274008361 instance=ExtResource("5_kjcse")]

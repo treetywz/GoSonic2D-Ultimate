@@ -16,13 +16,14 @@ func animate(player: Player, _delta):
 	
 func step(player: Player, delta):
 	player.handle_gravity(delta)
-	if player.__is_grounded:
-		player.velocity.x = 850 * direction(player)
-	else:
-		player.velocity.x = 600 * direction(player)
-	if Input.is_action_just_pressed("player_a") and player.__is_grounded:
-		player.audios.jump_audio.play()
-		player.velocity.y -= 180
+	if player.gravity_affected:
+		if player.__is_grounded:
+			player.velocity.x = 850 * direction(player)
+		else:
+			player.velocity.x = 600 * direction(player)
+		if Input.is_action_just_pressed("player_a") and player.__is_grounded:
+			player.audios.jump_audio.play()
+			player.velocity.y -= 180
 
 func direction(player):
 	if player.skin.flip_h == true:

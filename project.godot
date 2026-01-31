@@ -21,13 +21,12 @@ config/icon="res://icon.png"
 
 [autoload]
 
+UI="*uid://ckoygrvdjmjcy"
+Global="*res://scripts/general/global_variables.gd"
+GoData="*res://scripts/general/go_data.gd"
 ScoreManager="*res://scripts/managers/score_manager.gd"
-global_load="*res://scripts/general/global_loading.gd"
-globalvars="*res://scripts/general/global_variables.gd"
+LoadingScreen="*res://scripts/general/global_loading.gd"
 MusicManager="*res://objects/managers/music_manager.tscn"
-FadeManager="*res://objects/players/fade_manager.tscn"
-ScoreTally="*res://objects/hud/ScoreTallyHandler.tscn"
-go_data="*res://scripts/general/godata_save.gd"
 
 [debug]
 

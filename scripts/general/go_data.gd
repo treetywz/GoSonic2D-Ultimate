@@ -2,6 +2,7 @@ extends Node
 var save_directory = "user://godata.bin"
 
 func save_file():
+	return
 	var data = {
 		"score" : ScoreManager.score,
 		"lifes" : ScoreManager.lifes,
@@ -18,6 +19,7 @@ func save_file():
 		print("Error saving file: ", FileAccess.get_open_error())
 
 func load_file():
+	return
 	if FileAccess.file_exists(save_directory):
 		var f = FileAccess.open_encrypted_with_pass(save_directory, FileAccess.READ, "11242010")
 		

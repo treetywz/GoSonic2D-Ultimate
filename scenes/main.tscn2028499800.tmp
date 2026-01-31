@@ -231,9 +231,9 @@ size = Vector2(41, 20)
 
 [node name="Zone" type="Node2D" unique_id=822525641]
 script = ExtResource("6")
-zone_name = "Test"
+zone_name = "Ultimate Zone"
 amount_of_acts = 2
-next_scene = "res://scenes/icecap-test.tscn"
+act_number = 1
 player_resource = ExtResource("1")
 zone_music = ExtResource("3")
 victory_music = ExtResource("29")
@@ -244,7 +244,7 @@ z_index = 4096
 script = ExtResource("19_0ld40")
 
 [node name="StartPointAct1" type="Node2D" parent="." unique_id=1919003104]
-position = Vector2(90, 652)
+position = Vector2(60, 641)
 
 [node name="StartPointAct2" type="Node2D" parent="." unique_id=1337874271]
 position = Vector2(2669, 595)
@@ -255,37 +255,33 @@ layer = -7
 [node name="Rings" type="Node2D" parent="." unique_id=1313313609]
 
 [node name="Ring" parent="Rings" unique_id=1161102402 instance=ExtResource("10")]
-position = Vector2(654, 540)
+position = Vector2(233, 644)
+
+[node name="Ring2" parent="Rings" unique_id=503805486 instance=ExtResource("10")]
+position = Vector2(254, 593)
+
+[node name="Ring3" parent="Rings" unique_id=192537570 instance=ExtResource("10")]
+position = Vector2(206, 558)
+
+[node name="Ring4" parent="Rings" unique_id=1648740747 instance=ExtResource("10")]
+position = Vector2(243, 526)
+
+[node name="Ring5" parent="Rings" unique_id=1386932709 instance=ExtResource("10")]
+position = Vector2(289, 526)
+
+[node name="Ring6" parent="Rings" unique_id=39519965 instance=ExtResource("10")]
+position = Vector2(291, 576)
+
+[node name="Ring7" parent="Rings" unique_id=17388688 instance=ExtResource("10")]
+position = Vector2(247, 565)
+
+[node name="Ring8" parent="Rings" unique_id=166707848 instance=ExtResource("10")]
+position = Vector2(247, 565)
 
 [node name="Hazards" type="Node2D" parent="." unique_id=2050337884]
 
 [node name="Spike" parent="Hazards" unique_id=2141184299 instance=ExtResource("23")]
-position = Vector2(2169, 591)
-
-[node name="Spike9" parent="Hazards" unique_id=973053595 instance=ExtResource("23")]
-position = Vector2(141, 656)
-
-[node name="Spike2" parent="Hazards" unique_id=1549060552 instance=ExtResource("23")]
-position = Vector2(2200, 591)
-
-[node name="Spike3" parent="Hazards" unique_id=1242889944 instance=ExtResource("23")]
-position = Vector2(2231, 591)
-
-[node name="Spike4" parent="Hazards" unique_id=6424466 instance=ExtResource("23")]
-position = Vector2(2262, 591)
-
-[node name="Spike5" parent="Hazards" unique_id=1739771746 instance=ExtResource("23")]
-position = Vector2(2045, 591)
-track = true
-
-[node name="Spike6" parent="Hazards" unique_id=1542275672 instance=ExtResource("23")]
-position = Vector2(2076, 591)
-
-[node name="Spike7" parent="Hazards" unique_id=1734090241 instance=ExtResource("23")]
-position = Vector2(2107, 591)
-
-[node name="Spike8" parent="Hazards" unique_id=1482039242 instance=ExtResource("23")]
-position = Vector2(2138, 591)
+position = Vector2(377, 656)
 
 [node name="Activators" type="Node2D" parent="." unique_id=1345218958]
 
@@ -304,11 +300,8 @@ position = Vector2(1096, 335)
 
 [node name="Monitors" type="Node2D" parent="." unique_id=1260372824]
 
-[node name="RingMonitor4" parent="Monitors" unique_id=1212890838 instance=ExtResource("11")]
-position = Vector2(2725, 586)
-
-[node name="ScoreController" parent="Monitors/RingMonitor4" index="4" unique_id=6380347]
-rings = 100
+[node name="RingMonitor" parent="Monitors" unique_id=47661373 instance=ExtResource("11")]
+position = Vector2(163, 656)
 
 [node name="ShieldMonitor" parent="Monitors" unique_id=345894465 instance=ExtResource("18")]
 position = Vector2(602, 543)
@@ -325,7 +318,7 @@ shield_type = "FlameShield"
 position = Vector2(18, 655)
 shield_type = "BubbleShield"
 
-[node name="ShieldMonitor5" parent="Monitors" unique_id=2144197750 instance=ExtResource("18")]
+[node name="ShieldMonitor5" parent="Monitors" unique_id=913265186 instance=ExtResource("18")]
 position = Vector2(1983, 590)
 shield_type = "Super"
 
@@ -358,13 +351,9 @@ tile_set = SubResource("TileSet_0ld40")
 position = Vector2(1907.5, 450)
 shape = SubResource("RectangleShape2D_muem4")
 
-[node name="SignPosts" type="Node2D" parent="." unique_id=2134251469]
-
-[node name="SignPost" parent="SignPosts" unique_id=462255822 instance=ExtResource("27")]
+[node name="SignPost" parent="." unique_id=462255822 instance=ExtResource("27")]
 position = Vector2(2416, 583)
 
-[node name="SignPost2" parent="SignPosts" unique_id=903138320 instance=ExtResource("27")]
+[node name="SignPost2" parent="." unique_id=903138320 instance=ExtResource("27")]
 position = Vector2(2940, 584)
 act_number = 2
-
-[editable path="Monitors/RingMonitor4"]

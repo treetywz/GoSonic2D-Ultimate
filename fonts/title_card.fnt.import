@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://c4vmn01mvioh3"
+path="res://.godot/imported/title_card.fnt-86661713aa63a85ec6a801b21fed2d63.fontdata"
+
+[deps]
+
+source_file="res://fonts/title_card.fnt"
+dest_files=["res://.godot/imported/title_card.fnt-86661713aa63a85ec6a801b21fed2d63.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

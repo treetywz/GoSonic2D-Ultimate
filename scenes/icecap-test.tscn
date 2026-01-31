@@ -33,7 +33,6 @@ size = Vector2(20, 397)
 [node name="Zone" type="Node2D" unique_id=1186193101]
 script = ExtResource("1")
 zone_name = "Ice Cap"
-act_number = 1
 next_scene = "res://scenes/title.tscn"
 player_resource = ExtResource("6")
 zone_music = ExtResource("6_b51td")
@@ -45,7 +44,7 @@ acts = Array[Object]([SubResource("Resource_qm8xb")])
 script = ExtResource("6_fyiyw")
 
 [node name="StartPointAct1" type="Node2D" parent="." unique_id=2028095604]
-position = Vector2(-28, -34)
+position = Vector2(34, 38)
 
 [node name="IntroSegment" type="StaticBody2D" parent="." unique_id=1666755776]
 position = Vector2(-155, -203)

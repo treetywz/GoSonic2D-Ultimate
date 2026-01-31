@@ -6,7 +6,7 @@ class_name ShieldController
 
 @onready var score_manager = get_node("/root/ScoreManager") as ScoreManager
 
-func add_score(player):
+func add_score(player : Player):
 	var shields = player.shields.shields
 	if shield_type == "BlueShield":
 		player.shields.change(shields.BlueShield)
@@ -17,5 +17,6 @@ func add_score(player):
 	elif shield_type == "BubbleShield":
 		player.shields.change(shields.BubbleShield)
 	elif shield_type == "Super":
-		player.change_state("Transform")
+		if !player.super_state:
+			player.change_state("Transform")
 		score_manager.add_ring(50)

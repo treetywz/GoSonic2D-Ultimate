@@ -10,6 +10,7 @@ func _ready():
 	stream.volume_db = stream_volume
 
 func play_music(music):
+	stream.volume_db = stream_volume
 	if not stream.stream == music:
 		stream.stop()
 		stream.stream = music
@@ -25,6 +26,8 @@ func fade_out(speed : float):
 		if stream.volume_db < -36:
 			stream.volume_db = -36
 			break
+		if !fading:
+			return
 	fading = false
 	
 func fade_in(speed : float):
@@ -35,6 +38,8 @@ func fade_in(speed : float):
 		if stream.volume_db > stream_volume:
 			stream.volume_db = stream_volume
 			break
+		if !fading:
+			return
 	fading = false
 
 func extra_life_jingle():

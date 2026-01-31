@@ -7,8 +7,6 @@ class_name Zone
 ## The amount of acts in the stage.
 ## This variable determines whether a sign post will load the next scene or continue the current one.
 @export var amount_of_acts : int = 1
-## The current act number.
-@export var act_number: int
 ## The file path to the next scene to be loaded after a zone's final act.
 @export var next_scene: String = "res://scenes/title.tcsn"
 # Scene Resources
@@ -34,7 +32,7 @@ class_name Zone
 var player: Player
 var camera: PlayerCamera
 var death_handler: DeathChecker
-var global_ui: CanvasLayer
+var global_ui = UI
 var hud: Control
 var gameover: Control
 var camera_resource = preload("res://objects/players/camera.tscn")
@@ -46,6 +44,7 @@ signal reset_signposts
 @onready var zone_path = get_scene_file_path()
 
 func _ready():
+	MusicManager.fading = false
 	_reset_score_manager()
 	await _initialize_zone()
 
@@ -61,7 +60,7 @@ func _zone_music():
 
 # Main initialization sequence
 func _initialize_zone():
-	FadeManager.prefadeout()
+	UI.black_screen()
 	
 	initialize_player()
 	
@@ -69,14 +68,23 @@ func _initialize_zone():
 		player.change_state("Snowboarding")
 	
 	initialize_camera()
-	initialize_hud()
 	initialize_death_handler()
 	
 	_zone_music()
-	FadeManager.fade_out()
+	_initialize_titlecard()
 	
 	await get_tree().create_timer(0.2).timeout
 	_hide_loading_overlay()
+
+func _initialize_titlecard():
+	UI.enter_titlecard(zone_name)
+	await get_tree().create_timer(2).timeout
+	UI.fade_out()
+	player.can_move = true
+	player.gravity_affected = true
+	player.vulnerable = true
+	await get_tree().create_timer(0.7).timeout
+	UI.exit_titlecard()
 
 func _hide_loading_overlay():
 	var color_rect = global_ui.get_node_or_null("ColorRect")
@@ -84,7 +92,7 @@ func _hide_loading_overlay():
 		color_rect.visible = false
 
 func get_current_act_limits() -> CameraLimits:
-	var index = act_number - 1  # Convert to 0-based index
+	var index = Global.current_act - 1  # Convert to 0-based index
 	if index >= 0 and index < acts.size():
 		return acts[index]
 	# Return default limits if act not configured
@@ -92,12 +100,15 @@ func get_current_act_limits() -> CameraLimits:
 	return default_limits
 
 func initialize_player():
-	var startPoint = str("StartPointAct", act_number)
+	var startPoint = str("StartPointAct", Global.current_act)
 	player = player_resource.instantiate()
 	player.position = get_node_or_null(startPoint).position
 	
 	var limits = get_current_act_limits()
 	player.lock_to_limits(limits.limit_left, limits.limit_right)
+	player.can_move = false
+	player.vulnerable = false
+	player.gravity_affected = false
 	add_child(player)
 
 func initialize_camera():
