@@ -52,7 +52,7 @@ func _physics_process(_delta):
 	if !player:
 		return
 	
-	if player.global_position.x >= global_position.x:
+	if player.global_position.x >= global_position.x and Global.current_act == act_number:
 		_trigger_signpost()
 
 func _trigger_signpost():

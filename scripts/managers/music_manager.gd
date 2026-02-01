@@ -13,6 +13,7 @@ func _ready():
 	stream.volume_db = STREAM_VOLUME
 
 func play_music(music):
+	print("Requested music.")
 	stream.volume_db = STREAM_VOLUME
 	if stream.stream != music:
 		stream.stop()
@@ -21,6 +22,7 @@ func play_music(music):
 
 func stop_music():
 	stream.stop()
+	stream.stream = null
 
 func fade_out(speed: float):
 	fading = true

@@ -44,4 +44,4 @@ func on_user_ground_enter():
 	if get_parent().current_shield == get_parent().shields.FlameShield:
 		set_attacking(false)
 		if !shield_user.super_state:
-			shield_user.state_machine.change_state("Regular") # literally the fix for the glitch lmao
+			shield_user.state_machine.change_state("Regular")

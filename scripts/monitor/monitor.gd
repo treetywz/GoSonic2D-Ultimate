@@ -63,14 +63,10 @@ func destroy(player):
 		explosion_audio.play()
 		solid_object.set_enabled(false)
 		
-		# Use StateMachine playback instead of direct state setting
 		var playback = animation_tree.get("parameters/playback")
 		if playback:
-			# Assuming your destroyed state is named "destroyed" or similar
-			# Adjust the state name to match your AnimationTree states
 			playback.travel("destroyed")
 		else:
-			# Fallback if playback not found (check your AnimationTree setup)
 			animation_tree.set("parameters/state/transition_request", "destroyed")
 		
 		handle_item(player)

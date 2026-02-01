@@ -9,7 +9,7 @@ class_name Zone
 ## This variable determines whether a sign post will load the next scene or continue the current one.
 @export var amount_of_acts: int = 1
 ## The file path to the next scene to be loaded after a zone's final act.
-@export var next_scene: String = "res://scenes/title.tcsn"
+@export var next_scene: String = "res://scenes/title.tscn"
 
 # Scene Resources
 @export_group("Resources")

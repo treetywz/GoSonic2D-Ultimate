@@ -33,9 +33,7 @@ func step(player: Player, _delta):
 		p += 120
 		player.skin.get_node("AnimationPlayer").play("spindash")
 		player.skin.get_node("AnimationPlayer").stop()
-		#player.animation.stop(true)
 		player.audios.spindashcharge.play()
-		#player.audio_player.play('spin_dash_charge')
 	
 	p = min(p, 480)
 	p -= int(p / 7.5) / 15360.0

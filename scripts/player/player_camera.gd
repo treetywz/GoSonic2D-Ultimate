@@ -25,10 +25,6 @@ func _ready():
 	initialize_camera()
 
 func _physics_process(delta):
-	#if player.is_rolling:
-	#	offset.y = -5
-	#else:
-	#	offset.y = 0
 	
 	if delay_timer > 0:
 		delay_timer -= delta
@@ -42,7 +38,6 @@ func _physics_process(delta):
 		player.delay_cam = false
 		start_camera_delay()
 
-		
 	if player.is_looking_up:
 		if stop_scroll == "back":
 			var time = 0
@@ -52,9 +47,11 @@ func _physics_process(delta):
 				if !player.is_looking_up:
 					time = 0
 					break
+					
 		if player.is_looking_up:
 			if !stop_scroll == "up":
 				scroll("up")
+				
 	elif player.is_looking_down:
 		if stop_scroll == "back":
 			var time = 0
@@ -64,6 +61,7 @@ func _physics_process(delta):
 				if !player.is_looking_down:
 					time = 0
 					break
+					
 		if player.is_looking_down: # may look dumb, but its to check if player is still looking down.
 			if !stop_scroll == "down":
 				scroll("down")
@@ -84,6 +82,7 @@ func scroll(direction: String):
 		target_offset.y = -104
 		scrolled_up = true
 		scrolled_down = false
+		
 	elif direction == "down":
 		target_offset.y = 88
 		scrolled_up = false

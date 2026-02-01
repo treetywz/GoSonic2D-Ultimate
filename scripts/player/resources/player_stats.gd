@@ -29,8 +29,6 @@ class_name PlayerStats
 
 @export var drpspd: float = 480
 @export var drpmax: float = 720
-#export(float) var drpspdsup = 720
-#export(float) var drpmaxsup = 780
 
 @export var hurt_x_force: float = 120
 @export var hurt_y_force: float = -240

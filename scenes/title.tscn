@@ -1,232 +1,14 @@
 [gd_scene format=3 uid="uid://coxpt20ri5q1a"]
 
-[ext_resource type="Texture2D" uid="uid://5l22paxi5uoe" path="res://sprites/title/kte.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://bw8ecvgx7okdm" path="res://sprites/title/sonic.png" id="2"]
 [ext_resource type="AudioStream" uid="uid://dk7retbstsvch" path="res://audios/music/th06_01.ogg" id="2_dw605"]
-[ext_resource type="Texture2D" uid="uid://bnk0vj8gropl4" path="res://sprites/title/tails.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://so3pojqqo7i3" path="res://sprites/title/robotnik-eggman.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://bxwwdbl0y5xx2" path="res://sprites/title/cast.png" id="5"]
 [ext_resource type="Script" uid="uid://dfagnkr15vklg" path="res://scripts/title/background.gd" id="5_ah8jo"]
 [ext_resource type="Script" uid="uid://ecvvlievxkei" path="res://scripts/zone/no_way.gd" id="8"]
-[ext_resource type="Texture2D" uid="uid://bwui1x0ax02f0" path="res://sprites/title/godot.png" id="10"]
 [ext_resource type="AudioStream" uid="uid://cx3tuihdsm6gs" path="res://audios/effects/star_post.wav" id="11"]
 [ext_resource type="Texture2D" uid="uid://bn1hpfu6t8wth" path="res://sprites/title/indicator8sep.png" id="12"]
 [ext_resource type="Texture2D" uid="uid://diqp3a14i7jj8" path="res://sprites/title/start.png" id="13"]
-[ext_resource type="Texture2D" uid="uid://dejsikv57oi2d" path="res://sprites/title/demo-start.png" id="14"]
 [ext_resource type="Texture2D" uid="uid://dessovyrv1pv5" path="res://sprites/title/gosonic2dU.png" id="14_6rcc6"]
 [ext_resource type="Script" uid="uid://bq0qkcff6vnmc" path="res://scripts/title/logoBob.gd" id="16_6rcc6"]
 [ext_resource type="FontFile" uid="uid://c20q5nj7k856r" path="res://fonts/system.fnt" id="16_ah8jo"]
-
-[sub_resource type="AtlasTexture" id="1"]
-atlas = ExtResource("2")
-region = Rect2(0, 0, 24, 48)
-
-[sub_resource type="AtlasTexture" id="2"]
-atlas = ExtResource("2")
-region = Rect2(25, 0, 24, 48)
-
-[sub_resource type="SpriteFrames" id="3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("1")
-}, {
-"duration": 1.0,
-"texture": SubResource("2")
-}],
-"loop": true,
-"name": &"default",
-"speed": 4.0
-}]
-
-[sub_resource type="AtlasTexture" id="4"]
-atlas = ExtResource("3")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="5"]
-atlas = ExtResource("3")
-region = Rect2(17, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="6"]
-atlas = ExtResource("3")
-region = Rect2(34, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("4")
-}, {
-"duration": 1.0,
-"texture": SubResource("5")
-}, {
-"duration": 1.0,
-"texture": SubResource("6")
-}, {
-"duration": 1.0,
-"texture": SubResource("5")
-}],
-"loop": true,
-"name": &"default",
-"speed": 20.0
-}]
-
-[sub_resource type="AtlasTexture" id="8"]
-atlas = ExtResource("1")
-region = Rect2(0, 0, 32, 24)
-
-[sub_resource type="AtlasTexture" id="9"]
-atlas = ExtResource("1")
-region = Rect2(33, 0, 32, 24)
-
-[sub_resource type="SpriteFrames" id="10"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("8")
-}, {
-"duration": 1.0,
-"texture": SubResource("8")
-}, {
-"duration": 1.0,
-"texture": SubResource("9")
-}, {
-"duration": 1.0,
-"texture": SubResource("8")
-}, {
-"duration": 1.0,
-"texture": SubResource("8")
-}],
-"loop": true,
-"name": &"default",
-"speed": 3.0
-}]
-
-[sub_resource type="AtlasTexture" id="11"]
-atlas = ExtResource("4")
-region = Rect2(0, 0, 64, 48)
-
-[sub_resource type="AtlasTexture" id="12"]
-atlas = ExtResource("4")
-region = Rect2(65, 0, 64, 48)
-
-[sub_resource type="SpriteFrames" id="13"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("11")
-}, {
-"duration": 1.0,
-"texture": SubResource("12")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="Animation" id="14"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="15"]
-resource_name = "hahaha"
-length = 1.8
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 0, 1, 0, 1, 0, 1, 0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dw605"]
-_data = {
-&"RESET": SubResource("14"),
-&"hahaha": SubResource("15")
-}
-
-[sub_resource type="Animation" id="16"]
-length = 0.001
-
-[sub_resource type="Animation" id="17"]
-resource_name = "noway"
-length = 1.5
-loop_mode = 1
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6kj4h"]
-_data = {
-&"RESET": SubResource("16"),
-&"noway": SubResource("17")
-}
 
 [sub_resource type="AtlasTexture" id="19"]
 atlas = ExtResource("12")
@@ -327,8 +109,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8")
 music = ExtResource("2_dw605")
-godot = ExtResource("10")
-demo_start = ExtResource("14")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1323877742]
 layout_mode = 1
@@ -341,63 +121,20 @@ color = Color(0.7475724, 0.45816237, 0.5865808, 1)
 script = ExtResource("5_ah8jo")
 transition_time = 5.0
 
-[node name="Background2" type="ColorRect" parent="." unique_id=47272340]
+[node name="Black" type="ColorRect" parent="." unique_id=47272340]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 160.0
-offset_bottom = -57.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Characters" type="Control" parent="." unique_id=588066903]
-visible = false
-anchors_preset = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="Cast" type="TextureRect" parent="Characters" unique_id=1869634688]
-layout_mode = 0
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -161.0
-offset_top = -50.0
-offset_right = 159.0
-offset_bottom = 78.0
-texture = ExtResource("5")
-
-[node name="Sonic" type="AnimatedSprite2D" parent="Characters/Cast" unique_id=999495441]
-position = Vector2(140, 48)
-sprite_frames = SubResource("3")
-autoplay = "default"
-
-[node name="Tails" type="AnimatedSprite2D" parent="Characters/Cast" unique_id=1223375018]
-position = Vector2(56, 56)
-sprite_frames = SubResource("7")
-autoplay = "default"
-frame = 16
-
-[node name="Knuckles" type="AnimatedSprite2D" parent="Characters/Cast" unique_id=104790913]
-position = Vector2(176, 44)
-sprite_frames = SubResource("10")
-autoplay = "default"
-frame = 2
-
-[node name="Eggman" type="AnimatedSprite2D" parent="Characters/Cast" unique_id=2144723526]
-position = Vector2(248, 24)
-sprite_frames = SubResource("13")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/Cast/Eggman" unique_id=1244326913]
-libraries/ = SubResource("AnimationLibrary_dw605")
-autoplay = &"hahaha"
-
-[node name="NoWay" type="AnimationPlayer" parent="." unique_id=71449968]
-libraries/ = SubResource("AnimationLibrary_6kj4h")
-autoplay = &"noway"
+offset_left = -220.0
+offset_top = 36.0
+offset_right = 221.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="sound" type="AudioStreamPlayer" parent="." unique_id=1858472142]
 stream = ExtResource("11")
@@ -416,36 +153,42 @@ offset_bottom = -44.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Ball" type="AnimatedSprite2D" parent="Start" unique_id=1389350905]
+[node name="LeftBall" type="AnimatedSprite2D" parent="Start" unique_id=1389350905]
 position = Vector2(-16, 15)
 sprite_frames = SubResource("27")
 autoplay = "default"
 frame = 3
 
-[node name="Ball2" type="AnimatedSprite2D" parent="Start" unique_id=456196471]
+[node name="RightBall" type="AnimatedSprite2D" parent="Start" unique_id=456196471]
 position = Vector2(65, 15)
 sprite_frames = SubResource("27")
 autoplay = "default"
 frame = 2
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="Start" unique_id=1172380869]
+[node name="TouchButton" type="TouchScreenButton" parent="Start" unique_id=1172380869]
 position = Vector2(25, 14)
 shape = SubResource("18")
 action = "player_a"
 
-[node name="TextureRect" type="TextureRect" parent="Start" unique_id=1062709452]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 9.0
-offset_right = 48.0
-offset_bottom = 21.687
-scale = Vector2(0.9, 0.9)
+[node name="Start" type="TextureRect" parent="Start" unique_id=1062709452]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -11.5
+offset_right = 25.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("13")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Start" unique_id=29157193]
 libraries/ = SubResource("AnimationLibrary_8anbs")
 
-[node name="Gosonic2dU" type="TextureRect" parent="." unique_id=1052119156]
+[node name="Logo" type="TextureRect" parent="." unique_id=1052119156]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -468,10 +211,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -27.0
-offset_right = 166.0
-offset_bottom = -4.0
+offset_left = 7.0
+offset_top = -25.0
+offset_right = 168.0
+offset_bottom = -2.0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("16_ah8jo")
 text = "running in godot 4.6
