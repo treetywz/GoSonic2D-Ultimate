@@ -350,261 +350,6 @@ _data = {
 &"Tails": SubResource("19")
 }
 
-[sub_resource type="Animation" id="24"]
-resource_name = "Knuckles"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Name:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
-[sub_resource type="Animation" id="25"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Name:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Icon:material:shader_parameter/replace_0")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.988235, 0.988235, 0.705882, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Icon:material:shader_parameter/replace_1")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.988235, 0.988235, 0.564706, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Icon:material:shader_parameter/replace_2")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.847059, 0.847059, 0.423529, 1)]
-}
-
-[sub_resource type="Animation" id="26"]
-resource_name = "Sonic"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Name:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Icon:material:shader_parameter/replace_0")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.423529, 0.423529, 0.988235, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Icon:material:shader_parameter/replace_1")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.141176, 0.282353, 0.847059, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Icon:material:shader_parameter/replace_2")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.141176, 0.141176, 0.564706, 1)]
-}
-
-[sub_resource type="Animation" id="27"]
-resource_name = "Super Sonic"
-length = 0.45
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Name:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Icon:material:shader_parameter/replace_0")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(0.988235, 0.988235, 0.847059, 1), Color(0.988235, 0.988235, 0.705882, 1), Color(0.988235, 0.988235, 0.564706, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Icon:material:shader_parameter/replace_1")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(0.988235, 0.988235, 0.847059, 1), Color(0.988235, 0.988235, 0.564706, 1), Color(0.988235, 0.988235, 0, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Icon:material:shader_parameter/replace_2")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(0.988235, 0.988235, 0.705882, 1), Color(0.847059, 0.847059, 0.423529, 1), Color(0.705882, 0.705882, 0, 1)]
-}
-
-[sub_resource type="Animation" id="28"]
-resource_name = "Tails"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Name:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_g5e8l"]
-_data = {
-&"Knuckles": SubResource("24"),
-&"RESET": SubResource("25"),
-&"Sonic": SubResource("26"),
-&"Super Sonic": SubResource("27"),
-&"Tails": SubResource("28")
-}
-
 [node name="HUD" type="Control" unique_id=2041266721]
 process_mode = 3
 layout_mode = 3
@@ -714,17 +459,17 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -240.0
-offset_right = 426.0
+offset_top = -40.0
+offset_right = 78.0
 grow_vertical = 0
 
 [node name="Name" type="AnimatedSprite2D" parent="Lives" unique_id=1204696326]
-position = Vector2(47, 219)
+position = Vector2(47, 19)
 sprite_frames = SubResource("15")
 
 [node name="Icon" type="AnimatedSprite2D" parent="Lives" unique_id=650937207]
 material = SubResource("23")
-position = Vector2(23, 219)
+position = Vector2(23, 19)
 sprite_frames = SubResource("10")
 frame = 3
 
@@ -732,9 +477,9 @@ frame = 3
 process_mode = 3
 layout_mode = 0
 offset_left = 43.0
-offset_top = 220.0
+offset_top = 20.0
 offset_right = 63.0
-offset_bottom = 234.0
+offset_bottom = 34.0
 theme_override_colors/font_shadow_color = Color(0.282353, 0.282353, 0.423529, 1)
 theme_override_fonts/font = ExtResource("8")
 text = "0"
@@ -743,36 +488,38 @@ horizontal_alignment = 2
 [node name="NameHandler" type="AnimationPlayer" parent="Lives" unique_id=2075783044]
 libraries/ = SubResource("AnimationLibrary_y8fpd")
 
-[node name="MobileLifes" type="Control" parent="." unique_id=282327744]
-anchors_preset = 0
+[node name="MobileLifes" type="Control" parent="." unique_id=976185654]
+layout_mode = 1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -74.0
-offset_top = -3.0
-offset_right = -74.0
-offset_bottom = -3.0
+offset_left = -81.0
+offset_top = 1.0
+offset_right = -3.0
+offset_bottom = 41.0
+grow_horizontal = 0
 
-[node name="Name" type="AnimatedSprite2D" parent="MobileLifes" unique_id=1745371858]
-position = Vector2(40, 23)
+[node name="Name" type="AnimatedSprite2D" parent="MobileLifes" unique_id=1154202758]
+position = Vector2(47, 19)
 sprite_frames = SubResource("15")
 
-[node name="Icon" type="AnimatedSprite2D" parent="MobileLifes" unique_id=1106891893]
+[node name="Icon" type="AnimatedSprite2D" parent="MobileLifes" unique_id=473191578]
 material = SubResource("23")
-position = Vector2(16, 23)
+position = Vector2(23, 19)
 sprite_frames = SubResource("10")
 frame = 3
 
-[node name="Counter" type="Label" parent="MobileLifes" unique_id=860496663]
+[node name="Counter" type="Label" parent="MobileLifes" unique_id=1732630977]
 process_mode = 3
 layout_mode = 0
-offset_left = 36.0
-offset_top = 24.0
-offset_right = 56.0
-offset_bottom = 38.0
-theme_override_colors/font_shadow_color = Color(0.282353, 0.282353, 0, 1)
+offset_left = 43.0
+offset_top = 20.0
+offset_right = 63.0
+offset_bottom = 34.0
+theme_override_colors/font_shadow_color = Color(0.282353, 0.282353, 0.423529, 1)
 theme_override_fonts/font = ExtResource("8")
 text = "0"
 horizontal_alignment = 2
 
-[node name="NameHandler" type="AnimationPlayer" parent="MobileLifes" unique_id=1772815199]
-libraries/ = SubResource("AnimationLibrary_g5e8l")
+[node name="NameHandler" type="AnimationPlayer" parent="MobileLifes" unique_id=860716409]
+libraries/ = SubResource("AnimationLibrary_y8fpd")

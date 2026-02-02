@@ -20,6 +20,10 @@ boot_splash/use_filter=false
 boot_splash/image="res://icon.png"
 config/icon="res://icon.png"
 
+[audio]
+
+buses/default_bus_layout="uid://l3e4mct21p2q"
+
 [autoload]
 
 UI="*uid://ckoygrvdjmjcy"
@@ -44,7 +48,6 @@ window/size/viewport_height=240
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 
 [importer_defaults]
 

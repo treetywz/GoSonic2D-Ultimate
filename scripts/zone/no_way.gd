@@ -41,6 +41,6 @@ func _start_game():
 	
 	await get_tree().create_timer(2.0).timeout
 	
-	ScoreManager.reset_score(true, true, true)
+	ScoreManager.reset_score(true, true, true, true)
 	ScoreManager.time_stopped = false
 	LoadingScreen.load_scene(self, "res://scenes/main.tscn")

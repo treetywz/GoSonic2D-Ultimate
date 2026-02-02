@@ -5,6 +5,7 @@ class_name Player
 signal ground_enter
 signal super_transform
 signal detransform
+signal rotated_player
 
 # Exported properties
 @export_enum("Sonic", "Tails", "Knuckles") var player_id: String
@@ -83,6 +84,16 @@ var spun_sign_post: bool = false
 var can_move: bool = true
 var gravity_affected: bool = true
 
+# Artificial input flags
+# Artificial inputs are used for scripted events like cutscenes.
+var artificial_input_enabled: bool = false
+var artificial_move_left: bool = false
+var artificial_move_right: bool = false
+var artificial_jump: bool = false
+var artificial_jump_release: bool = false
+var artificial_look_up: bool = false
+var artificial_look_down: bool = false
+
 # Constants
 const RING_STARTING_ANGLE = deg_to_rad(101.25)
 const RING_DEFAULT_SPEED = 100
@@ -122,9 +133,6 @@ func _physics_process(delta):
 	handle_super_sonic()
 
 func _process(_delta):
-	if Input.is_action_just_pressed("player_debug"):
-		state_machine.change_state("Dead")
-	
 	update_transformation_availability()
 	
 	if ScoreManager.rings == 0 and super_state:
@@ -216,8 +224,10 @@ func hurt(type: String, hazard):
 	if score_manager.rings > 0:
 		_hurt_routine(type, hazard)
 	else:
-		if shields.current_shield == shields.shields.InstaShield:
-			state_machine.get_node("Dead").typeof_death = type
+		var instaShield = shields.shields.InstaShield
+		var none = shields.shields.None
+		if shields.current_shield in [instaShield, none]:
+			state_machine.get_node("Dead").death_type = type
 			state_machine.change_state("Dead")
 		else:
 			_hurt_routine(type, hazard)
@@ -324,10 +334,24 @@ func handle_input():
 	if !can_move:
 		return
 	
-	var right = Input.is_action_pressed("player_right")
-	var left = Input.is_action_pressed("player_left")
-	var up = Input.is_action_pressed("player_up")
-	var down = Input.is_action_pressed("player_down")
+	var right: bool
+	var left: bool
+	var up: bool
+	var down: bool
+	
+	if artificial_input_enabled:
+		# Use artificial inputs
+		right = artificial_move_right
+		left = artificial_move_left
+		up = artificial_look_up
+		down = artificial_look_down
+	else:
+		# Use normal player inputs
+		right = Input.is_action_pressed("player_right")
+		left = Input.is_action_pressed("player_left")
+		up = Input.is_action_pressed("player_up")
+		down = Input.is_action_pressed("player_down")
+	
 	var horizontal = 1 if right else (-1 if left else 0)
 	var vertical = 1 if up else (-1 if down else 0)
 	horizontal = 0 if is_control_locked else horizontal
@@ -486,6 +510,7 @@ func set_ground_data(normal: Vector2 = Vector2.UP):
 func rotate_to(angle: float):
 	var closest_angle = snapped(angle, 90)
 	rotation_degrees = closest_angle
+	emit_signal("rotated_player")
 
 func enter_ground(ground_data: Dictionary):
 	if !colliding or __is_grounded:
@@ -555,13 +580,26 @@ func handle_jump():
 	if !can_move:
 		return
 	
-	if __is_grounded and (Input.is_action_just_pressed("player_a") or Input.is_action_just_pressed("player_b")):
+	var jump_pressed: bool
+	var jump_released: bool
+	
+	if artificial_input_enabled:
+		jump_pressed = artificial_jump
+		jump_released = artificial_jump_release
+		# Reset one-frame flags after reading
+		artificial_jump = false
+		artificial_jump_release = false
+	else:
+		jump_pressed = Input.is_action_just_pressed("player_a") or Input.is_action_just_pressed("player_b")
+		jump_released = Input.is_action_just_released("player_a") or Input.is_action_just_released("player_b")
+	
+	if __is_grounded and jump_pressed:
 		is_jumping = true
 		is_rolling = true
 		audios.jump_audio.play()
 		velocity.y = -current_stats.max_jump_height
 	
-	if is_jumping and (Input.is_action_just_released("player_a") or Input.is_action_just_released("player_b")) and velocity.y < -current_stats.min_jump_height:
+	if is_jumping and jump_released and velocity.y < -current_stats.min_jump_height:
 		velocity.y = -current_stats.min_jump_height
 
 # Limits and boundaries
@@ -585,7 +623,6 @@ func lock_to_limits(left: float, right: float):
 # Visual updates
 func handle_state_animation(delta):
 	state_machine.animate_state(delta)
-
 
 func handle_skin(delta):
 	skin.position = global_position
@@ -617,3 +654,76 @@ func change_parent(new_parent: Node):
 	current_parent.remove_child(self)
 	new_parent.add_child(self)
 	global_transform = old_transform
+
+# ==================== ARTIFICIAL INPUT FUNCTIONS ====================
+# These functions are used to control the player during scripted events (cutscenes).
+
+## Enable artificial input mode (disables normal input)
+func enable_artificial_input():
+	artificial_input_enabled = true
+	ScoreManager.time_stopped = true
+
+## Disable artificial input mode (re-enables normal input)
+func disable_artificial_input():
+	artificial_input_enabled = false
+	ScoreManager.time_stopped = false
+	clear_artificial_inputs()
+
+## Clear all artificial input flags
+func clear_artificial_inputs():
+	artificial_move_left = false
+	artificial_move_right = false
+	artificial_jump = false
+	artificial_jump_release = false
+	artificial_look_up = false
+	artificial_look_down = false
+
+## Artificially move the player left
+func artificial_move_player_left(enabled: bool = true):
+	artificial_move_left = enabled
+	if enabled:
+		artificial_move_right = false
+
+## Artificially move the player right
+func artificial_move_player_right(enabled: bool = true):
+	artificial_move_right = enabled
+	if enabled:
+		artificial_move_left = false
+
+## Artificially stop horizontal movement
+func artificial_stop_horizontal():
+	artificial_move_left = false
+	artificial_move_right = false
+
+## Artificially make the player jump (This spams/holds the jump button)
+func artificial_do_jump():
+	artificial_jump = true
+
+## Artificially release the jump button
+func artificial_release_jump():
+	artificial_jump_release = true
+	
+## Artificially tap the jump button (for stuff like Spin Dash or Super Peel Out)
+func artificial_tap_jump():
+	artificial_jump = true
+	await get_tree().create_timer(0.001).timeout
+	artificial_jump = false
+
+## Artificially make the player look up
+func artificial_do_look_up(enabled: bool = true):
+	artificial_look_up = enabled
+	if enabled:
+		artificial_look_down = false
+
+## Artificially make the player look down
+func artificial_do_look_down(enabled: bool = true):
+	artificial_look_down = enabled
+	if enabled:
+		artificial_look_up = false
+
+## Artificially stop looking up/down
+func artificial_stop_looking():
+	artificial_look_up = false
+	artificial_look_down = false
+
+# ==================== END ARTIFICIAL INPUT FUNCTIONS ====================

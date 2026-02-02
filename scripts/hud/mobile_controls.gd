@@ -56,7 +56,6 @@ func _setup_visibility():
 func _cache_references():
 	_zone = Global.find_zone_from_root()
 	if _zone:
-		print(_zone)
 		_player = _zone.player
 
 
@@ -131,7 +130,6 @@ func _fade_b_button(fade_in: bool):
 
 # Fade entire HUD in or out
 func _fade_hud(fade_in: bool):
-	print(fade_in)
 	is_fading_hud = true
 	var target_alpha = ALPHA_MAX if fade_in else ALPHA_MIN
 	

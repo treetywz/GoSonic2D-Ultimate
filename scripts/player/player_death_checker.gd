@@ -90,9 +90,10 @@ func _wait_for_player_offscreen():
 	var fail_safe = 0
 	while !player.skin.off_screen:
 		fail_safe += 0.1
-		if fail_safe > 3:
+		if fail_safe > 2:
 			break
 		await get_tree().create_timer(OFFSCREEN_CHECK_INTERVAL).timeout
+	await get_tree().create_timer(2).timeout
 
 
 func _update_life_counters():

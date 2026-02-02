@@ -127,16 +127,18 @@ func set_pallete(value : String):
 		if pal_swapper.current_animation != "NormalPallete":
 			pal_swapper.play("NormalPallete")
 
-func _on_idle_timer_timeout():
+func _on_idle_timer_timeout() -> void:
 	if !player.super_state:
 		animation_tree.set("parameters/idle-shot/active", true)
 
-func _on_exit_screen():
-	if !off_screen:
-		if player.state_machine.current_state == "Dead":
-			off_screen = true
-			visible = false
+func _on_exit_screen() -> void:
+	off_screen = true
+	if player.state_machine.current_state == "Dead":
+		visible = false
+		
+func _on_enter_screen() -> void:
+	off_screen = false
 
-func _on_pallete_swap_finished(anim_name):
+func _on_pallete_swap_finished(anim_name) -> void:
 	if anim_name == "Detransform":
 		transitioning_pallete = false

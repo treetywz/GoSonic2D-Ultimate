@@ -165,6 +165,8 @@ func _calculate_ring_bonus() -> int:
 
 
 func _calculate_cool_bonus() -> int:
+	if ScoreManager.has_died:
+		return 0
 	var times_hit = mini(ScoreManager.times_hit, MAX_HIT_PENALTY)
 	return COOL_BONUS_TABLE[times_hit]
 

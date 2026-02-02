@@ -103,11 +103,4 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_lqwx8")
 autoplay = &"RESET"
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1809241745]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color(0, 0, 0, 1)
-
 [node name="TitleCard" parent="." unique_id=274008361 instance=ExtResource("5_kjcse")]

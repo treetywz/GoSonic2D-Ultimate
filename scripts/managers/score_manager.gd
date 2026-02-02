@@ -19,6 +19,7 @@ var lifes_added_score = 1
 var life_for_every = 100
 var life_for_every_score = 50000
 var times_hit : int
+var has_died : bool
 
 var player : Player
 
@@ -84,7 +85,7 @@ func check_score_milestone():
 		score_milestone = lifes_added_score * life_for_every_score
 
 
-func reset_score(_reset_score, reset_time, reset_rings):
+func reset_score(_reset_score, reset_time, reset_rings, reset_die_count: bool = false):
 	
 	times_hit = 0
 	
@@ -100,7 +101,9 @@ func reset_score(_reset_score, reset_time, reset_rings):
 	
 	if reset_time:
 		time = 0
-		time_stopped = false
+		
+	if reset_die_count:
+		has_died = false
 	
 
 func stop_time():

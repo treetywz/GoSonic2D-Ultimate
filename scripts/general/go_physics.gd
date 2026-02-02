@@ -4,6 +4,9 @@ class_name GoPhysics
 const EPSILON = 0.001
 const MAX_RAY_ORIGIN_OVERLAPS = 1
 
+# Credits to marimitoTH for the original go_physics.gd
+# This largely goes unchanged, however it has been reorganized and fit for Godot 4.
+
 static func cast_ray(world: World2D, origin: Vector2, direction: Vector2, length: float, exclude: Array = [], layer: int = 1) -> Dictionary:
 	var destination = origin + direction * length
 	var space_state = world.direct_space_state

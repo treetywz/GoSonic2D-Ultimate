@@ -1,6 +1,9 @@
 @tool
 extends Node2D
 
+# This is a tool script.
+# It runs in the editor to display those helpful lines that show the act boundaries.
+
 func _process(_delta):
 	queue_redraw()
 
@@ -14,7 +17,7 @@ func _draw():
 	
 	# Get the acts array and current act number
 	var acts = zone.get("acts")
-	var act_number = zone.get("act_number") if zone.get("act_number") != null else 1
+	var act_number = zone.get("show_act") if zone.get("show_act") != null else 1
 	
 	if !acts or acts.is_empty():
 		return

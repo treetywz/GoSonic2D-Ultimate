@@ -9,6 +9,7 @@ script = ExtResource("1")
 
 [node name="Stream" type="AudioStreamPlayer" parent="." unique_id=698180411]
 autoplay = true
+bus = &"Music"
 
 [node name="ExtraLife" type="AudioStreamPlayer" parent="." unique_id=745251269]
 stream = ExtResource("2")

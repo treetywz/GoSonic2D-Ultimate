@@ -1,7 +1,5 @@
 extends PlayerState
-
 class_name SpinDashPlayerState
-
 
 var p : float # spin dash release power
 
@@ -15,8 +13,22 @@ func enter(player: Player):
 
 func step(player: Player, _delta):
 	player.is_looking_down = false
-	if Input.is_action_just_released("player_down"):
-
+	
+	var down_released: bool
+	var jump_pressed: bool
+	
+	if player.artificial_input_enabled:
+		# For artificial input
+		# Check if down was released (transition from true to false)
+		down_released = !player.artificial_look_down
+		jump_pressed = player.artificial_jump
+	else:
+		# For normal input
+		down_released = Input.is_action_just_released("player_down")
+		jump_pressed = Input.is_action_just_pressed("player_a") or Input.is_action_just_pressed("player_b")
+	
+	# Release spin dash
+	if down_released:
 		player.audios.spindashcharge.stop()
 		var scaletemp = 0
 		player.is_rolling = true
@@ -29,7 +41,8 @@ func step(player: Player, _delta):
 		player.delay_cam = true
 		player.state_machine.change_state("Rolling")
 	
-	if (Input.is_action_just_pressed("player_a") or Input.is_action_just_pressed("player_b")):
+	# Charge spin dash
+	if jump_pressed:
 		p += 120
 		player.skin.get_node("AnimationPlayer").play("spindash")
 		player.skin.get_node("AnimationPlayer").stop()

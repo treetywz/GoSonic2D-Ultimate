@@ -190,18 +190,20 @@ shape = SubResource("9")
 action = "player_debug"
 
 [node name="F3" type="Control" parent="." unique_id=628174784]
-anchors_preset = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -213.0
-offset_top = -120.0
-offset_right = 213.0
-offset_bottom = 120.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -426.0
+offset_top = -240.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="Button" type="TouchScreenButton" parent="F3" unique_id=876235050]
-position = Vector2(213, 162)
+modulate = Color(1, 1, 1, 0.105882354)
+position = Vector2(294, 183)
 texture_normal = ExtResource("13")
 texture_pressed = ExtResource("12")
 action = "ui_debug"

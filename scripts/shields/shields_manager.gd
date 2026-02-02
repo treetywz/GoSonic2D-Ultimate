@@ -18,11 +18,10 @@ var current_shield: Shield
 
 func _ready():
 	change(default_shield)
-
+	
 func change(to: Shield):
 	if current_shield:
 		current_shield.deactivate()
-	
 	current_shield = to
 	current_shield.activate(shield_user)
 
@@ -32,3 +31,6 @@ func change_to_default():
 func use_current():
 	if current_shield:
 		current_shield.action()
+		
+func _on_player_rotated() -> void:
+	rotation = -get_parent().rotation

@@ -2,8 +2,13 @@ extends Node2D
 class_name Signpost
 
 # Properties
+## Determines what act the sign post is enabled in.
 @export var act_number: int = 1
+## Determines if rings are kept after the score tally.
 @export var keep_rings: bool = false
+## Determines what cutscene index is called to be played after the score tally.
+## If set to a negative number, a cutscene will not be called.
+@export var cutscene_index_played: int = -1
 
 # Constants
 const POST_SPIN_DELAY = 2.0
@@ -87,7 +92,6 @@ func _spin_post():
 
 func _setup_player_victory():
 	player.spun_sign_post = true
-	player.skin.off_screen = true
 	player.set_super_state(false)
 	ScoreManager.stop_time()
 	
@@ -125,20 +129,26 @@ func _complete_score_tally():
 
 func _initialize_next_act(act_limits: CameraLimits):
 	if !keep_rings:
-		ScoreManager.reset_score(false, false, true)
+		ScoreManager.reset_score(false, false, true, true)
 	
 	player.spun_sign_post = false
-	player.change_state("Regular")
-	player.lock_to_limits(player.limit_left, act_limits.limit_right)
 	
-	zone._zone_music()
-	zone._reset_signposts()
+	if cutscene_index_played < 0:
+		
+		player.change_state("Regular")
+		player.lock_to_limits(player.limit_left, act_limits.limit_right)
+		
+		zone._zone_music()
+		zone._reset_signposts()
+		
+		camera.tween_limits_from_resource(act_limits)
+		
+		ScoreManager.reset_time_and_start()
+		
+		await _show_titlecard()
 	
-	camera.tween_limits_from_resource(act_limits)
-	
-	ScoreManager.reset_time_and_start()
-	
-	await _show_titlecard()
+	else:
+		zone.play_cutscene(cutscene_index_played)
 
 func _show_titlecard():
 	UI.enter_titlecard(zone.zone_name)
@@ -155,9 +165,12 @@ func _exit_and_transition():
 		return
 	
 	if is_final_act:
+		if cutscene_index_played >= 0:
+			await zone.play_cutscene(cutscene_index_played)
 		Global.current_act = 1
 		UI.fade_in()
 		await get_tree().create_timer(FADE_DURATION).timeout
+		ScoreManager.reset_score(false, false, false, true)
 		GoData.save_file()
 		LoadingScreen.load_scene(Global.find_zone_from_root(), zone.next_scene)
 	else:

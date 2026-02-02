@@ -5,6 +5,9 @@ class_name GoUtils
 const SHALLOW_ANGLE = 23
 const HALF_STEEP_ANGLE = 45
 
+# Credits to marimitoTH for the original go_utils.gd
+# This largely goes unchanged, however it has been reorganized and fit for Godot 4.
+
 static func get_angle_from(normal: Vector2) -> float:
 	var radians = normal.angle_to(Vector2.UP)
 	return -rad_to_deg(radians)

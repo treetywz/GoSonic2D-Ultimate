@@ -1,13 +1,8 @@
 extends PlayerState
 class_name RegularPlayerState
 
-# Cached reference
-@onready var host = get_parent().get_parent()
-
-
 func enter(player: Player):
 	player.set_bounds(0)
-
 
 func step(player: Player, delta: float):
 	_reset_state_flags(player)
@@ -16,7 +11,6 @@ func step(player: Player, delta: float):
 		_handle_grounded_input(player, delta)
 	else:
 		player.state_machine.change_state("Air")
-
 
 func _reset_state_flags(player: Player):
 	player.is_looking_down = false
@@ -58,18 +52,31 @@ func _handle_grounded_input(player: Player, delta: float):
 
 
 func _try_special_moves(player: Player, abs_velocity_x: float) -> bool:
-	var jump_pressed = Input.is_action_just_pressed("player_a") or Input.is_action_just_pressed("player_b")
+	var jump_pressed: bool
+	var down_pressed: bool
+	var up_pressed: bool
+	
+	if player.artificial_input_enabled:
+		# For artificial input, we need to track if jump was just triggered
+		# Since artificial_do_jump() is a one-frame trigger, we read it here
+		jump_pressed = player.artificial_jump
+		down_pressed = player.artificial_look_down
+		up_pressed = player.artificial_look_up
+	else:
+		jump_pressed = Input.is_action_just_pressed("player_a") or Input.is_action_just_pressed("player_b")
+		down_pressed = Input.is_action_pressed("player_down")
+		up_pressed = Input.is_action_pressed("player_up")
 	
 	if !jump_pressed or player.is_pushing or !player.can_move:
 		return false
 	
 	# Spin Dash
-	if Input.is_action_pressed("player_down"):
+	if down_pressed:
 		player.state_machine.change_state("SpinDash")
 		return true
 	
 	# Super Peel Out
-	if Input.is_action_pressed("player_up") and abs_velocity_x < player.current_stats.min_speed_to_roll:
+	if up_pressed and abs_velocity_x < player.current_stats.min_speed_to_roll:
 		player.state_machine.change_state("SuperPeelOut")
 		return true
 	

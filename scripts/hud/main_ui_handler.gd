@@ -18,7 +18,6 @@ func exit_titlecard():
 func _reload_all_ui():
 	var to_reload = ["HUD", "Debug", "MobileControls", "GameOver", "ScoreTally"]
 	var zone_exists = Global.find_zone_from_root() != null
-	print("Reloading all UI...")
 	
 	for i in get_children():
 		if i.name in to_reload:
@@ -26,6 +25,7 @@ func _reload_all_ui():
 				i._enable()
 			else:
 				i._disable()
+
 func fade_in():
 	if !fade_anim.current_animation == "fade_in":
 		fade_anim.play("fade_in")
