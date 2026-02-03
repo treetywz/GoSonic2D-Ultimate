@@ -1,3 +1,7 @@
+!!! warning
+
+	This section is unfinished.
+	
 # Zones
 
 In 2D Sonic games, a level or stage is often referred to as a zone.
