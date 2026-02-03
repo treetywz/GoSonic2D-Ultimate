@@ -1,4 +1,5 @@
 site_name: GoSonic2D Ultimate Docs
+site_url: https://treetywz.github.io/GoSonic2D-Ultimate/
 nav:
   - Home: index.md
   - Getting Started:
