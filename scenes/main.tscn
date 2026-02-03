@@ -239,15 +239,15 @@ victory_music = ExtResource("29")
 acts = Array[Object]([SubResource("Resource_jbj1t"), SubResource("Resource_muem4")])
 show_act = 2
 
-[node name="LimitsVisualizer" type="Node2D" parent="." unique_id=1119831607]
-z_index = 4096
-script = ExtResource("19_0ld40")
-
 [node name="StartPointAct1" type="Node2D" parent="." unique_id=1739833567]
 position = Vector2(75, 652)
 
 [node name="StartPointAct2" type="Node2D" parent="." unique_id=1337874271]
 position = Vector2(2669, 595)
+
+[node name="LimitsVisualizer" type="Node2D" parent="." unique_id=1119831607]
+z_index = 4096
+script = ExtResource("19_0ld40")
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=1710464419]
 layer = -7
