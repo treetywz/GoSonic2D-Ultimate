@@ -10,6 +10,8 @@ It is the official successor to my previous framework, [GoSonic2D+](https://gith
 
 <img src="https://github.com/treetywz/GoSonic2D-Ultimate/blob/main/read_me/logo.png" alt="Alt text" width="507" height="139">
 
+📖 **[Documentation](https://treetywz.github.io/GoSonic2D-Ultimate/)** *(Unfinished)*
+
 ## Credits
 * [marmitoTH](https://github.com/marmitoTH) - Creator of the original GoSonic2D repository
 * [ZUN](https://x.com/korindo) - Composer of the MIDI files used for placeholder tracks
