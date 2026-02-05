@@ -1,0 +1,13 @@
+.md-header__title {
+  visibility: hidden;
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  width: 200px;  /* Adjust this value */
+  height: auto;
+}
+
+.md-header {
+  background-color: #363a52;
+}
