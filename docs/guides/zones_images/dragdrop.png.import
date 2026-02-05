@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmnmwmfasdrtv"
-path="res://.godot/imported/zoneproperties.png-c8ce428236768f53bb47e0a3ff4464a4.ctex"
+uid="uid://bnir3l78plfdy"
+path="res://.godot/imported/dragdrop.png-0fa983253da561572a865b2d68787335.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/getting-started/zones_images/zoneproperties.png"
-dest_files=["res://.godot/imported/zoneproperties.png-c8ce428236768f53bb47e0a3ff4464a4.ctex"]
+source_file="res://docs/guides/zones_images/dragdrop.png"
+dest_files=["res://.godot/imported/dragdrop.png-0fa983253da561572a865b2d68787335.ctex"]
 
 [params]
 

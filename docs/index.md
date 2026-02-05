@@ -18,5 +18,5 @@ Of course, that is all to your discretion.
 
 ## Getting Started
 
-You should first check out what [Zones](getting-started/zones.md) are, what they can do, and how to set them up.
-Zones are integral to GoSonic2DU, so it is highly encouraged to learn the basics of how to work with one.
+You should first check out [how to create a Zone!](guides/creating-a-zone.md)
+Zones are integral to GoSonic2DU, so it is highly encouraged to learn the basics of how to create one.

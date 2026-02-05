@@ -1,19 +1,15 @@
 extends Node2D
-
 class_name Spring
-
 @export var power: float = 600
 @export_enum("Vertical", "Horizontal") var type: int
 @export var spring_audio_path: NodePath
-
-@onready var animation_tree = $Sprite2D/AnimationTree
+@onready var animation = $Sprite2D/AnimationPlayer
 @onready var collider = $SolidObject/CollisionShape2D
-
 @onready var spring_audio = get_node(spring_audio_path) as AudioStreamPlayer
 
 func activate():
 	spring_audio.play()
-	animation_tree.set("parameters/state/active", true)
+	animation.play("activate")
 
 func apply_vertical_force(player: Player, direction: int):
 	player.velocity.y = power * -direction

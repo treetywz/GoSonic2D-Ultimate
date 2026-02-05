@@ -93,7 +93,7 @@ func _wait_for_player_offscreen():
 		if fail_safe > 2:
 			break
 		await get_tree().create_timer(OFFSCREEN_CHECK_INTERVAL).timeout
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.6).timeout
 
 
 func _update_life_counters():

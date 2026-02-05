@@ -2,8 +2,11 @@ site_name: GoSonic2D Ultimate Docs
 site_url: https://treetywz.github.io/GoSonic2D-Ultimate/
 nav:
   - Home: index.md
-  - Getting Started:
-    - Zones : getting-started/zones.md
+  - Guides:
+    - Creating a Zone : guides/creating-a-zone.md
+    - Placing Zone Objects : guides/placing-zone-objects.md
+  - Classes:
+    - Zone : classes/zone.md
 theme:
   name: material
   logo: assets/logo.png

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj2pocgr4bq7v"
-path="res://.godot/imported/startpoints.png-cbde11ab016f99e52a6b7e71615e2ff5.ctex"
+uid="uid://cj24nq280vxhm"
+path="res://.godot/imported/startpoint.png-6a13509d72a79c76bfaf8467ee690940.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/getting-started/zones_images/startpoints.png"
-dest_files=["res://.godot/imported/startpoints.png-cbde11ab016f99e52a6b7e71615e2ff5.ctex"]
+source_file="res://docs/guides/zones_images/startpoint.png"
+dest_files=["res://.godot/imported/startpoint.png-6a13509d72a79c76bfaf8467ee690940.ctex"]
 
 [params]
 

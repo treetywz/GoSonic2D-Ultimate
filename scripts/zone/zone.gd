@@ -22,7 +22,7 @@ class_name Zone
 ## The audio stream the zone plays upon initializing.
 @export var zone_music: AudioStream
 ## The audio stream played after the sign post spins.
-@export var victory_music: AudioStream
+@export var victory_music: AudioStream = load("res://audios/musics/act-clear.wav")
 
 @export_group("Level Settings")
 ## Determines the player's starting state.

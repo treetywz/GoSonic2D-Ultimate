@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c6lu8hjpoubwx"]
+
+[ext_resource type="Script" uid="uid://xrm32gltjeou" path="res://scripts/zone/zones/example.gd" id="1_pst0j"]
+[ext_resource type="PackedScene" uid="uid://b70x82dmmi3g" path="res://objects/players/sonic.tscn" id="2_61pmj"]
+[ext_resource type="AudioStream" uid="uid://bneoaxvac3fbm" path="res://audios/music/th06_05.ogg" id="3_1hqkr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61pmj"]
+size = Vector2(574, 177)
+
+[node name="Example" type="Node2D" unique_id=2140031067]
+script = ExtResource("1_pst0j")
+zone_name = "Blue Hill"
+player_resource = ExtResource("2_61pmj")
+zone_music = ExtResource("3_1hqkr")
+
+[node name="StartPointAct1" type="Node2D" parent="." unique_id=1605692397]
+position = Vector2(38, 129)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1553458082]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2031029137]
+position = Vector2(232, 246)
+shape = SubResource("RectangleShape2D_61pmj")

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://objects/activators/LowerTileActivatorBig.tscn" id="14"]
 [ext_resource type="Texture2D" uid="uid://cidqclu4xncwt" path="res://sprites/zones/ultimate_test_zone/tilemap.png" id="14_jbj1t"]
 [ext_resource type="PackedScene" path="res://objects/activators/UpperTileActivatorSmall.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://d00ornus8xfx2" path="res://objects/springs/yellow_spring_up.tscn" id="17_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://c25pn10uaswbo" path="res://objects/monitors/LifeMonitor.tscn" id="17_muem4"]
 [ext_resource type="PackedScene" uid="uid://bqra8wbjqgoxi" path="res://objects/monitors/ShieldMonitor.tscn" id="18"]
 [ext_resource type="Script" uid="uid://c0ffbrwdqsjna" path="res://scripts/zone/limits_visualizer.gd" id="19_0ld40"]
@@ -443,6 +444,15 @@ position = Vector2(977, 466)
 [node name="Ring11" parent="Rings" unique_id=147964399 instance=ExtResource("10")]
 position = Vector2(999, 504)
 
+[node name="Ring64" parent="Rings" unique_id=1412629515 instance=ExtResource("10")]
+position = Vector2(322, 483)
+
+[node name="Ring65" parent="Rings" unique_id=1560465828 instance=ExtResource("10")]
+position = Vector2(322, 467)
+
+[node name="Ring66" parent="Rings" unique_id=1875523609 instance=ExtResource("10")]
+position = Vector2(322, 451)
+
 [node name="Hazards" type="Node2D" parent="." unique_id=2050337884]
 
 [node name="Spike5" parent="Hazards" unique_id=1739771746 instance=ExtResource("23")]
@@ -517,6 +527,9 @@ tile_set = SubResource("TileSet_0ld40")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tilemaps/ManualFixes" unique_id=1702832556]
 position = Vector2(1907.5, 450)
 shape = SubResource("RectangleShape2D_muem4")
+
+[node name="YellowSpringUp" parent="Tilemaps" unique_id=1805770762 instance=ExtResource("17_dp3eg")]
+position = Vector2(320, 656)
 
 [node name="SignPosts" type="Node2D" parent="." unique_id=2134251469]
 

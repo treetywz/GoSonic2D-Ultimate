@@ -41,24 +41,6 @@ _data = {
 &"idle": SubResource("2")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="3"]
-animation = &"activate"
-
-[sub_resource type="AnimationNodeAnimation" id="4"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeOneShot" id="5"]
-
-[sub_resource type="AnimationNodeBlendTree" id="6"]
-graph_offset = Vector2(-259.44165, 37.561035)
-nodes/Animation/node = SubResource("4")
-nodes/Animation/position = Vector2(-180, 100)
-"nodes/Animation 2/node" = SubResource("3")
-"nodes/Animation 2/position" = Vector2(-180, 240)
-nodes/state/node = SubResource("5")
-nodes/state/position = Vector2(80, 160)
-node_connections = [&"output", 0, &"state", &"state", 0, &"Animation", &"state", 1, &"Animation 2"]
-
 [sub_resource type="RectangleShape2D" id="7"]
 size = Vector2(32, 16)
 
@@ -72,13 +54,6 @@ hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=1569802934]
 libraries/ = SubResource("AnimationLibrary_pksd7")
-
-[node name="AnimationTree" type="AnimationTree" parent="Sprite2D" unique_id=1486021501]
-tree_root = SubResource("6")
-anim_player = NodePath("../AnimationPlayer")
-parameters/state/active = false
-parameters/state/internal_active = false
-parameters/state/request = 0
 
 [node name="SolidObject" type="StaticBody2D" parent="." unique_id=826048031]
 script = ExtResource("2")

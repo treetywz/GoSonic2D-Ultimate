@@ -10,8 +10,8 @@ signal rotated_player
 # Exported properties
 @export_enum("Sonic", "Tails", "Knuckles") var player_id: String
 @export_enum("Smooth", "Original") var skin_rotation_mode: String = "Original"
-@export var bounds: Array[Resource]
-@export var stats: Array[Resource]
+@export var bounds: Array[PlayerCollision]
+@export var stats: Array[PlayerStats]
 @export_flags_2d_physics var wall_layer = 1
 @export_flags_2d_physics var ground_layer = 1
 @export_flags_2d_physics var ceiling_layer = 1

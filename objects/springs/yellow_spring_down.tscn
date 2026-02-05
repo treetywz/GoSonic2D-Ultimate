@@ -1,89 +1,70 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene format=3 uid="uid://bn6bmqufc0is"]
 
-[ext_resource path="res://scripts/spring/spring.gd" type="Script" id=1]
-[ext_resource path="res://scripts/nodes/solid_object.gd" type="Script" id=2]
-[ext_resource path="res://sprites/springs/yellow_spring_up.png" type="Texture2D" id=3]
-[ext_resource path="res://objects/audios/SpringAudio.tscn" type="PackedScene" id=4]
+[ext_resource type="Script" uid="uid://cjj75v26nj3vw" path="res://scripts/spring/spring.gd" id="1"]
+[ext_resource type="Script" uid="uid://brxqs26pocuvo" path="res://scripts/nodes/solid_object.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://by1ppyrrwlm8v" path="res://sprites/springs/yellow_spring_up.png" id="3"]
+[ext_resource type="PackedScene" path="res://objects/audios/SpringAudio.tscn" id="4"]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id="1"]
 length = 0.3
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.1, 0.2 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ 0, 1, 0 ]
+"values": [0, 1, 0]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 length = 0.1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 0 ]
+"values": [0]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=3]
-animation = "activate"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wji1v"]
+_data = {
+&"activate": SubResource("1"),
+&"idle": SubResource("2")
+}
 
-[sub_resource type="AnimationNodeAnimation" id=4]
-animation = "idle"
+[sub_resource type="RectangleShape2D" id="7"]
+size = Vector2(32, 16)
 
-[sub_resource type="AnimationNodeOneShot" id=5]
-
-[sub_resource type="AnimationNodeBlendTree" id=6]
-graph_offset = Vector2( -454, 76 )
-nodes/Animation/node = SubResource( 4 )
-nodes/Animation/position = Vector2( -180, 100 )
-"nodes/Animation 2/node" = SubResource( 3 )
-"nodes/Animation 2/position" = Vector2( -180, 240 )
-nodes/state/node = SubResource( 5 )
-nodes/state/position = Vector2( 80, 120 )
-node_connections = [ "state", 0, "Animation", "state", 1, "Animation 2", "output", 0, "state" ]
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 16, 8 )
-
-[node name="YellowSpringDown" type="Node2D"]
-script = ExtResource( 1 )
+[node name="YellowSpringDown" type="Node2D" unique_id=2049347857]
+script = ExtResource("1")
 spring_audio_path = NodePath("SpringAudio")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource( 3 )
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1129398539]
+texture = ExtResource("3")
 flip_v = true
 hframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
-anims/activate = SubResource( 1 )
-anims/idle = SubResource( 2 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=1477016822]
+libraries/ = SubResource("AnimationLibrary_wji1v")
 
-[node name="AnimationTree" type="AnimationTree" parent="Sprite2D"]
-tree_root = SubResource( 6 )
-anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/state/active = false
+[node name="SolidObject" type="StaticBody2D" parent="." unique_id=2001290822]
+position = Vector2(0, -16)
+script = ExtResource("2")
 
-[node name="SolidObject" type="StaticBody2D" parent="."]
-position = Vector2( 0, -16 )
-script = ExtResource( 2 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolidObject" unique_id=231825451]
+position = Vector2(0, 8)
+shape = SubResource("7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SolidObject"]
-position = Vector2( 0, 8 )
-shape = SubResource( 7 )
-
-[node name="SpringAudio" parent="." instance=ExtResource( 4 )]
+[node name="SpringAudio" parent="." unique_id=221769040 instance=ExtResource("4")]
 
 [connection signal="player_ceiling_collision" from="SolidObject" to="." method="_on_SolidObject_player_ceiling_collision"]
 [connection signal="player_left_wall_collision" from="SolidObject" to="." method="_on_SolidObject_player_left_wall_collision"]
