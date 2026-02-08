@@ -33,6 +33,7 @@ func _handle_grounded_input(player: Player, delta: float):
 	player.handle_slope(delta)
 	player.handle_acceleration(delta)
 	player.handle_friction(delta)
+	#player.handle_collision()
 	
 	# Update pushing state
 	_update_pushing_state(player)
@@ -168,6 +169,4 @@ func _set_balance_animation(player: Player, type: String, flip_left: bool):
 
 
 func exit(player: Player):
-	player.is_pushing = false
-	player.is_looking_down = false
-	player.is_looking_up = false
+	_reset_state_flags(player)

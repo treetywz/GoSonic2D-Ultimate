@@ -8,7 +8,7 @@ Development is all done in Godot 4.6.
 
 It is the official successor to my previous framework, [GoSonic2D+](https://github.com/treetywz/GoSonic2D-Plus), a fork of [GoSonic2D](https://github.com/marmitoTH/GoSonic2D) originally developed in Godot 3.
 
-<img src="https://github.com/treetywz/GoSonic2D-Ultimate/blob/main/read_me/logo.png" alt="Alt text" width="507" height="139">
+<img src="https://github.com/treetywz/GoSonic2D-Ultimate/blob/main/docs/read_me/logo.png" alt="Alt text" width="507" height="139">
 
 📖 **[Documentation](https://treetywz.github.io/GoSonic2D-Ultimate/)** *(Unfinished)*
 

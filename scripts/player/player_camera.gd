@@ -23,6 +23,7 @@ var stop_scroll = ""
 
 func _ready():
 	initialize_camera()
+	process_physics_priority = 1
 
 func _physics_process(delta):
 	
@@ -174,6 +175,8 @@ func handle_vertical_borders(delta: float):
 func start_camera_delay():
 	delay_timer = delay_duration
 	original_target_position = player.get_position()
+	
+	
 #func _draw():
 #	var right = Vector2.RIGHT * right_margin
 #	var left = Vector2.RIGHT * left_margin

@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d00ornus8xfx2" path="res://objects/springs/yellow_spring_up.tscn" id="17_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://c25pn10uaswbo" path="res://objects/monitors/LifeMonitor.tscn" id="17_muem4"]
 [ext_resource type="PackedScene" uid="uid://bqra8wbjqgoxi" path="res://objects/monitors/ShieldMonitor.tscn" id="18"]
+[ext_resource type="PackedScene" uid="uid://d4fc5h5ordpqw" path="res://objects/platforms/moving_platform.tscn" id="18_dp3eg"]
 [ext_resource type="Script" uid="uid://c0ffbrwdqsjna" path="res://scripts/zone/limits_visualizer.gd" id="19_0ld40"]
 [ext_resource type="PackedScene" uid="uid://bv5tesyqfyupr" path="res://objects/spikes/spike.tscn" id="23"]
 [ext_resource type="PackedScene" uid="uid://dww6pdxovqda0" path="res://objects/signpost/sign_post.tscn" id="27"]
@@ -233,7 +234,6 @@ size = Vector2(41, 20)
 script = ExtResource("1_eb6dy")
 zone_name = "Test"
 amount_of_acts = 2
-scripted_intro = true
 player_resource = ExtResource("1")
 zone_music = ExtResource("3")
 victory_music = ExtResource("29")
@@ -540,3 +540,7 @@ position = Vector2(2416, 583)
 position = Vector2(2940, 584)
 act_number = 2
 cutscene_index_played = 0
+
+[node name="MovingPlatform" parent="." unique_id=2112587190 instance=ExtResource("18_dp3eg")]
+position = Vector2(872, 392)
+amplitude = 100.0

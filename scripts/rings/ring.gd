@@ -83,7 +83,7 @@ func _handle_magnetism():
 		magnetised = false
 		return
 	
-	var direction_to_player = (_player.position - position).sign()
+	var direction_to_player = (_player.global_position - global_position).sign()
 	
 	# Use TURN_SPEED when turning around (signs differ), FOLLOW_SPEED when following (signs match)
 	var acceleration_x = TURN_SPEED if sign(x_speed) != direction_to_player.x else FOLLOW_SPEED

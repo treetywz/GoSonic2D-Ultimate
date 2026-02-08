@@ -133,8 +133,9 @@ func _on_idle_timer_timeout() -> void:
 
 func _on_exit_screen() -> void:
 	off_screen = true
-	if player.state_machine.current_state == "Dead":
-		visible = false
+	if is_instance_valid(player):
+		if player.state_machine.current_state == "Dead":
+			visible = false
 		
 func _on_enter_screen() -> void:
 	off_screen = false
