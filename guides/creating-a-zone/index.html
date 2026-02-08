@@ -1,0 +1,1008 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://treetywz.github.io/GoSonic2D-Ultimate/guides/creating-a-zone/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../placing-zone-objects/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Creating a Zone - GoSonic2D Ultimate Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#creating-a-zone" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="GoSonic2D Ultimate Docs" class="md-header__button md-logo" aria-label="GoSonic2D Ultimate Docs" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GoSonic2D Ultimate Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Creating a Zone
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="GoSonic2D Ultimate Docs" class="md-nav__button md-logo" aria-label="GoSonic2D Ultimate Docs" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    GoSonic2D Ultimate Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creating a Zone
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creating a Zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Features
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-zone-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initial Zone Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zone-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zone Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Zone Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zone-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zone Info
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#camera-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camera Limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-sonic-on-the-runway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting Sonic on the Runway
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where to next?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../placing-zone-objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Placing Zone Objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Classes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../classes/zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Features
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-zone-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initial Zone Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zone-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zone Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Zone Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zone-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zone Info
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#camera-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camera Limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-sonic-on-the-runway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting Sonic on the Runway
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where to next?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="creating-a-zone">Creating a Zone</h1>
+<p>In many Sonic the Hedgehog games, especially in the 2D entries, each level is most often referred to as a <strong>zone</strong>,
+usually being split into two or three segments, each called an <strong>act</strong>.</p>
+<p>However, in the context of GoSonic2DU, a <code>Zone</code> is a class that should be inherited by the root node of every playable
+scene/level.</p>
+<h2 id="features">Features</h2>
+<p>The <code>Zone</code> class is essentially the backbone of all operations going on in a single level.</p>
+<p>It handles:</p>
+<ul>
+<li>Player initialization and spawning</li>
+<li>Camera setup and limits</li>
+<li>Act progression and transitions</li>
+<li>Level Music</li>
+<li>Title card display</li>
+<li>Cutscenes</li>
+</ul>
+<p>If this framework was a high school class, the <code>Zone</code> class is that one person
+everyone always goes to for advice. Unlike real life, it does not have any
+feelings, so do not be afraid to rely on it.</p>
+<h2 id="initial-zone-setup">Initial Zone Setup</h2>
+<p>To create our first level, we would first need to create a scene that has a <code>Node2D</code> as its root node
+(any node that inherited <code>Node2D</code> would work, but a regular <code>Node2D</code> is preferred for clarity):</p>
+<p><img alt="Node2D Root" src="../zones_images/node2d-root.png" /></p>
+<p>We can save this scene into <code>res://scenes/zones/</code>. (You don't necessarily have to, but it's great
+for organizing your scenes.)</p>
+<p>Then, we would need to attach a script onto it.
+To stay organized, you can save your zone's code into <code>res://scripts/zone/zones/</code>.
+(You can name it however you'd like, but again, for organization's sake, the
+zone's name is preferred.)</p>
+<p>What we need to do now is inherit the <code>Zone</code> class. This will give our <code>Node2D</code> all of
+the variables, functions, and all that magic needed for our level to properly function:</p>
+<div class="highlight"><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">Zone</span>
+
+<span class="c1"># Get rid of the initial &quot;extends Node2D&quot; Godot may give you.</span>
+</code></pre></div>
+<p>And with that, you're done.</p>
+<p>Well, with the initial setup, anyway.</p>
+<p>Now, it may be a good time to look at what actually happened to our <code>Node2D</code>,
+specifically, the newly added properties it gained.</p>
+<h2 id="zone-properties">Zone Properties</h2>
+<p>Just taking a glance at the many properties this thing has to offer, you may notice
+most properties have straightforward names, describing what function they serve.</p>
+<p><img alt="Zone Properties" src="../zones_images/zoneproperties.png" /></p>
+<p>To gain a better understanding of what these variables actually do,
+we can take a look at each of them in their respective sections:</p>
+<h3 id="zone-info">Zone Info</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>zone_name</code></td>
+<td>String</td>
+<td>This is the display name that will be shown in the title card (e.g., "Green Hill"). You do not need to add "Zone," as it will do that for you automatically.</td>
+</tr>
+<tr>
+<td><code>amount_of_acts</code></td>
+<td>int</td>
+<td>This variable determines how many acts this zone will have. For example, most of the 2D Sonic games have two acts, so for that, you would set it to <code>2</code>.</td>
+</tr>
+<tr>
+<td><code>next_scene</code></td>
+<td>String</td>
+<td>Here, you put in the path to the next scene that proceeds this zone. This will be the scene that will be loaded after the player finishes the zone. As a default, it is set to <code>res://scenes/title.tscn</code>.</td>
+</tr>
+<tr>
+<td><code>scripted_intro</code></td>
+<td>bool</td>
+<td>This turns on the scripted intro feature of a <code>Zone</code>. Essentially, instead of proceeding with the normal zone intro, it skips it, and runs the function <code>custom_intro()</code> instead. <em>(This is explained in better detail in the Cutscenes section.)</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="resources">Resources</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>player_resource</code></td>
+<td>Resource</td>
+<td>In here, you would typically insert <code>sonic.tscn</code>, or whatever player object you want the <code>Zone</code> to load.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="audio">Audio</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>zone_music</code></td>
+<td>AudioStream</td>
+<td>This determines what <code>AudioStream</code> is requested to <code>MusicManager</code> when the function <code>_zone_music()</code> is called.</td>
+</tr>
+<tr>
+<td><code>victory_music</code></td>
+<td>AudioStream</td>
+<td>This determines what music is played before the score tally upon finishing an act through a sign post.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="level-settings">Level Settings</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>starting_player_state</code></td>
+<td>String</td>
+<td>This dropdown menu allows you to pick and choose which state the player starts in. It's set to <code>Regular</code> as a default, but you could make the player start in the <code>Dead</code> state for all I care.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="camera-limits">Camera Limits</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>acts</code></td>
+<td>Array[CameraLimits]</td>
+<td>This array is to be filled with <code>CameraLimits</code>, a resource that contains information on where the camera (and player) is bound to during a specific act. Index 0 is for the first act, index 1 is for the second, and so on.</td>
+</tr>
+<tr>
+<td><code>show_act</code></td>
+<td>int</td>
+<td>This variable determines what act's boundaries are visually shown in the editor. This requires a <code>LimitsVisualizer</code> to be placed in your scene.</td>
+</tr>
+</tbody>
+</table>
+<p>Now, while most of these variables are incredibly important, you do not need to learn all of them
+immediately. We can simply learn them in greater detail as we go on.</p>
+<p>(Though, you should probably fill in <code>zone_name</code> with the name of your level. That should be pretty straightforward.)</p>
+<p><img alt="" src="../zones_images/blue-hill.png" /></p>
+<h2 id="putting-sonic-on-the-runway">Putting Sonic on the Runway</h2>
+<p>Enough with all that technical mumbo jumbo—what about the Blue Blur himself?</p>
+<p>Let's add our player object so that our <code>Zone</code> script can actually initialize something
+when we start up our level.</p>
+<p>To do that, we can drag and drop the already-existing Sonic player object
+located in <code>res://objects/players/sonic.tscn</code>, right into the <code>&lt;empty&gt;</code>
+Player Resource property of our scene's root node.</p>
+<p><img alt="Drag and Drop!" src="../zones_images/dragdrop.png" /></p>
+<p>Now that we have told our <code>Zone</code> what player we want to load, the next thing we will
+need is to tell it <em>where</em> to put our player when we start the scene.</p>
+<p>Luckily, all we need to do is create another <code>Node2D</code> and simply name it <code>StartPointAct1</code>.</p>
+<p><img alt="Our first StartPoint!" src="../zones_images/startpoint.png" /></p>
+<p>Wherever this node is placed on the scene, this will be where our player will be spawned
+on the first act of the zone.</p>
+<p>Now that's done, we can finally start up our scene and see what we've created!</p>
+<p><img alt="Oh..." src="../zones_images/sonic-dies.gif" /></p>
+<p>Oh... that's right. We forgot to create an actual <em>surface</em> for the player to stand on. Unless, of course, you want to make
+something like <em>Sonic Falls into a Bottomless Pit Forever: The Game</em>.</p>
+<p>This is the part of the process where prior Godot experience will benefit you heavily (and is likely <em>needed</em>).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Making a level using built-in Godot tools like <code>TileMapLayers</code> is <strong>not</strong>
+exclusive to the framework, therefore, it will not be covered in this guide. You will need to learn all
+of that on your own if you aren't already familiar with those concepts. 
+(Things that <em>are</em> framework-specific like creating loops for the player to run through will be covered later.)
+<a href="https://docs.godotengine.org/en/4.6/"><em>Direct link to the Godot Engine documentation.</em></a></p>
+</div>
+<p>But I'll be nice and teach you how to create a <em>temporary</em> surface for our player to stand on anyway.
+The level designing will be all up to you.</p>
+<p>All you really need is a <code>StaticBody2D</code>, along with a <code>CollisionShape2D</code> inside of it:</p>
+<p><img alt="" src="../zones_images/staticbody2d.png" /></p>
+<p>Then afterwards, you can set its shape into a <code>RectangleShape2D</code>:</p>
+<p><img alt="" src="../zones_images/collisionshape2d.png" /></p>
+<p>Resize it to how you see fit, perhaps something like this:</p>
+<p><em>(Don't forget toput your <code>StartPointAct1</code> on top of your surface!)</em></p>
+<p><img alt="" src="../zones_images/ground.png" /></p>
+<p>Now, when you start up the scene, Sonic should look as if he's floating on thin air.</p>
+<p><img alt="" src="../zones_images/flying-sonic.png" /></p>
+<p>Congratulations! You've pretty much set up the bare basics of a <code>Zone</code>!</p>
+<p>Though... it's a bit awkward lacking any tunes. You can fix that by dragging and dropping
+either an <code>.ogg</code>, <code>.wav</code>, or <code>.mp3</code> file into the <code>zone_music</code> property.</p>
+<p>If you don't have your own, you can use one of the framework's placeholder music
+(chiptune renditions of some Touhou music) located at <code>res://audios/music/</code>. For
+organization, you can put your own music files into there as well.</p>
+<p><img alt="" src="../zones_images/zone_music.png" /></p>
+<h2 id="where-to-next">Where to next?</h2>
+<p>Next, you should check out the basics of placing objects in your level!
+<a href="../placing-zone-objects/">This guide</a> will tell you all you need to know on how to go about doing so.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
