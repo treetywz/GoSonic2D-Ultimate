@@ -1,5 +1,6 @@
 > [!WARNING]
 > This repository is still in very early development and may not be suitable/stable for any fan game development. Changes will be made constantly, and code refactoring/overhauling may be common.
+> This project may also not recieve updates for long periods of time, as this is a project done entirely for fun.
 
 # GoSonic2D Ultimate
 GoSonic2D Ultimate *(or GoSonic2DU for short)* is a Sonic the Hedgehog framework developed in the [Godot Engine](https://godotengine.org/) that aims to recreate the original Genesis-era mechanics, systems, and physics.
