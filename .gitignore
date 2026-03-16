@@ -4,6 +4,7 @@
 # Android build folder
 android/
 
+ignore/
 
 # Godot-specific ignores
 .import/

@@ -5,6 +5,7 @@ nav:
   - Guides:
     - Creating a Zone : guides/creating-a-zone.md
     - Placing Zone Objects : guides/placing-zone-objects.md
+    - Creating a New Player : guides/creating-a-new-player.md
   - Classes:
     - Zone : classes/zone.md
 theme:
