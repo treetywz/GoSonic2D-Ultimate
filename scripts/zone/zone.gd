@@ -58,8 +58,8 @@ var hud: Control
 var gameover: Control
 
 # Preloaded Resources
-var camera_resource = preload("res://objects/players/camera.tscn")
-var death_handler_resource = preload("res://objects/players/death_handler.tscn")
+var camera_resource = preload("res://objects/players/supporting/camera.tscn")
+var death_handler_resource = preload("res://objects/players/supporting/death_handler.tscn")
 
 # Signals
 signal reset_signposts

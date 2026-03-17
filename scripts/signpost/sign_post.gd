@@ -38,9 +38,10 @@ func _ready():
 
 func _get_goal_post_graphic(id):
 	var to_load = str("res://sprites/signpost/characters/", id, ".png")
+	var fallback = str("res://sprites/signpost/characters/Sonic.png")
 	if !ResourceLoader.exists(to_load):
 		push_warning("HUD: There was no file found at '%s'!" % to_load)
-		return
+		return load(fallback)
 	return load(to_load)
 
 func _reset_signpost():

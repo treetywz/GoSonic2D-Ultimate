@@ -84,20 +84,28 @@ func get_state_name(state: int) -> String:
 
 func set_animation_state(state: int) -> void:
 	var state_name = get_state_name(state)
-	
 	if state != current_state:
 		current_state = state
-		
 		var playback = animation_tree.get("parameters/playback")
-		
 		if not playback:
 			playback = animation_tree.get("parameters/StateMachine/playback")
-		
 		if playback:
-			playback.travel(state_name)
-		else:
-			animation_tree.set("parameters/StateMachine/transition_request", state_name)
+			if _state_exists(state_name):
+				playback.travel(state_name)
+			else:
+				push_warning("PlayerSkin: state '%s' not found in AnimationTree, defaulting to hurt" % state_name)
+				playback.travel("hurt")
+	else:
+		animation_tree.set("parameters/StateMachine/transition_request", state_name)
 
+func _state_exists(state_name: String) -> bool:
+	var blend_tree = animation_tree.tree_root
+	if blend_tree is AnimationNodeBlendTree:
+		var sm = blend_tree.get_node("StateMachine")
+		if sm is AnimationNodeStateMachine:
+			return sm.has_node(state_name)
+	return false
+	
 func set_running_animation_state(speed: float) -> void:
 	var state = ANIMATION_STATES.walking
 	

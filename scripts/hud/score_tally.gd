@@ -166,9 +166,10 @@ func _calculate_cool_bonus() -> int:
 
 func _get_name_plate_graphic(id):
 	var to_load = str("res://sprites/scoretally/names/", id, ".png")
+	var fallback = str("res://sprites/scoretally/names/Sonic.png")
 	if !ResourceLoader.exists(to_load):
 		push_warning("HUD: There was no file found at '%s'!" % to_load)
-		return
+		return load(fallback)
 	return load(to_load)
 
 func set_player_name(player_id: String):

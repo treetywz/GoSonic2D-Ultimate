@@ -78,18 +78,20 @@ func _update_player_reference():
 func _get_life_icon(id, supr):
 	var to_load = str("res://sprites/hud/life_icons/", id, ".png")
 	var to_load_super = str("res://sprites/hud/life_icons/Super", id, ".png")
+	var fallback = str("res://sprites/hud/life_icons/Sonic.png")
 	if ResourceLoader.exists(to_load_super) and supr:
 		return load(to_load_super)
 	elif !ResourceLoader.exists(to_load):
 		push_warning("HUD: There was no file found at '%s'!" % to_load)
-		return
+		return load(fallback)
 	return load(to_load)
 	
 func _get_life_name_graphic(id):
 	var to_load = str("res://sprites/hud/life_names/", id, ".png")
+	var fallback = str("res://sprites/hud/life_names/Sonic.png")
 	if !ResourceLoader.exists(to_load):
 		push_warning("HUD: There was no file found at '%s'!" % to_load)
-		return
+		return load(fallback)
 	return load(to_load)
 
 func _update_timer():
