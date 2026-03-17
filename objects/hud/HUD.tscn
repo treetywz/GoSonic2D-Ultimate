@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://ccrisc8ycai4r" path="res://scripts/hud/hud.gd" id="7"]
 [ext_resource type="Texture2D" uid="uid://dp5wumholanr" path="res://sprites/hud/life_names/Sonic.png" id="7_gauob"]
 [ext_resource type="FontFile" uid="uid://c20q5nj7k856r" path="res://fonts/system.fnt" id="8"]
-[ext_resource type="Shader" uid="uid://cs86f1r5t4cun" path="res://shaders/sonicPalette.tres" id="8_g5e8l"]
+[ext_resource type="Shader" uid="uid://cs86f1r5t4cun" path="res://shaders/playerPalette.tres" id="8_g5e8l"]
 [ext_resource type="Texture2D" uid="uid://cqur6vjj40bk4" path="res://sprites/hud/life_icons/Sonic.png" id="9_ee22d"]
 
 [sub_resource type="ShaderMaterial" id="23"]

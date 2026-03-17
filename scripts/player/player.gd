@@ -130,7 +130,8 @@ func _physics_process(delta):
 	handle_limits()
 	handle_state_animation(delta)
 	handle_skin(delta)
-	handle_super_sonic()
+	handle_super_state()
+	handle_debug_key()
 
 func _process(_delta):
 	update_transformation_availability()
@@ -179,17 +180,17 @@ func update_transformation_availability():
 		and !spun_sign_post 
 		and !super_state)
 
-func handle_super_sonic():
+func handle_super_state():
 	if super_state:
 		set_stats(1)
-		skin.set_pallete("super")
+		skin.set_palette("super")
 		skin.texture = super_player_texture
 		shields.visible = false
 		vulnerable = false
 	else:
 		set_stats(0)
-		if !skin.transitioning_pallete:
-			skin.set_pallete("normal")
+		if !skin.transitioning_palette:
+			skin.set_palette("normal")
 		skin.texture = player_texture
 		
 		if state_machine.current_state not in ["Transform", "Dead"]:
@@ -207,7 +208,7 @@ func set_super_state(value: bool):
 			get_parent()._zone_music()
 			emit_signal("detransform")
 			if skin.pal_swapper.current_animation != "Detransform":
-				skin.transitioning_pallete = true
+				skin.transitioning_palette = true
 				skin.pal_swapper.play("Detransform")
 				
 
@@ -236,6 +237,13 @@ func kick_off_board(hazard):
 	audios.hurt.play()
 	state_machine.get_node("Hurt").launch(self, hazard)
 	change_state("Hurt")
+
+func handle_debug_key():
+	if Input.is_action_just_pressed("player_debug"):
+		#change_state("Dead")
+		#ScoreManager.time = 597
+		#ScoreManager.remove_ring(ScoreManager.rings)
+		pass
 
 func _hurt_routine(type: String, hazard):
 	if !vulnerable:

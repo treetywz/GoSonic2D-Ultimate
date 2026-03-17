@@ -189,8 +189,3 @@ func start_camera_delay():
 #	draw_line(top_left, top_right, Color.white)
 #	draw_line(bottom_left, bottom_right, Color.white)
 #	draw_line(right, left, Color.green)
-
-func _on_area_entered(area):
-	if area.get_parent() is Player:
-		if !player.state_machine.current_state == "Dead" and !player.state_machine.current_state == "Snowboarding":
-			player.state_machine.change_state("Dead")

@@ -28,7 +28,7 @@ func _prepare_transformation(player: Player):
 
 func _play_transformation_effects(player: Player):
 	player.audios.transform_audio.play()
-	player.skin.transitioning_pallete = true
+	player.skin.transitioning_palette = true
 	player.skin.pal_swapper.play("Transform")
 
 func _perform_transformation():
@@ -40,6 +40,6 @@ func _complete_transformation(player: Player):
 	player.state_machine.change_state("Air")
 
 func _cleanup_transformation(player: Player):
-	player.skin.transitioning_pallete = false
+	player.skin.transitioning_palette = false
 	player.is_rolling = false
 	player.is_jumping = false

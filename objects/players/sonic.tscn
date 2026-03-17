@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b70x82dmmi3g"]
 
 [ext_resource type="Script" uid="uid://d34cpt2p2sbgn" path="res://scripts/player/states/rolling_player_state.gd" id="1"]
-[ext_resource type="Shader" uid="uid://cs86f1r5t4cun" path="res://shaders/sonicPalette.tres" id="1_7dijq"]
+[ext_resource type="Shader" uid="uid://cs86f1r5t4cun" path="res://shaders/playerPalette.tres" id="1_7dijq"]
 [ext_resource type="Script" uid="uid://t3ibcomstpp" path="res://scripts/player/states/air_player_state.gd" id="2"]
 [ext_resource type="Script" uid="uid://w2kyrxl4a5ht" path="res://scripts/player/states/regular_player_state.gd" id="3"]
 [ext_resource type="Script" uid="uid://b52pxwam8fpfc" path="res://scripts/player/states/braking_player_state.gd" id="4"]
@@ -88,8 +88,8 @@ drpmax = 780.0
 shader = ExtResource("1_7dijq")
 shader_parameter/original_0 = Color(0.141176, 0.141176, 0.564706, 1)
 shader_parameter/original_1 = Color(0.141176, 0.282353, 0.847059, 1)
-shader_parameter/original_2 = Color(0, 0, 0, 1)
-shader_parameter/original_3 = Color(0.423529, 0.423529, 0.988235, 1)
+shader_parameter/original_2 = Color(0.42352942, 0.42352942, 0.9882353, 1)
+shader_parameter/original_3 = Color(0, 0, 0, 1)
 shader_parameter/replace_0 = Color(0.141176, 0.141176, 0.564706, 1)
 shader_parameter/replace_1 = Color(0.141176, 0.282353, 0.847059, 1)
 shader_parameter/replace_2 = Color(0.423529, 0.423529, 0.988235, 1)
@@ -184,7 +184,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:material:shader_parameter/replace_3")
+tracks/2/path = NodePath(".:material:shader_parameter/replace_2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -195,7 +195,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="113"]
-resource_name = "NormalPallete"
+resource_name = "NormalPalette"
 length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
@@ -225,7 +225,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:material:shader_parameter/replace_3")
+tracks/2/path = NodePath(".:material:shader_parameter/replace_2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -287,7 +287,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id="115"]
-resource_name = "SuperPallete"
+resource_name = "SuperPalette"
 length = 0.8
 loop_mode = 1
 step = 0.05
@@ -318,7 +318,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:material:shader_parameter/replace_3")
+tracks/2/path = NodePath(".:material:shader_parameter/replace_2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -359,7 +359,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:material:shader_parameter/replace_3")
+tracks/2/path = NodePath(".:material:shader_parameter/replace_2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -372,9 +372,9 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kgrao"]
 _data = {
 &"Detransform": SubResource("123"),
-&"NormalPallete": SubResource("113"),
+&"NormalPalette": SubResource("113"),
 &"RESET": SubResource("114"),
-&"SuperPallete": SubResource("115"),
+&"SuperPalette": SubResource("115"),
 &"Transform": SubResource("122")
 }
 
@@ -989,6 +989,12 @@ super_player_texture = ExtResource("6")
 player_texture = ExtResource("42")
 super_ring_amount = 50
 
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=90345042]
+position = Vector2(0, 59)
+scale = Vector2(2.4, 8.25)
+rect = Rect2(-10, -10, 20, 34.60606)
+show_rect = false
+
 [node name="StateMachine" type="Node2D" parent="." unique_id=933367911]
 script = ExtResource("7")
 
@@ -1124,7 +1130,7 @@ sprite_frames = SubResource("36")
 autoplay = "default"
 frame_progress = 0.14091001
 
-[node name="PalleteSwapper" type="AnimationPlayer" parent="Skin" unique_id=486415377]
+[node name="PaletteSwapper" type="AnimationPlayer" parent="Skin" unique_id=486415377]
 libraries/ = SubResource("AnimationLibrary_kgrao")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin" unique_id=568133613]
@@ -1141,11 +1147,6 @@ position = Vector2(-8, 3)
 
 [node name="idle_timer" type="Timer" parent="Skin" unique_id=843284384]
 wait_time = 3.5
-
-[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="Skin" unique_id=90345042]
-position = Vector2(0, 59)
-scale = Vector2(2.4, 8.25)
-rect = Rect2(-10, -10, 20, 34.60606)
 
 [node name="LedgeCheckers" type="Node2D" parent="." unique_id=2125050975]
 visible = false
@@ -1193,22 +1194,22 @@ position = Vector2(-7, 0)
 rotation = 1.5708
 target_position = Vector2(2.18557e-07, 5)
 
-[node name="iframe_timer" type="Timer" parent="." unique_id=870380202]
-wait_time = 2.0
-
 [node name="RingDecreaser" type="Node2D" parent="." unique_id=949362818]
 process_mode = 1
 script = ExtResource("40")
 
 [node name="decrease_rings" type="Timer" parent="RingDecreaser" unique_id=1534567545]
 
+[node name="iframe_timer" type="Timer" parent="." unique_id=870380202]
+wait_time = 2.0
+
 [connection signal="ground_enter" from="." to="StateMachine/Hurt" method="_on_ground_enter"]
 [connection signal="rotated_player" from="." to="Shields" method="_on_player_rotated"]
+[connection signal="screen_entered" from="VisibleNotifier" to="Skin" method="_on_enter_screen"]
+[connection signal="screen_exited" from="VisibleNotifier" to="Skin" method="_on_exit_screen"]
 [connection signal="timeout" from="StateMachine/Air/DropDashTimer" to="StateMachine/Air" method="dropdash_timer_timeout"]
 [connection signal="transformed" from="StateMachine/Transform" to="." method="_on_transformed"]
-[connection signal="animation_finished" from="Skin/PalleteSwapper" to="Skin" method="_on_pallete_swap_finished"]
+[connection signal="animation_finished" from="Skin/PaletteSwapper" to="Skin" method="_on_palette_swap_finished"]
 [connection signal="timeout" from="Skin/idle_timer" to="Skin" method="_on_idle_timer_timeout"]
-[connection signal="screen_entered" from="Skin/VisibleNotifier" to="Skin" method="_on_enter_screen"]
-[connection signal="screen_exited" from="Skin/VisibleNotifier" to="Skin" method="_on_exit_screen"]
-[connection signal="timeout" from="iframe_timer" to="." method="_on_iframe_timer_timeout"]
 [connection signal="timeout" from="RingDecreaser/decrease_rings" to="RingDecreaser" method="_on_timeout"]
+[connection signal="timeout" from="iframe_timer" to="." method="_on_iframe_timer_timeout"]

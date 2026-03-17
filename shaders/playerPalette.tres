@@ -3,19 +3,45 @@
 [resource]
 code = "shader_type canvas_item;
 
+// Behold, the player skin's palette swapping shader..
+
+// These are the colors from the sprite that you want to replace.
+group_uniforms OriginalColors;
 uniform vec4 original_0: source_color;
 uniform vec4 original_1: source_color;
 uniform vec4 original_2: source_color;
 uniform vec4 original_3: source_color;
+
+// These are the colors you want to replace the original colors with.
+// replace_0 replaces original_0, and so on...
+group_uniforms ReplacementColors;
 uniform vec4 replace_0: source_color;
 uniform vec4 replace_1: source_color;
 uniform vec4 replace_2: source_color;
 uniform vec4 replace_3: source_color;
+
+group_uniforms Miscellaneous;
+
+/**
+ * This affects how precise the shader's color detection is.
+ * The lower, the more accurate it is.
+ */
 uniform float precision: hint_range(0.0, 1.0) = 0.1;
 
 vec4 swap_color(vec4 color){
-	vec4 original_colors[4] = vec4[4](original_0, original_1, original_2, original_3);
-	vec4 replace_colors[4] = vec4[4](replace_0, replace_1, replace_2, replace_3);
+	vec4 original_colors[4] = vec4[4](
+		original_0,
+		original_1,
+		original_2,
+		original_3
+		);
+		
+	vec4 replace_colors[4] = vec4[4](
+		replace_0,
+		replace_1,
+		replace_2,
+		replace_3
+		);
 	
 	for (int i = 0; i < 4; i++) {
 		if (distance(color, original_colors[i]) <= precision){

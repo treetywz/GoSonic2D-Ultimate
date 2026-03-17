@@ -32,7 +32,7 @@ func handle_time(delta: float):
 		if next_time <= TIME_LIMIT:
 			time = next_time
 		else:
-			time = TIME_LIMIT
+			time = TIME_LIMIT - 0.01
 			time_stopped = true
 			emit_signal("time_over")
 

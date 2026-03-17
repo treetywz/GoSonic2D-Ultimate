@@ -3,9 +3,9 @@ class_name PlayerSkin
 
 @onready var animation_tree = $AnimationTree
 @onready var player = get_parent()
-@onready var pal_swapper = $PalleteSwapper
+@onready var pal_swapper = $PaletteSwapper
 
-var transitioning_pallete = false
+var transitioning_palette = false
 
 const ANIMATION_STATES = {
 	"idle": 0,
@@ -119,27 +119,30 @@ func set_rolling_animation_speed(value: float) -> void:
 	var speed = max(4 / 60.0 + value / 120.0, 1.0)
 	set_animation_speed(speed)
 	
-func set_pallete(value : String):
+func set_palette(value : String):
 	if value == "super":
-		if pal_swapper.current_animation != "SuperPallete":
-			pal_swapper.play("SuperPallete")
+		if pal_swapper.current_animation != "SuperPalette":
+			pal_swapper.play("SuperPalette")
 	elif value == "normal":
-		if pal_swapper.current_animation != "NormalPallete":
-			pal_swapper.play("NormalPallete")
+		if pal_swapper.current_animation != "NormalPalette":
+			pal_swapper.play("NormalPalette")
 
 func _on_idle_timer_timeout() -> void:
 	if !player.super_state:
 		animation_tree.set("parameters/idle-shot/active", true)
 
 func _on_exit_screen() -> void:
+	var zone = Global.find_zone_from_root()
 	off_screen = true
-	if is_instance_valid(player):
+	if is_instance_valid(player) and is_instance_valid(zone):
 		if player.state_machine.current_state == "Dead":
 			visible = false
+		elif player.global_position.y > zone.camera.limit_bottom:
+			player.change_state("Dead")
 		
 func _on_enter_screen() -> void:
 	off_screen = false
 
-func _on_pallete_swap_finished(anim_name) -> void:
+func _on_palette_swap_finished(anim_name) -> void:
 	if anim_name == "Detransform":
-		transitioning_pallete = false
+		transitioning_palette = false

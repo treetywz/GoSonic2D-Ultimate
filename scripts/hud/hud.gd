@@ -118,29 +118,20 @@ func _check_color_update_redundancy():
 
 func _update_color_palette():
 	var skin = player.skin
-	var to_replace = ["replace_2", "replace_1", "", "replace_0"]
-	var to_original = ["original_2", "original_1", "", "original_0"]
 	
-	# Crappy workaround, but it works.
-	# This is done because replace_0 on the player is replace_2 on the UI..
-	# replace_1 is the same..
-	# replace_2 on the player does not exist on the UI at all
-	# replace_3 on the player is replace_0 on the UI...
-	
-	for i in range(0,4):
-		if i == 2:
-			continue
-			
-		var param = "replace_%s" % i
+	for i in skin.material.shader.get_shader_uniform_list().size() / 2:
+		
 		var og_param = "original_%s" % i
-		var replace = skin.material.get_shader_parameter(param)
 		var original = skin.material.get_shader_parameter(og_param)
 		
-		lifes_icon.material.set_shader_parameter(to_original[i], original)
-		mob_lifes_icon.material.set_shader_parameter(to_original[i], original)
+		lifes_icon.material.set_shader_parameter(og_param, original)
+		mob_lifes_icon.material.set_shader_parameter(og_param, original)
 		
-		lifes_icon.material.set_shader_parameter(to_replace[i], replace)
-		mob_lifes_icon.material.set_shader_parameter(to_replace[i], replace)
+		var param = "replace_%s" % i
+		var replace = skin.material.get_shader_parameter(param)
+		
+		lifes_icon.material.set_shader_parameter(param, replace)
+		mob_lifes_icon.material.set_shader_parameter(param, replace)
 
 func _update_player_icon():
 	if !player:

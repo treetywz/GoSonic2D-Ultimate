@@ -36,7 +36,7 @@ crouching
 is rolling
 IS GROUNDED
 is pushing
-anim state
+off-screen
 ground angle
 lives added
 vulnerable
@@ -184,7 +184,7 @@ theme_override_fonts/font = ExtResource("2")
 text = "0.00"
 horizontal_alignment = 2
 
-[node name="ANIMSTATE" type="Label" parent="Labels" unique_id=141286509]
+[node name="OFFSCREEN" type="Label" parent="Labels" unique_id=141286509]
 layout_mode = 0
 offset_left = 91.0
 offset_top = 131.0
@@ -193,7 +193,7 @@ offset_bottom = 139.0
 theme_override_colors/font_color = Color(0.878431, 0.894118, 0.878431, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2")
-text = "deprecated"
+text = "true"
 horizontal_alignment = 2
 
 [node name="GROUNDANGLE" type="Label" parent="Labels" unique_id=1200798059]

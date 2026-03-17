@@ -2,6 +2,7 @@ extends Control
 
 class_name DebugHUD
 
+@onready var labels = $Labels
 @onready var fps = $Labels/FPS
 @onready var x_pos = $Labels/XPOS
 @onready var y_pos = $Labels/YPOS
@@ -14,7 +15,7 @@ class_name DebugHUD
 @onready var isrolling = $Labels/ISROLLING
 @onready var isgrounded = $Labels/ISGROUNDED
 @onready var ispushing = $Labels/ISPUSHING
-@onready var animstate = $Labels/ANIMSTATE
+@onready var offscreen = $Labels/OFFSCREEN
 @onready var groundangle = $Labels/GROUNDANGLE
 @onready var lifesadded = $Labels/LIFESADDED
 @onready var vulnerabletext = $Labels/VULNERABLE
@@ -44,13 +45,14 @@ func _ready() -> void:
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_debug") and enabled:
-		if $Labels.visible == true:
-			$Labels.visible = false
-		elif $Labels.visible == false:
-			$Labels.visible = true
-			
+		labels.visible = !labels.visible
+	elif !enabled or !labels.visible:
+		return
+		
+	_handle_debug_labels()
+		
+func _handle_debug_labels():
 	if zone != null:
-
 		var player_position = zone.player.position
 		var player_velocity = zone.player.velocity
 		var statemachine = zone.player.state_machine
@@ -72,6 +74,7 @@ func _process(_delta):
 		fps.text = str(Engine.get_frames_per_second())
 		vulnerabletext.text = str(vulnerable)
 		spiked.text = str(zone.player.has_been_spiked)
+		offscreen.text = str(zone.player.skin.off_screen)
 		
 		
 		if cstate.text == "SuperPeelOut":

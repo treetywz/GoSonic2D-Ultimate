@@ -205,16 +205,17 @@ our custom character is complete! With the signpost, life icon, and everything e
 	larger than them wouldn't be too bad, but these guides won't cover how to accommodate for that,
 	since you *should* know enough Godot to be able to know how to do that.
 - **What about their Super form?**
-	- Super forms use shaders in order to change the color of the player's sprite. It's the same
-	technique used in the Genesis games, and when the player is in their super form, it uses
-	the `super_player_texture`. If you want to add a super form, you need to change the shader parameters
-	of the player skin to match the colors of the player's fur (or whatever colors you would want
-	to change), and along with that, you'd need to animate those shader parameters through the `PalletteSwapper`
-	*(I know it's spelt wrong)*.
-		- Do note that as of current, `original_2` and `replace_2` aren't actually used. Only
-		`original_0`, `original_1`, and `original_3` (and their respective `replace` counterparts) are
-		actually used for palette-switching, leaving a total of three colors for you to switch.
-		- There may be plans to make this more straightforward, but that's not a top priority.
+	- Super forms use palette-swapping shaders in order to change the color of the player's sprite. It's actually the same
+	technique used in the Genesis games!
+	
+	- When the player is in their super form, it uses
+	the `super_player_texture` for the player sprites. If you want to add a super form, you need to first add your own `super_player_texture` and
+	change the player skin's **Original Color** shader parameters to match the colors you want to replace
+	in your player's sprite (eg. Sonic's shades of blue), and after, you'd need to animate the **Replacement Color** shader parameters through the skin's `PaletteSwapper`
+	(just an `AnimationPlayer` node).
+		- A full guide for the `playerPalette` shader in better detail is planned, but is currently not available.
+		
+		
 - **What about player-exclusive abilities?**
 	- As of writing, there is no implementation of such system yet. There are obviously plans to,
 	and it will begin with the implementation of Tails and Knuckles in the future. Once those are
