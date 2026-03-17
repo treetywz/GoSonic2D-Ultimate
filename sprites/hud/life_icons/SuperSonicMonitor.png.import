@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj45bojqmbfwm"
-path="res://.godot/imported/sonic.png-f0cce819f180ca9ff50860ec209d1882.ctex"
+uid="uid://cjdnav6jc7qkt"
+path="res://.godot/imported/SuperSonicMonitor.png-849e848b7bb11da255fef55a27e888ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/signpost/sonic.png"
-dest_files=["res://.godot/imported/sonic.png-f0cce819f180ca9ff50860ec209d1882.ctex"]
+source_file="res://sprites/hud/life_icons/SuperSonicMonitor.png"
+dest_files=["res://.godot/imported/SuperSonicMonitor.png-849e848b7bb11da255fef55a27e888ed.ctex"]
 
 [params]
 

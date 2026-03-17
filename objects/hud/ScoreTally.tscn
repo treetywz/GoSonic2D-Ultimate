@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c3gpll855qbey"]
 
 [ext_resource type="FontFile" uid="uid://p3rv1t38fijn" path="res://fonts/hud_numbers.fnt" id="1"]
-[ext_resource type="Texture2D" uid="uid://cg4452objbtki" path="res://sprites/scoretally/names/sonic.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://co50w6w3ka7ri" path="res://sprites/scoretally/names/sonic.png" id="2"]
 [ext_resource type="Script" uid="uid://di21gpsjt65h5" path="res://scripts/hud/score_tally.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://ljxjxo6sku6o" path="res://sprites/scoretally/bonusmarker.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://d2fovkj1j6wcb" path="res://sprites/scoretally/got.png" id="5"]
@@ -12,9 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://x6irbissojqq" path="res://sprites/scoretally/act1.png" id="10"]
 [ext_resource type="AudioStream" uid="uid://bn8t2ve7872ch" path="res://audios/effects/score_total.wav" id="11"]
 [ext_resource type="AudioStream" uid="uid://dmjftrjnf1idr" path="res://audios/effects/score_add.wav" id="12"]
-[ext_resource type="Texture2D" uid="uid://dcyurlvnnwrx6" path="res://sprites/scoretally/names/knuckles.png" id="13"]
 [ext_resource type="Texture2D" uid="uid://dh7agkts6ogjr" path="res://sprites/scoretally/cool_bonnus.png" id="14"]
-[ext_resource type="Texture2D" uid="uid://bxh2o8etm3b4o" path="res://sprites/scoretally/names/tails.png" id="16"]
 [ext_resource type="Texture2D" uid="uid://8peqafpue6hw" path="res://sprites/scoretally/act2.png" id="17"]
 
 [sub_resource type="AtlasTexture" id="1"]
@@ -469,14 +467,10 @@ offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3")
-sonic_name = ExtResource("2")
-tails_name = ExtResource("16")
-knuckles_name = ExtResource("13")
 act_1 = ExtResource("10")
 act_2 = ExtResource("17")
 
 [node name="Player" type="TextureRect" parent="." unique_id=1651913177]
-visible = false
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5

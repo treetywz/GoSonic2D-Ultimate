@@ -15,13 +15,15 @@ const MS_MULTIPLIER = 100
 
 # Lives UI (Desktop)
 @onready var lifes = $Lives
+@onready var lifes_icon = $Lives/Icon
+@onready var lifes_name = $Lives/Name
 @onready var lifes_label = $Lives/Counter
-@onready var lifes_icon_handler = $Lives/NameHandler
 
 # Lives UI (Mobile)
 @onready var mob_lifes = $MobileLifes
 @onready var lifes_mobile = $MobileLifes/Counter
-@onready var mob_lifes_icon_handler = $MobileLifes/NameHandler
+@onready var mob_lifes_icon = $MobileLifes/Icon
+@onready var mob_lifes_name = $MobileLifes/Name
 
 # Managers
 @onready var score_manager = get_node("/root/ScoreManager") as ScoreManager
@@ -73,6 +75,22 @@ func _update_player_reference():
 	if zone:
 		player = zone.player
 
+func _get_life_icon(id, supr):
+	var to_load = str("res://sprites/hud/life_icons/", id, ".png")
+	var to_load_super = str("res://sprites/hud/life_icons/Super", id, ".png")
+	if ResourceLoader.exists(to_load_super) and supr:
+		return load(to_load_super)
+	elif !ResourceLoader.exists(to_load):
+		push_warning("HUD: There was no file found at '%s'!" % to_load)
+		return
+	return load(to_load)
+	
+func _get_life_name_graphic(id):
+	var to_load = str("res://sprites/hud/life_names/", id, ".png")
+	if !ResourceLoader.exists(to_load):
+		push_warning("HUD: There was no file found at '%s'!" % to_load)
+		return
+	return load(to_load)
 
 func _update_timer():
 	var time = score_manager.time
@@ -85,21 +103,65 @@ func _update_timer():
 	milliseconds_label.text = "%02d" % milliseconds
 
 
+func _check_color_update_redundancy():
+	# As a side effect of this check, you HAVE to change replace_0 for it to even recognize
+	# that you have switched palettes.
+	
+	var skin = player.skin
+	var replace = skin.material.get_shader_parameter("replace_0")
+	var compare = lifes_icon.material.get_shader_parameter("replace_2")
+	
+	if replace == compare:
+		return false
+	return true
+		
+
+func _update_color_palette():
+	var skin = player.skin
+	var to_replace = ["replace_2", "replace_1", "", "replace_0"]
+	var to_original = ["original_2", "original_1", "", "original_0"]
+	
+	# Crappy workaround, but it works.
+	# This is done because replace_0 on the player is replace_2 on the UI..
+	# replace_1 is the same..
+	# replace_2 on the player does not exist on the UI at all
+	# replace_3 on the player is replace_0 on the UI...
+	
+	for i in range(0,4):
+		if i == 2:
+			continue
+			
+		var param = "replace_%s" % i
+		var og_param = "original_%s" % i
+		var replace = skin.material.get_shader_parameter(param)
+		var original = skin.material.get_shader_parameter(og_param)
+		
+		lifes_icon.material.set_shader_parameter(to_original[i], original)
+		mob_lifes_icon.material.set_shader_parameter(to_original[i], original)
+		
+		lifes_icon.material.set_shader_parameter(to_replace[i], replace)
+		mob_lifes_icon.material.set_shader_parameter(to_replace[i], replace)
+
 func _update_player_icon():
 	if !player:
 		return
+		
+	if _check_color_update_redundancy():
+		_update_color_palette()
 	
-	# Only update if state changed (optimization)
 	if player.player_id == _last_player_id and player.super_state == _last_super_state:
 		return
 	
 	_last_player_id = player.player_id
 	_last_super_state = player.super_state
 	
-	var animation_name = "Super Sonic" if (player.player_id == "Sonic" and player.super_state) else player.player_id
+	var icon_graphic = _get_life_icon(player.player_id, player.super_state)
+	var name_graphic = _get_life_name_graphic(player.player_id)
 	
-	lifes_icon_handler.play(animation_name)
-	mob_lifes_icon_handler.play(animation_name)
+	lifes_icon.texture = icon_graphic
+	lifes_name.texture = name_graphic
+	mob_lifes_icon.texture = icon_graphic
+	mob_lifes_name.texture = name_graphic
 
 
 func _connect_signals():

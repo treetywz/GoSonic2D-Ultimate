@@ -42,12 +42,6 @@ const MARKER_FRAMES = {
 @onready var ring_marker = $RingBonuss/Marker
 @onready var total_marker = $Total/Marker
 
-# Character textures
-@export_group("Character Textures")
-@export var sonic_name: Texture2D
-@export var tails_name: Texture2D
-@export var knuckles_name: Texture2D
-
 # Act textures
 @export_group("Act Textures")
 @export var act_1: Texture2D
@@ -170,17 +164,15 @@ func _calculate_cool_bonus() -> int:
 	var times_hit = mini(ScoreManager.times_hit, MAX_HIT_PENALTY)
 	return COOL_BONUS_TABLE[times_hit]
 
+func _get_name_plate_graphic(id):
+	var to_load = str("res://sprites/scoretally/names/", id, ".png")
+	if !ResourceLoader.exists(to_load):
+		push_warning("HUD: There was no file found at '%s'!" % to_load)
+		return
+	return load(to_load)
 
 func set_player_name(player_id: String):
-	# Set character texture
-	var texture_map = {
-		"Sonic": sonic_name,
-		"Tails": tails_name,
-		"Knuckles": knuckles_name
-	}
-	
-	if player_id in texture_map:
-		player_name.texture = texture_map[player_id]
+	player_name.texture = _get_name_plate_graphic(player_id)
 	
 	# Set marker frames
 	if player_id in MARKER_FRAMES:

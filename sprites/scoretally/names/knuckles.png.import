@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcyurlvnnwrx6"
-path="res://.godot/imported/knuckles.png-8383fffc1d46199f25e4b30874224226.ctex"
+uid="uid://brwap0bkasdwi"
+path="res://.godot/imported/Knuckles.png-18ef276387459b88a0acf636f11ae690.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/scoretally/names/knuckles.png"
-dest_files=["res://.godot/imported/knuckles.png-8383fffc1d46199f25e4b30874224226.ctex"]
+source_file="res://sprites/scoretally/names/Knuckles.png"
+dest_files=["res://.godot/imported/Knuckles.png-18ef276387459b88a0acf636f11ae690.ctex"]
 
 [params]
 

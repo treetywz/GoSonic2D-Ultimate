@@ -30,10 +30,18 @@ var routined = false
 @onready var zone: Zone = Global.find_zone_from_root()
 @onready var anim_player = $AnimationPlayer
 @onready var spin_audio = $Spin
+@onready var sprite = $Sprite2D
 
 func _ready():
 	zone.reset_signposts.connect(_reset_signpost)
 	_reset_signpost()
+
+func _get_goal_post_graphic(id):
+	var to_load = str("res://sprites/signpost/characters/", id, ".png")
+	if !ResourceLoader.exists(to_load):
+		push_warning("HUD: There was no file found at '%s'!" % to_load)
+		return
+	return load(to_load)
 
 func _reset_signpost():
 	await get_tree().create_timer(POLL_INTERVAL).timeout
@@ -101,8 +109,10 @@ func _setup_player_victory():
 	camera.limit_left = int(new_limit_left)
 	player.lock_to_limits(int(new_limit_left), camera.limit_right)
 
-func _display_character_plate(character: String):
-	anim_player.play(character)
+func _display_character_plate(pid):
+	anim_player.stop()
+	sprite.hframes = 1
+	sprite.texture = _get_goal_post_graphic(pid)
 
 func _start_music_transition():
 	MusicManager.fade_out(MUSIC_FADE_DURATION)

@@ -88,7 +88,7 @@ drpmax = 780.0
 shader = ExtResource("1_7dijq")
 shader_parameter/original_0 = Color(0.141176, 0.141176, 0.564706, 1)
 shader_parameter/original_1 = Color(0.141176, 0.282353, 0.847059, 1)
-shader_parameter/original_2 = Color(0.282353, 0.282353, 0.988235, 1)
+shader_parameter/original_2 = Color(0, 0, 0, 1)
 shader_parameter/original_3 = Color(0.423529, 0.423529, 0.988235, 1)
 shader_parameter/replace_0 = Color(0.141176, 0.141176, 0.564706, 1)
 shader_parameter/replace_1 = Color(0.141176, 0.282353, 0.847059, 1)
@@ -968,7 +968,6 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_7dijq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="20"]
-graph_offset = Vector2(-6.004303, 139.67413)
 nodes/output/position = Vector2(580, 380)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_t2im0")
 nodes/StateMachine/position = Vector2(260, 360)
@@ -986,8 +985,8 @@ stats = Array[ExtResource("5")]([SubResource("3"), SubResource("55")])
 ground_layer = 3
 ring = ExtResource("35")
 super_music = ExtResource("5_7dijq")
-super_sonic_texture = ExtResource("6")
-sonic_texture = ExtResource("42")
+super_player_texture = ExtResource("6")
+player_texture = ExtResource("42")
 super_ring_amount = 50
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=933367911]
@@ -1182,6 +1181,7 @@ target_position = Vector2(0, 20)
 collision_mask = 15
 
 [node name="PushCheckers" type="Node2D" parent="." unique_id=167051114]
+visible = false
 
 [node name="Right" type="RayCast2D" parent="PushCheckers" unique_id=1304339168]
 position = Vector2(7, 0)

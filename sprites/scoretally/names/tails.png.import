@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxh2o8etm3b4o"
-path="res://.godot/imported/tails.png-e29475f831a972d5386d6a937c68b0a3.ctex"
+uid="uid://c60g8vlm3clgf"
+path="res://.godot/imported/Tails.png-f361d5623f5995f01ac381bbb40821bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/scoretally/names/tails.png"
-dest_files=["res://.godot/imported/tails.png-e29475f831a972d5386d6a937c68b0a3.ctex"]
+source_file="res://sprites/scoretally/names/Tails.png"
+dest_files=["res://.godot/imported/Tails.png-f361d5623f5995f01ac381bbb40821bb.ctex"]
 
 [params]
 

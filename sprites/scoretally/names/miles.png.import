@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3v5htits3aa6"
-path="res://.godot/imported/miles.png-07da843c7299f1dce6625a178a0a4bc1.ctex"
+uid="uid://b0pldltbyj0qy"
+path="res://.godot/imported/Miles.png-698516d5d60c3fade8cdaa8c276850f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/scoretally/names/miles.png"
-dest_files=["res://.godot/imported/miles.png-07da843c7299f1dce6625a178a0a4bc1.ctex"]
+source_file="res://sprites/scoretally/names/Miles.png"
+dest_files=["res://.godot/imported/Miles.png-698516d5d60c3fade8cdaa8c276850f2.ctex"]
 
 [params]
 

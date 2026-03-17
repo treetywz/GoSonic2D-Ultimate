@@ -8,7 +8,7 @@ signal detransform
 signal rotated_player
 
 # Exported properties
-@export_enum("Sonic", "Tails", "Knuckles") var player_id: String
+@export var player_id: String
 @export_enum("Smooth", "Original") var skin_rotation_mode: String = "Original"
 @export var bounds: Array[PlayerCollision]
 @export var stats: Array[PlayerStats]
@@ -17,8 +17,8 @@ signal rotated_player
 @export_flags_2d_physics var ceiling_layer = 1
 @export var ring: PackedScene
 @export var super_music: AudioStream
-@export var super_sonic_texture: Texture2D
-@export var sonic_texture: Texture2D
+@export var super_player_texture: Texture2D
+@export var player_texture: Texture2D
 @export var super_ring_amount: int
 
 
@@ -183,14 +183,14 @@ func handle_super_sonic():
 	if super_state:
 		set_stats(1)
 		skin.set_pallete("super")
-		skin.texture = super_sonic_texture
+		skin.texture = super_player_texture
 		shields.visible = false
 		vulnerable = false
 	else:
 		set_stats(0)
 		if !skin.transitioning_pallete:
 			skin.set_pallete("normal")
-		skin.texture = sonic_texture
+		skin.texture = player_texture
 		
 		if state_machine.current_state not in ["Transform", "Dead"]:
 			shields.visible = true
