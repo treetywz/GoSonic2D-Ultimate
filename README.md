@@ -13,10 +13,18 @@ It is the official successor to my previous framework, [GoSonic2D+](https://gith
 
 📖 **[Documentation](https://treetywz.github.io/GoSonic2D-Ultimate/)** *(Unfinished)*
 
-## Demo Video
+## Demo Videos
+
+### Sonic in Godot 4.6 Early Test
 
 <a href="https://www.youtube.com/watch?v=iN19KQ4ZZAI">
   <img src="https://img.youtube.com/vi/iN19KQ4ZZAI/maxresdefault.jpg" width="50%" alt="GoSonic2D Ultimate Demo">
+</a>
+
+### Tails + Sonic in Godot 4.6 Early Test
+
+<a href="https://www.youtube.com/watch?v=7EKIpyVsM0s">
+  <img src="https://img.youtube.com/vi/7EKIpyVsM0s/maxresdefault.jpg" width="50%" alt="GoSonic2D Ultimate Demo">
 </a>
 
 ## Credits
