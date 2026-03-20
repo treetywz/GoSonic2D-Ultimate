@@ -86,12 +86,18 @@ func bump_up():
 	velocity.y = -bump_force
 
 func _on_SolidObject_player_ceiling_collision(player: Player):
+	if !player.can_break_monitors:
+		return
+	
 	if player.velocity.y <= 0:
 		bump_up()
 	elif player.state_machine.current_state == "Snowboarding":
 		destroy(player)
 
 func _on_SolidObject_player_ground_collision(player: Player):
+	if !player.can_break_monitors:
+		return
+	
 	if player.is_rolling and player.velocity.y > 0:
 		player.velocity.y = -player.velocity.y
 		destroy(player)
@@ -99,12 +105,18 @@ func _on_SolidObject_player_ground_collision(player: Player):
 		destroy(player)
 
 func _on_SolidObject_player_left_wall_collision(player: Player):
+	if !player.can_break_monitors:
+		return
+	
 	if player.is_grounded() and player.is_rolling:
 		destroy(player)
 	elif player.state_machine.current_state == "Snowboarding":
 		destroy(player)
 
 func _on_SolidObject_player_right_wall_collision(player: Player):
+	if !player.can_break_monitors:
+		return
+	
 	if player.is_grounded() and player.is_rolling:
 		destroy(player)
 	elif player.state_machine.current_state == "Snowboarding":

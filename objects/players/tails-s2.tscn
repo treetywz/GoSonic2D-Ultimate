@@ -1,61 +1,63 @@
-[gd_scene format=3 uid="uid://b70x82dmmi3g"]
+[gd_scene format=3 uid="uid://c2finwlso86q0"]
 
-[ext_resource type="Script" uid="uid://d34cpt2p2sbgn" path="res://scripts/player/states/rolling_player_state.gd" id="1"]
-[ext_resource type="Shader" uid="uid://cs86f1r5t4cun" path="res://shaders/playerPalette.tres" id="1_7dijq"]
-[ext_resource type="Script" uid="uid://t3ibcomstpp" path="res://scripts/player/states/air_player_state.gd" id="2"]
-[ext_resource type="Script" uid="uid://w2kyrxl4a5ht" path="res://scripts/player/states/regular_player_state.gd" id="3"]
-[ext_resource type="Script" uid="uid://b52pxwam8fpfc" path="res://scripts/player/states/braking_player_state.gd" id="4"]
-[ext_resource type="Script" uid="uid://cf4ikatxua3ww" path="res://scripts/player/resources/player_stats.gd" id="5"]
-[ext_resource type="AudioStream" uid="uid://ccq33dcwi8q5g" path="res://audios/music/th07_04.ogg" id="5_7dijq"]
-[ext_resource type="Texture2D" uid="uid://b2kcbmn2tf141" path="res://sprites/players/super-sonic.png" id="6"]
-[ext_resource type="Script" uid="uid://btg81n1ed2el6" path="res://scripts/player/player_state_machine.gd" id="7"]
-[ext_resource type="Script" uid="uid://cht0dov3wcmvq" path="res://scripts/player/resources/player_collision.gd" id="8"]
-[ext_resource type="Script" uid="uid://bm3koms08erek" path="res://scripts/player/player.gd" id="9"]
-[ext_resource type="Script" uid="uid://bq71d8sdj544j" path="res://scripts/player/player_hanging_detector.gd" id="9_4ewks"]
-[ext_resource type="Script" uid="uid://cbkr6w1gjwcqo" path="res://scripts/player/player_skin.gd" id="10"]
-[ext_resource type="Script" uid="uid://bld28h1esjkes" path="res://scripts/player/states/spring_player_state.gd" id="11"]
-[ext_resource type="Script" uid="uid://cl231qj4pbnjd" path="res://scripts/player/player_audio.gd" id="12"]
-[ext_resource type="PackedScene" path="res://objects/audios/SpinAudio.tscn" id="13"]
-[ext_resource type="Script" uid="uid://yh6eoi3oob5j" path="res://scripts/player/states/flying_player_state.gd" id="13_kgrao"]
-[ext_resource type="Script" uid="uid://duptx86gvpkwe" path="res://scripts/player/states/hanging_player_state.gd" id="13_ompvs"]
-[ext_resource type="PackedScene" path="res://objects/audios/BrakeAudio.tscn" id="14"]
-[ext_resource type="PackedScene" path="res://objects/audios/JumpAudio.tscn" id="15"]
-[ext_resource type="PackedScene" uid="uid://b42w0bdplmxdx" path="res://objects/shields/insta_shield.tscn" id="16"]
-[ext_resource type="Script" uid="uid://b7u4a1fl24a3" path="res://scripts/shields/shields_manager.gd" id="17"]
-[ext_resource type="PackedScene" uid="uid://d3cfmfl8lob88" path="res://objects/shields/blue_shield.tscn" id="18"]
-[ext_resource type="PackedScene" path="res://objects/shields/thunder_shield.tscn" id="19"]
-[ext_resource type="PackedScene" uid="uid://byya3du86arfg" path="res://objects/shields/flame_shield.tscn" id="20"]
-[ext_resource type="Script" uid="uid://bwq22l7pdh0gp" path="res://scripts/player/states/spindash_player_state.gd" id="21"]
-[ext_resource type="Script" uid="uid://v6pfvl488p17" path="res://scripts/shields/none.gd" id="22"]
-[ext_resource type="AudioStream" uid="uid://bi1c2cvshg5hj" path="res://audios/effects/spinDashCharge.wav" id="23"]
-[ext_resource type="AudioStream" uid="uid://bgdl65wyqxxc3" path="res://audios/effects/spinDashRelease.wav" id="24"]
-[ext_resource type="Script" uid="uid://cd22m0nlgjc1j" path="res://scripts/player/states/superpeelout_player_state.gd" id="25"]
-[ext_resource type="AudioStream" uid="uid://bdadurpaqsji5" path="res://audios/effects/peelOutCharge.wav" id="26"]
-[ext_resource type="AudioStream" uid="uid://c4otidw3ymsj3" path="res://audios/effects/peelOutRelease.wav" id="27"]
-[ext_resource type="Texture2D" uid="uid://bhaypphrki3ej" path="res://sprites/players/spinDash.png" id="28"]
-[ext_resource type="Script" uid="uid://cyl200rpxq8ve" path="res://scripts/player/states/dropdash_player_state.gd" id="29"]
-[ext_resource type="AudioStream" uid="uid://ciayuw5jmcnay" path="res://audios/effects/drop_dash.wav" id="30"]
-[ext_resource type="AudioStream" uid="uid://cwlmoqdrswub3" path="res://audios/effects/yes.wav" id="31"]
-[ext_resource type="Script" uid="uid://clbfvlrux0ewi" path="res://scripts/player/states/dead_player_state.gd" id="32"]
-[ext_resource type="AudioStream" uid="uid://suxtv4ghw5hq" path="res://audios/effects/hurt.wav" id="33"]
-[ext_resource type="Script" uid="uid://cterm5yb2p6ku" path="res://scripts/player/states/hurt_player_state.gd" id="34"]
-[ext_resource type="PackedScene" uid="uid://dxri0c4a4d3r5" path="res://objects/rings/Ring.tscn" id="35"]
-[ext_resource type="AudioStream" uid="uid://ys0ia4w24fw2" path="res://audios/effects/fly.wav" id="35_bq86a"]
-[ext_resource type="AudioStream" uid="uid://n8ee2d578g57" path="res://audios/effects/loseRings.wav" id="36"]
-[ext_resource type="AudioStream" uid="uid://bpolkju72ofhx" path="res://audios/effects/tired_fly.wav" id="36_ompvs"]
-[ext_resource type="AudioStream" uid="uid://b4urfolmubkpb" path="res://audios/effects/spike.wav" id="37"]
-[ext_resource type="AudioStream" uid="uid://b2h4xhydt3d5m" path="res://audios/effects/grab.wav" id="37_juqpa"]
-[ext_resource type="PackedScene" path="res://objects/audios/RingAudio.tscn" id="38"]
-[ext_resource type="PackedScene" uid="uid://qiy577rvnmt2" path="res://objects/shields/bubble_shield.tscn" id="39"]
-[ext_resource type="Script" uid="uid://iwn0l6ydmu54" path="res://scripts/player/ring_decreaser.gd" id="40"]
-[ext_resource type="Texture2D" uid="uid://cbcxmcsb2owxr" path="res://sprites/players/sonic.png" id="42"]
-[ext_resource type="Script" uid="uid://bhlda81t7rck1" path="res://scripts/player/states/transform_player_state.gd" id="43"]
-[ext_resource type="AudioStream" uid="uid://bfj78p46gavng" path="res://audios/effects/transform_3kup.wav" id="44"]
-[ext_resource type="Script" uid="uid://bwthkst1o8j2d" path="res://scripts/player/states/snowboarding_player_state.gd" id="46"]
-[ext_resource type="Script" uid="uid://bujss60hjyws" path="res://scripts/player/states/victory_player_state.gd" id="47"]
+[ext_resource type="Shader" uid="uid://cs86f1r5t4cun" path="res://shaders/playerPalette.tres" id="1_krnyb"]
+[ext_resource type="Script" uid="uid://bm3koms08erek" path="res://scripts/player/player.gd" id="2_2u1q6"]
+[ext_resource type="Script" uid="uid://cht0dov3wcmvq" path="res://scripts/player/resources/player_collision.gd" id="3_lc00r"]
+[ext_resource type="Script" uid="uid://cf4ikatxua3ww" path="res://scripts/player/resources/player_stats.gd" id="4_ha0u5"]
+[ext_resource type="PackedScene" uid="uid://dxri0c4a4d3r5" path="res://objects/rings/Ring.tscn" id="5_oa06m"]
+[ext_resource type="AudioStream" uid="uid://ccq33dcwi8q5g" path="res://audios/music/th07_04.ogg" id="6_a3dka"]
+[ext_resource type="Texture2D" uid="uid://c7fgvi4bnxlea" path="res://sprites/players/tails-s2.png" id="7_krnyb"]
+[ext_resource type="Script" uid="uid://bq71d8sdj544j" path="res://scripts/player/player_hanging_detector.gd" id="8_nb58w"]
+[ext_resource type="Script" uid="uid://btg81n1ed2el6" path="res://scripts/player/player_state_machine.gd" id="9_c3ik0"]
+[ext_resource type="Script" uid="uid://w2kyrxl4a5ht" path="res://scripts/player/states/regular_player_state.gd" id="10_iekgt"]
+[ext_resource type="Script" uid="uid://duptx86gvpkwe" path="res://scripts/player/states/hanging_player_state.gd" id="11_cupud"]
+[ext_resource type="Script" uid="uid://d34cpt2p2sbgn" path="res://scripts/player/states/rolling_player_state.gd" id="11_n8wpd"]
+[ext_resource type="Script" uid="uid://yh6eoi3oob5j" path="res://scripts/player/states/flying_player_state.gd" id="12_5xcov"]
+[ext_resource type="Script" uid="uid://b52pxwam8fpfc" path="res://scripts/player/states/braking_player_state.gd" id="12_ngkj0"]
+[ext_resource type="Script" uid="uid://t3ibcomstpp" path="res://scripts/player/states/air_player_state.gd" id="13_kvpjh"]
+[ext_resource type="Script" uid="uid://bld28h1esjkes" path="res://scripts/player/states/spring_player_state.gd" id="14_dhgkf"]
+[ext_resource type="Script" uid="uid://bwq22l7pdh0gp" path="res://scripts/player/states/spindash_player_state.gd" id="15_7cnc1"]
+[ext_resource type="Script" uid="uid://cd22m0nlgjc1j" path="res://scripts/player/states/superpeelout_player_state.gd" id="16_b43nk"]
+[ext_resource type="Script" uid="uid://cyl200rpxq8ve" path="res://scripts/player/states/dropdash_player_state.gd" id="17_h6578"]
+[ext_resource type="Script" uid="uid://clbfvlrux0ewi" path="res://scripts/player/states/dead_player_state.gd" id="18_4t2tn"]
+[ext_resource type="Script" uid="uid://cterm5yb2p6ku" path="res://scripts/player/states/hurt_player_state.gd" id="19_u4e8c"]
+[ext_resource type="Script" uid="uid://bhlda81t7rck1" path="res://scripts/player/states/transform_player_state.gd" id="20_xu73x"]
+[ext_resource type="Script" uid="uid://bujss60hjyws" path="res://scripts/player/states/victory_player_state.gd" id="21_nx4dg"]
+[ext_resource type="Script" uid="uid://bwthkst1o8j2d" path="res://scripts/player/states/snowboarding_player_state.gd" id="22_p406e"]
+[ext_resource type="Script" uid="uid://b7u4a1fl24a3" path="res://scripts/shields/shields_manager.gd" id="23_onxcd"]
+[ext_resource type="PackedScene" uid="uid://b42w0bdplmxdx" path="res://objects/shields/insta_shield.tscn" id="24_fh0ej"]
+[ext_resource type="PackedScene" uid="uid://d3cfmfl8lob88" path="res://objects/shields/blue_shield.tscn" id="25_cits1"]
+[ext_resource type="PackedScene" uid="uid://qiy577rvnmt2" path="res://objects/shields/bubble_shield.tscn" id="26_qntb4"]
+[ext_resource type="PackedScene" path="res://objects/shields/thunder_shield.tscn" id="27_8h70n"]
+[ext_resource type="PackedScene" uid="uid://byya3du86arfg" path="res://objects/shields/flame_shield.tscn" id="28_5j8mk"]
+[ext_resource type="Script" uid="uid://v6pfvl488p17" path="res://scripts/shields/none.gd" id="29_nooum"]
+[ext_resource type="Script" uid="uid://cl231qj4pbnjd" path="res://scripts/player/player_audio.gd" id="30_c7gn2"]
+[ext_resource type="PackedScene" path="res://objects/audios/JumpAudio.tscn" id="31_v7g6w"]
+[ext_resource type="PackedScene" path="res://objects/audios/BrakeAudio.tscn" id="32_po8mp"]
+[ext_resource type="PackedScene" path="res://objects/audios/SpinAudio.tscn" id="33_xoiye"]
+[ext_resource type="AudioStream" uid="uid://ys0ia4w24fw2" path="res://audios/effects/fly.wav" id="34_j15rr"]
+[ext_resource type="AudioStream" uid="uid://bi1c2cvshg5hj" path="res://audios/effects/spinDashCharge.wav" id="34_wxecq"]
+[ext_resource type="AudioStream" uid="uid://bpolkju72ofhx" path="res://audios/effects/tired_fly.wav" id="35_cupud"]
+[ext_resource type="AudioStream" uid="uid://bgdl65wyqxxc3" path="res://audios/effects/spinDashRelease.wav" id="35_da2oa"]
+[ext_resource type="AudioStream" uid="uid://bdadurpaqsji5" path="res://audios/effects/peelOutCharge.wav" id="36_3xd3h"]
+[ext_resource type="AudioStream" uid="uid://b2h4xhydt3d5m" path="res://audios/effects/grab.wav" id="36_tth4q"]
+[ext_resource type="AudioStream" uid="uid://c4otidw3ymsj3" path="res://audios/effects/peelOutRelease.wav" id="37_y0lkk"]
+[ext_resource type="AudioStream" uid="uid://ciayuw5jmcnay" path="res://audios/effects/drop_dash.wav" id="38_u8cvp"]
+[ext_resource type="AudioStream" uid="uid://cwlmoqdrswub3" path="res://audios/effects/yes.wav" id="39_lqe8j"]
+[ext_resource type="AudioStream" uid="uid://suxtv4ghw5hq" path="res://audios/effects/hurt.wav" id="40_axb2y"]
+[ext_resource type="AudioStream" uid="uid://n8ee2d578g57" path="res://audios/effects/loseRings.wav" id="41_tsrl6"]
+[ext_resource type="AudioStream" uid="uid://b4urfolmubkpb" path="res://audios/effects/spike.wav" id="42_2nhrl"]
+[ext_resource type="AudioStream" uid="uid://bfj78p46gavng" path="res://audios/effects/transform_3kup.wav" id="43_x5jg8"]
+[ext_resource type="PackedScene" path="res://objects/audios/RingAudio.tscn" id="44_jv0on"]
+[ext_resource type="Script" uid="uid://cbkr6w1gjwcqo" path="res://scripts/player/player_skin.gd" id="45_4ekts"]
+[ext_resource type="Script" uid="uid://dl1027ulr5srn" path="res://scripts/player/tails_rotation.gd" id="46_rqagd"]
+[ext_resource type="Texture2D" uid="uid://bhaypphrki3ej" path="res://sprites/players/spinDash.png" id="46_w8pl1"]
+[ext_resource type="Texture2D" uid="uid://18qumidc4p37" path="res://sprites/players/tails_tails-s2.png" id="47_2u1q6"]
+[ext_resource type="Script" uid="uid://iwn0l6ydmu54" path="res://scripts/player/ring_decreaser.gd" id="47_e5xbm"]
+[ext_resource type="Texture2D" uid="uid://c6nct7mq4y1k2" path="res://sprites/players/tails_tails_ground-s2.png" id="52_s2x6v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kgrao"]
-shader = ExtResource("1_7dijq")
+shader = ExtResource("1_krnyb")
 shader_parameter/original_0 = Color(0, 0, 0, 1)
 shader_parameter/original_1 = Color(0, 0, 0, 1)
 shader_parameter/original_2 = Color(0, 0, 0, 1)
@@ -66,21 +68,21 @@ shader_parameter/replace_2 = Color(0, 0, 0, 1)
 shader_parameter/replace_3 = Color(0, 0, 0, 1)
 shader_parameter/precision = 0.1
 
-[sub_resource type="Resource" id="1"]
-script = ExtResource("8")
+[sub_resource type="Resource" id="Resource_rpnxh"]
+script = ExtResource("3_lc00r")
 
-[sub_resource type="Resource" id="2"]
-script = ExtResource("8")
+[sub_resource type="Resource" id="Resource_bjab3"]
+script = ExtResource("3_lc00r")
 offset = Vector2(0, -5)
 height_radius = 14.0
 width_radius = 7.0
 push_radius = 3.0
 
-[sub_resource type="Resource" id="3"]
-script = ExtResource("5")
+[sub_resource type="Resource" id="Resource_rqagd"]
+script = ExtResource("4_ha0u5")
 
-[sub_resource type="Resource" id="55"]
-script = ExtResource("5")
+[sub_resource type="Resource" id="Resource_5xcov"]
+script = ExtResource("4_ha0u5")
 acceleration = 675.0
 slope_factor = 337.5
 top_speed = 600.0
@@ -90,50 +92,50 @@ max_jump_height = 480.0
 drpspd = 720.0
 drpmax = 780.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_juqpa"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tth4q"]
 size = Vector2(13, 21)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ewks"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cupud"]
 size = Vector2(20, 2)
 
 [sub_resource type="ShaderMaterial" id="76"]
-shader = ExtResource("1_7dijq")
-shader_parameter/original_0 = Color(0.141176, 0.141176, 0.564706, 1)
-shader_parameter/original_1 = Color(0.141176, 0.282353, 0.847059, 1)
-shader_parameter/original_2 = Color(0.42352942, 0.42352942, 0.9882353, 1)
-shader_parameter/original_3 = Color(0, 0, 0, 1)
-shader_parameter/replace_0 = Color(0.141176, 0.141176, 0.564706, 1)
-shader_parameter/replace_1 = Color(0.141176, 0.282353, 0.847059, 1)
-shader_parameter/replace_2 = Color(0.423529, 0.423529, 0.988235, 1)
-shader_parameter/replace_3 = Color(0.423529, 0.423529, 0.988235, 1)
+shader = ExtResource("1_krnyb")
+shader_parameter/original_0 = Color(0.5019608, 0, 0, 1)
+shader_parameter/original_1 = Color(0.627451, 0.3764706, 0.2509804, 1)
+shader_parameter/original_2 = Color(0.8784314, 0.5019608, 0, 1)
+shader_parameter/original_3 = Color(0.8784314, 0.627451, 0, 1)
+shader_parameter/replace_0 = Color(0.5019608, 0, 0, 1)
+shader_parameter/replace_1 = Color(0.627451, 0.3764706, 0.2509804, 1)
+shader_parameter/replace_2 = Color(0.8784314, 0.5019608, 0, 1)
+shader_parameter/replace_3 = Color(0.8784314, 0.627451, 0, 1)
 shader_parameter/precision = 0.1
 
 [sub_resource type="AtlasTexture" id="29"]
-atlas = ExtResource("28")
+atlas = ExtResource("46_w8pl1")
 region = Rect2(0, 0, 32, 23)
 
 [sub_resource type="AtlasTexture" id="30"]
-atlas = ExtResource("28")
+atlas = ExtResource("46_w8pl1")
 region = Rect2(33, 0, 32, 23)
 
 [sub_resource type="AtlasTexture" id="31"]
-atlas = ExtResource("28")
+atlas = ExtResource("46_w8pl1")
 region = Rect2(66, 0, 32, 23)
 
 [sub_resource type="AtlasTexture" id="32"]
-atlas = ExtResource("28")
+atlas = ExtResource("46_w8pl1")
 region = Rect2(99, 0, 32, 23)
 
 [sub_resource type="AtlasTexture" id="33"]
-atlas = ExtResource("28")
+atlas = ExtResource("46_w8pl1")
 region = Rect2(132, 0, 32, 23)
 
 [sub_resource type="AtlasTexture" id="34"]
-atlas = ExtResource("28")
+atlas = ExtResource("46_w8pl1")
 region = Rect2(165, 0, 32, 23)
 
 [sub_resource type="AtlasTexture" id="35"]
-atlas = ExtResource("28")
+atlas = ExtResource("46_w8pl1")
 region = Rect2(198, 0, 32, 23)
 
 [sub_resource type="SpriteFrames" id="36"]
@@ -165,7 +167,7 @@ animations = [{
 "speed": 25.0
 }]
 
-[sub_resource type="Animation" id="123"]
+[sub_resource type="Animation" id="Animation_t4ont"]
 resource_name = "Detransform"
 length = 0.9
 step = 0.05
@@ -176,10 +178,10 @@ tracks/0/path = NodePath(".:material:shader_parameter/replace_0")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(-5.9604645e-08, 0.15, 0.3, 0.45, 0.6, 0.75, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Color(0.705882, 0.705882, 0, 1), Color(0.988235, 0.988235, 0.988235, 1), Color(0.705882, 0.705882, 0.988235, 1), Color(0.564706, 0.564706, 0.847059, 1), Color(0.423529, 0.423529, 0.705882, 1), Color(0.282353, 0.282353, 0.564706, 1)]
+"values": [Color(0.8784314, 0.8784314, 0.3764706, 1), Color(0.8784314, 0.8784314, 0.2509804, 1), Color(0.7529412, 0.7529412, 0.2509804, 1), Color(0.627451, 0.627451, 0.2509804, 1), Color(0.5019608, 0.5019608, 0.2509804, 1), Color(0.3764706, 0.3764706, 0.3764706, 1), Color(0.2509804, 0.2509804, 0.5019608, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -188,10 +190,10 @@ tracks/1/path = NodePath(".:material:shader_parameter/replace_1")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(-5.9604645e-08, 0.15, 0.3, 0.45, 0.6, 0.75, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Color(0.988235, 0.988235, 0, 1), Color(0.988235, 0.988235, 0.988235, 1), Color(0.847059, 0.847059, 0.988235, 1), Color(0.705882, 0.705882, 0.988235, 1), Color(0.564706, 0.564706, 0.847059, 1), Color(0.423529, 0.423529, 0.847059, 1)]
+"values": [Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.627451, 1), Color(0.7529412, 0.8784314, 0.627451, 1), Color(0.627451, 0.7529412, 0.627451, 1), Color(0.5019608, 0.627451, 0.627451, 1), Color(0.3764706, 0.5019608, 0.627451, 1), Color(0.2509804, 0.3764706, 0.627451, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -200,10 +202,22 @@ tracks/2/path = NodePath(".:material:shader_parameter/replace_2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(-5.9604645e-08, 0.15, 0.3, 0.45, 0.6, 0.75, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Color(0.988235, 0.988235, 0.564706, 1), Color(0.988235, 0.988235, 0.988235, 1), Color(0.988235, 0.988235, 0.988235, 1), Color(0.847059, 0.847059, 0.988235, 1), Color(0.705882, 0.705882, 0.988235, 1), Color(0.423529, 0.423529, 0.988235, 1)]
+"values": [Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.7529412, 0.7529412, 0.8784314, 1), Color(0.627451, 0.627451, 0.8784314, 1), Color(0.5019608, 0.5019608, 0.8784314, 1), Color(0.3764706, 0.3764706, 0.8784314, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/replace_3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(-5.9604645e-08, 0.15, 0.3, 0.45, 0.6, 0.75, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.7529412, 0.7529412, 0.8784314, 1), Color(0.627451, 0.627451, 0.8784314, 1), Color(0.5019608, 0.5019608, 0.8784314, 1)]
 }
 
 [sub_resource type="Animation" id="113"]
@@ -220,7 +234,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.141176, 0.141176, 0.564706, 1)]
+"values": [Color(0.5019608, 0, 0, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -232,7 +246,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.141176, 0.282353, 0.847059, 1)]
+"values": [Color(0.627451, 0.3764706, 0.2509804, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -244,11 +258,25 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.423529, 0.423529, 0.988235, 1)]
+"values": [Color(0.8784314, 0.5019608, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/replace_3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(0.8784314, 0.627451, 0, 1)]
 }
 
-[sub_resource type="Animation" id="114"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_krnyb"]
+resource_name = "RESET"
+length = 0.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -259,7 +287,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.141176, 0.141176, 0.564706, 1)]
+"values": [Color(0.5019608, 0, 0, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -271,7 +299,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.141176, 0.282353, 0.847059, 1)]
+"values": [Color(0.627451, 0.3764706, 0.2509804, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -283,7 +311,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.423529, 0.423529, 0.988235, 1)]
+"values": [Color(0.8784314, 0.5019608, 0, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -292,10 +320,10 @@ tracks/3/path = NodePath(".:material:shader_parameter/replace_3")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.033333335),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.423529, 0.423529, 0.988235, 1)]
+"update": 1,
+"values": [Color(0.8784314, 0.627451, 0, 1)]
 }
 
 [sub_resource type="Animation" id="115"]
@@ -310,10 +338,10 @@ tracks/0/path = NodePath(".:material:shader_parameter/replace_0")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 0.9659363, 1, 1, 1),
 "update": 1,
-"values": [Color(0.988235, 0.988235, 0.847059, 1), Color(0.847059, 0.847059, 0.423529, 1), Color(0.705882, 0.705882, 0, 1)]
+"values": [Color(0.8784314, 0.8784314, 0.5019608, 1), Color(0.8784314, 0.8784314, 0.3764706, 1), Color(0.8784314, 0.8784314, 0.2509804, 1), Color(0.8784314, 0.8784314, 0.1254902, 1), Color(0.8784314, 0.8784314, 0, 1), Color(0.8784314, 0.8784314, 0, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -322,10 +350,10 @@ tracks/1/path = NodePath(".:material:shader_parameter/replace_1")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.19999999, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Color(0.988235, 0.988235, 0.847059, 1), Color(0.988235, 0.988235, 0.564706, 1), Color(0.988235, 0.988235, 0, 1)]
+"values": [Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.7529412, 1), Color(0.8784314, 0.8784314, 0.627451, 1), Color(0.8784314, 0.8784314, 0.5019608, 1), Color(0.8784314, 0.8784314, 0.3764706, 1), Color(0.8784314, 0.8784314, 0.2509804, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -334,10 +362,22 @@ tracks/2/path = NodePath(".:material:shader_parameter/replace_2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Color(0.988235, 0.988235, 0.847059, 1), Color(0.988235, 0.988235, 0.705882, 1), Color(0.988235, 0.988235, 0.564706, 1)]
+"values": [Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.7529412, 1), Color(0.8784314, 0.8784314, 0.627451, 1), Color(0.8784314, 0.8784314, 0.5019608, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/replace_3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.7529412, 1)]
 }
 
 [sub_resource type="Animation" id="122"]
@@ -351,10 +391,10 @@ tracks/0/path = NodePath(".:material:shader_parameter/replace_0")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.35, 0.5, 0.65, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.19999999, 0.29999998, 0.39999998, 0.49999994, 0.59999996, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Color(0.282353, 0.282353, 0.564706, 1), Color(0.423529, 0.423529, 0.705882, 1), Color(0.564706, 0.564706, 0.847059, 1), Color(0.705882, 0.705882, 0.988235, 1), Color(0.988235, 0.988235, 0.988235, 1), Color(0.705882, 0.705882, 0, 1)]
+"values": [Color(0.2509804, 0.2509804, 0.5019608, 1), Color(0.3764706, 0.3764706, 0.3764706, 1), Color(0.5019608, 0.5019608, 0.2509804, 1), Color(0.627451, 0.627451, 0.2509804, 1), Color(0.7529412, 0.7529412, 0.2509804, 1), Color(0.8784314, 0.8784314, 0.2509804, 1), Color(0.8784314, 0.8784314, 0.3764706, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -363,10 +403,10 @@ tracks/1/path = NodePath(".:material:shader_parameter/replace_1")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.35, 0.5, 0.65, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.29999998, 0.39999998, 0.49999994, 0.59999996, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Color(0.423529, 0.423529, 0.847059, 1), Color(0.564706, 0.564706, 0.847059, 1), Color(0.705882, 0.705882, 0.988235, 1), Color(0.847059, 0.847059, 0.988235, 1), Color(0.988235, 0.988235, 0.988235, 1), Color(0.988235, 0.988235, 0, 1)]
+"values": [Color(0.2509804, 0.3764706, 0.627451, 1), Color(0.3764706, 0.5019608, 0.627451, 1), Color(0.5019608, 0.627451, 0.627451, 1), Color(0.627451, 0.7529412, 0.627451, 1), Color(0.7529412, 0.8784314, 0.627451, 1), Color(0.8784314, 0.8784314, 0.627451, 1), Color(0.8784314, 0.8784314, 0.8784314, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -375,17 +415,29 @@ tracks/2/path = NodePath(".:material:shader_parameter/replace_2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.35, 0.5, 0.65, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.29999998, 0.39999998, 0.49999994, 0.59999996, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Color(0.423529, 0.423529, 0.988235, 1), Color(0.705882, 0.705882, 0.988235, 1), Color(0.847059, 0.847059, 0.988235, 1), Color(0.988235, 0.988235, 0.988235, 1), Color(0.988235, 0.988235, 0.988235, 1), Color(0.988235, 0.988235, 0.564706, 1)]
+"values": [Color(0.3764706, 0.3764706, 0.8784314, 1), Color(0.5019608, 0.5019608, 0.8784314, 1), Color(0.627451, 0.627451, 0.8784314, 1), Color(0.7529412, 0.7529412, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/replace_3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.29999998, 0.39999998, 0.49999994, 0.59999996, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0.5019608, 0.5019608, 0.8784314, 1), Color(0.627451, 0.627451, 0.8784314, 1), Color(0.7529412, 0.7529412, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kgrao"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_krnyb"]
 _data = {
-&"Detransform": SubResource("123"),
+&"Detransform": SubResource("Animation_t4ont"),
 &"NormalPalette": SubResource("113"),
-&"RESET": SubResource("114"),
+&"RESET": SubResource("Animation_krnyb"),
 &"SuperPalette": SubResource("115"),
 &"Transform": SubResource("122")
 }
@@ -405,11 +457,10 @@ tracks/0/keys = {
 "values": [36]
 }
 
-[sub_resource type="Animation" id="39"]
+[sub_resource type="Animation" id="Animation_nb58w"]
 resource_name = "balance"
-length = 0.45
+length = 0.8
 loop_mode = 1
-step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -417,15 +468,15 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.40000004),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [46, 47, 48]
+"values": [46, 47]
 }
 
-[sub_resource type="Animation" id="117"]
+[sub_resource type="Animation" id="Animation_rqagd"]
 resource_name = "balancing_super"
-length = 0.2
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -434,7 +485,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.40000004),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [46, 47]
@@ -467,10 +518,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11, 12]
+"values": [8]
 }
 
 [sub_resource type="Animation" id="51"]
@@ -508,10 +559,11 @@ tracks/0/keys = {
 "values": [87, 88, 89, 90, 87, 91, 89, 92, 87, 93, 89, 94, 87, 95, 89, 96]
 }
 
-[sub_resource type="Animation" id="Animation_4ewks"]
-resource_name = "hanging"
+[sub_resource type="Animation" id="Animation_5xcov"]
+resource_name = "flying"
+length = 0.1
 loop_mode = 1
-step = 0.1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -519,10 +571,82 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.05),
 "transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_avvbv"]
+resource_name = "flying_carry"
+length = 0.1
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_s2x6v"]
+resource_name = "flying_carry_pull"
+length = 0.1
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [32, 33]
+}
+
+[sub_resource type="Animation" id="Animation_j15rr"]
+resource_name = "flying_carry_tired"
+length = 0.4
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [80, 81]
+"values": [34, 40, 41, 42]
+}
+
+[sub_resource type="Animation" id="Animation_cupud"]
+resource_name = "flying_tired"
+length = 0.4
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [43, 44, 48, 49]
 }
 
 [sub_resource type="Animation" id="53"]
@@ -543,7 +667,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="5"]
-length = 3.5
+length = 4.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -551,16 +675,17 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3, 3.1, 3.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.5333333, 1.6333333, 1.7333335, 1.8333334, 2.7, 2.7999997, 2.8999999, 2.9999998, 4.366667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0, 0, 2, 1, 0, 0, 2, 1, 0, 3]
 }
 
 [sub_resource type="Animation" id="44"]
 resource_name = "idle-wait"
-length = 5.6
+length = 4.9
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -568,10 +693,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.8, 4.5, 4.6, 5.3, 5.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2.1, 2.4, 2.4999998, 2.6999998, 2.8999996, 3.1, 3.2999997, 3.4999998, 3.6999998, 3.8999999, 4.0999994, 4.2999997, 4.5, 4.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 5, 6, 7, 8, 7, 3]
+"values": [3, 3, 4, 5, 6, 5, 6, 5, 6, 5, 6, 5, 6, 5, 4]
 }
 
 [sub_resource type="Animation" id="116"]
@@ -600,30 +725,14 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [9, 10]
+"values": [7]
 }
 
 [sub_resource type="Animation" id="40"]
 resource_name = "panic_balance"
-length = 0.3
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [49, 50, 51]
-}
-
-[sub_resource type="Animation" id="6"]
 length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
@@ -633,10 +742,26 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.40000004),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [83, 84, 85, 86]
+"values": [46, 47]
+}
+
+[sub_resource type="Animation" id="6"]
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [25, 26]
 }
 
 [sub_resource type="Animation" id="49"]
@@ -657,7 +782,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="7"]
-length = 0.8
+length = 0.3
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -666,10 +791,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [25, 29, 26, 29, 27, 29, 28, 29]
+"values": [29, 27, 28]
 }
 
 [sub_resource type="Animation" id="8"]
@@ -697,45 +822,15 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [30, 31, 32, 33]
-}
-
-[sub_resource type="Animation" id="128"]
-resource_name = "snowboard"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [103]
-}
-
-[sub_resource type="Animation" id="129"]
-resource_name = "snowboard_jump"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [103, 104, 105]
+"values": [30, 31]
 }
 
 [sub_resource type="Animation" id="24"]
 resource_name = "spindash"
-length = 0.24
+length = 0.12
 loop_mode = 1
 step = 0.04
 tracks/0/type = "value"
@@ -745,10 +840,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.04, 0.08),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [42, 37, 38, 39, 40, 41]
+"values": [37, 38, 39]
 }
 
 [sub_resource type="Animation" id="120"]
@@ -832,13 +927,17 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7dijq"]
 _data = {
 &"RESET": SubResource("47"),
-&"balance": SubResource("39"),
-&"balancing_super": SubResource("117"),
+&"balance": SubResource("Animation_nb58w"),
+&"balancing_super": SubResource("Animation_rqagd"),
 &"corkscrew": SubResource("4"),
 &"crouch": SubResource("22"),
 &"dead": SubResource("51"),
 &"dropdash": SubResource("37"),
-&"hanging": SubResource("Animation_4ewks"),
+&"flying": SubResource("Animation_5xcov"),
+&"flying_carry": SubResource("Animation_avvbv"),
+&"flying_carry_pull": SubResource("Animation_s2x6v"),
+&"flying_carry_tired": SubResource("Animation_j15rr"),
+&"flying_tired": SubResource("Animation_cupud"),
 &"hurt": SubResource("53"),
 &"idle": SubResource("5"),
 &"idle-wait": SubResource("44"),
@@ -850,8 +949,6 @@ _data = {
 &"rolling": SubResource("7"),
 &"running": SubResource("8"),
 &"skidding": SubResource("9"),
-&"snowboard": SubResource("128"),
-&"snowboard_jump": SubResource("129"),
 &"spindash": SubResource("24"),
 &"transform": SubResource("120"),
 &"victory": SubResource("124"),
@@ -874,11 +971,20 @@ animation = &"crouch"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ompvs"]
 animation = &"dead"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ewks"]
-animation = &"dropdash"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5xcov"]
+animation = &"flying"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iqf8u"]
-animation = &"hanging"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s2x6v"]
+animation = &"flying_carry"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_avvbv"]
+animation = &"flying_carry_pull"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j15rr"]
+animation = &"flying_carry_tired"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cupud"]
+animation = &"flying_tired"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_juqpa"]
 animation = &"hurt"
@@ -913,23 +1019,11 @@ animation = &"running"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x72fb"]
 animation = &"skidding"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j0asw"]
-animation = &"snowboard"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5uexf"]
-animation = &"snowboard_jump"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jwynj"]
 animation = &"spindash"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r4w17"]
 animation = &"transform"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1tvnl"]
-animation = &"victory-loop"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i5fav"]
-animation = &"victory"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ae0h4"]
 animation = &"walking"
@@ -938,10 +1032,6 @@ animation = &"walking"
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7dijq"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kgrao"]
 switch_mode = 2
 advance_mode = 2
 
@@ -958,10 +1048,16 @@ states/crouch/node = SubResource("AnimationNodeAnimation_bq86a")
 states/crouch/position = Vector2(434, 349)
 states/dead/node = SubResource("AnimationNodeAnimation_ompvs")
 states/dead/position = Vector2(744, 335)
-states/dropdash/node = SubResource("AnimationNodeAnimation_4ewks")
-states/dropdash/position = Vector2(573, 266)
-states/hanging/node = SubResource("AnimationNodeAnimation_iqf8u")
-states/hanging/position = Vector2(563, 54)
+states/flying/node = SubResource("AnimationNodeAnimation_5xcov")
+states/flying/position = Vector2(60, 194)
+states/flying_carry/node = SubResource("AnimationNodeAnimation_s2x6v")
+states/flying_carry/position = Vector2(74, 415)
+states/flying_carry_pull/node = SubResource("AnimationNodeAnimation_avvbv")
+states/flying_carry_pull/position = Vector2(64, 307)
+states/flying_carry_tired/node = SubResource("AnimationNodeAnimation_j15rr")
+states/flying_carry_tired/position = Vector2(64, 371)
+states/flying_tired/node = SubResource("AnimationNodeAnimation_cupud")
+states/flying_tired/position = Vector2(60, 247)
 states/hurt/node = SubResource("AnimationNodeAnimation_juqpa")
 states/hurt/position = Vector2(872, 130)
 states/idle/node = SubResource("AnimationNodeAnimation_1adms")
@@ -984,25 +1080,18 @@ states/running/node = SubResource("AnimationNodeAnimation_uff2e")
 states/running/position = Vector2(292, 262)
 states/skidding/node = SubResource("AnimationNodeAnimation_x72fb")
 states/skidding/position = Vector2(428, 197)
-states/snowboard/node = SubResource("AnimationNodeAnimation_j0asw")
-states/snowboard/position = Vector2(1086, 265)
-states/snowboard_jump/node = SubResource("AnimationNodeAnimation_5uexf")
-states/snowboard_jump/position = Vector2(1109, 349)
 states/spindash/node = SubResource("AnimationNodeAnimation_jwynj")
 states/spindash/position = Vector2(573, 130)
 states/transform/node = SubResource("AnimationNodeAnimation_r4w17")
 states/transform/position = Vector2(902, 340)
-states/victory/node = SubResource("AnimationNodeAnimation_i5fav")
-states/victory/position = Vector2(1044, 123)
-states/victory-loop/node = SubResource("AnimationNodeAnimation_1tvnl")
-states/victory-loop/position = Vector2(1070, 197)
 states/walking/node = SubResource("AnimationNodeAnimation_ae0h4")
 states/walking/position = Vector2(299, 190)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_iqf8u"), "idle", "idle-wait", SubResource("AnimationNodeStateMachineTransition_7dijq"), "victory", "victory-loop", SubResource("AnimationNodeStateMachineTransition_kgrao")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_iqf8u"), "idle", "idle-wait", SubResource("AnimationNodeStateMachineTransition_7dijq")]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_7dijq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="20"]
+graph_offset = Vector2(-145.2851, -15.849331)
 nodes/output/position = Vector2(580, 380)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_t2im0")
 nodes/StateMachine/position = Vector2(260, 360)
@@ -1010,22 +1099,116 @@ nodes/speed/node = SubResource("AnimationNodeTimeScale_7dijq")
 nodes/speed/position = Vector2(480, 500)
 node_connections = [&"output", 0, &"speed", &"speed", 0, &"StateMachine"]
 
-[node name="Sonic" type="Node2D" unique_id=1596801330]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqagd"]
+atlas = ExtResource("47_2u1q6")
+region = Rect2(23, 0, 23, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xcov"]
+atlas = ExtResource("47_2u1q6")
+region = Rect2(69, 0, 23, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avvbv"]
+atlas = ExtResource("47_2u1q6")
+region = Rect2(115, 0, 23, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa06m"]
+atlas = ExtResource("47_2u1q6")
+region = Rect2(92, 0, 23, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc00r"]
+atlas = ExtResource("47_2u1q6")
+region = Rect2(0, 0, 23, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ha0u5"]
+atlas = ExtResource("47_2u1q6")
+region = Rect2(46, 0, 23, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a3dka"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqagd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xcov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avvbv")
+}],
+"loop": true,
+"name": &"45",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa06m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc00r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ha0u5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb58w"]
+atlas = ExtResource("52_s2x6v")
+region = Rect2(0, 0, 20, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tth4q"]
+atlas = ExtResource("52_s2x6v")
+region = Rect2(20, 0, 20, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5qax"]
+atlas = ExtResource("52_s2x6v")
+region = Rect2(40, 0, 20, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3rvb"]
+atlas = ExtResource("52_s2x6v")
+region = Rect2(60, 0, 20, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdilk"]
+atlas = ExtResource("52_s2x6v")
+region = Rect2(80, 0, 20, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_onvgc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nb58w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tth4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5qax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3rvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdilk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Tails" type="Node2D" unique_id=1596801330]
 process_mode = 1
 material = SubResource("ShaderMaterial_kgrao")
-script = ExtResource("9")
-player_id = "Sonic"
-bounds = Array[ExtResource("8")]([SubResource("1"), SubResource("2")])
-stats = Array[ExtResource("5")]([SubResource("3"), SubResource("55")])
-ground_layer = 3
-ring = ExtResource("35")
-super_music = ExtResource("5_7dijq")
-super_player_texture = ExtResource("6")
-player_texture = ExtResource("42")
-can_insta_shield = true
-can_drop_dash = true
-can_peel_out = true
-can_use_shields = true
+script = ExtResource("2_2u1q6")
+player_id = "Tails"
+bounds = Array[ExtResource("3_lc00r")]([SubResource("Resource_rpnxh"), SubResource("Resource_bjab3")])
+stats = Array[ExtResource("4_ha0u5")]([SubResource("Resource_rqagd"), SubResource("Resource_5xcov")])
+ring = ExtResource("5_oa06m")
+super_music = ExtResource("6_a3dka")
+super_player_texture = ExtResource("7_krnyb")
+player_texture = ExtResource("7_krnyb")
+can_fly = true
 
 [node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=90345042]
 position = Vector2(0, 59)
@@ -1033,176 +1216,178 @@ scale = Vector2(2.4, 8.25)
 rect = Rect2(-10, -10, 20, 34.60606)
 show_rect = false
 
-[node name="HangingDetector" type="Area2D" parent="." unique_id=1180105567]
-script = ExtResource("9_4ewks")
+[node name="HangingDetector" type="Area2D" parent="." unique_id=1294693887]
+script = ExtResource("8_nb58w")
 
-[node name="Collision" type="CollisionShape2D" parent="HangingDetector" unique_id=1684932765]
-shape = SubResource("RectangleShape2D_juqpa")
+[node name="Collision" type="CollisionShape2D" parent="HangingDetector" unique_id=1195389203]
+shape = SubResource("RectangleShape2D_tth4q")
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=933367911]
-script = ExtResource("7")
+script = ExtResource("9_c3ik0")
 
 [node name="Regular" type="Node2D" parent="StateMachine" unique_id=157999141]
-script = ExtResource("3")
+script = ExtResource("10_iekgt")
 
 [node name="Rolling" type="Node2D" parent="StateMachine" unique_id=1202214879]
 position = Vector2(-212, -716)
-script = ExtResource("1")
+script = ExtResource("11_n8wpd")
 
 [node name="Braking" type="Node2D" parent="StateMachine" unique_id=1878226027]
 position = Vector2(-212, -716)
-script = ExtResource("4")
+script = ExtResource("12_ngkj0")
 
-[node name="Hanging" type="Node2D" parent="StateMachine" unique_id=1636244488]
-script = ExtResource("13_ompvs")
+[node name="Hanging" type="Node2D" parent="StateMachine" unique_id=1266365054]
+script = ExtResource("11_cupud")
 
-[node name="Flying" type="Node2D" parent="StateMachine" unique_id=1298287659]
-script = ExtResource("13_kgrao")
+[node name="Flying" type="Node2D" parent="StateMachine" unique_id=461721055]
+script = ExtResource("12_5xcov")
 
-[node name="Stamina" type="Timer" parent="StateMachine/Flying" unique_id=315146591]
-wait_time = 8.0
-
-[node name="HangingTrigger" type="Area2D" parent="StateMachine/Flying" unique_id=390564418]
+[node name="HangingTrigger" type="Area2D" parent="StateMachine/Flying" unique_id=850148317]
 position = Vector2(-1, 19)
 
-[node name="Collision" type="CollisionShape2D" parent="StateMachine/Flying/HangingTrigger" unique_id=1607342149]
+[node name="Collision" type="CollisionShape2D" parent="StateMachine/Flying/HangingTrigger" unique_id=628106986]
 position = Vector2(0, 12)
-shape = SubResource("RectangleShape2D_4ewks")
+shape = SubResource("RectangleShape2D_cupud")
+
+[node name="Stamina" type="Timer" parent="StateMachine/Flying" unique_id=541295279]
+wait_time = 8.0
 
 [node name="Air" type="Node2D" parent="StateMachine" unique_id=1877586750]
-script = ExtResource("2")
+script = ExtResource("13_kvpjh")
 
 [node name="DropDashTimer" type="Timer" parent="StateMachine/Air" unique_id=459487436]
 wait_time = 0.333
 
 [node name="Spring" type="Node2D" parent="StateMachine" unique_id=35098706]
-script = ExtResource("11")
+script = ExtResource("14_dhgkf")
 
 [node name="SpinDash" type="Node2D" parent="StateMachine" unique_id=145443254]
-script = ExtResource("21")
+script = ExtResource("15_7cnc1")
 
 [node name="SuperPeelOut" type="Node2D" parent="StateMachine" unique_id=281534837]
-script = ExtResource("25")
+script = ExtResource("16_b43nk")
 
 [node name="DropDash" type="Node2D" parent="StateMachine" unique_id=644206173]
-script = ExtResource("29")
+script = ExtResource("17_h6578")
 
 [node name="Dead" type="Node2D" parent="StateMachine" unique_id=250723936]
-script = ExtResource("32")
+script = ExtResource("18_4t2tn")
 
 [node name="Hurt" type="Node2D" parent="StateMachine" unique_id=1858637948]
-script = ExtResource("34")
+script = ExtResource("19_u4e8c")
 
 [node name="Transform" type="Node2D" parent="StateMachine" unique_id=1641984544]
-script = ExtResource("43")
+script = ExtResource("20_xu73x")
 
 [node name="Victory" type="Node2D" parent="StateMachine" unique_id=453439906]
-script = ExtResource("47")
+script = ExtResource("21_nx4dg")
 
 [node name="Snowboarding" type="Node2D" parent="StateMachine" unique_id=989461914]
-script = ExtResource("46")
+script = ExtResource("22_p406e")
 
 [node name="Shields" type="Node2D" parent="." unique_id=585871247]
-script = ExtResource("17")
+visible = false
+script = ExtResource("23_onxcd")
 
-[node name="InstaShield" parent="Shields" unique_id=1626945660 instance=ExtResource("16")]
+[node name="InstaShield" parent="Shields" unique_id=1626945660 instance=ExtResource("24_fh0ej")]
 
-[node name="BlueShield" parent="Shields" unique_id=1969394778 instance=ExtResource("18")]
+[node name="BlueShield" parent="Shields" unique_id=1969394778 instance=ExtResource("25_cits1")]
 
-[node name="BubbleShield" parent="Shields" unique_id=573339139 instance=ExtResource("39")]
+[node name="BubbleShield" parent="Shields" unique_id=573339139 instance=ExtResource("26_qntb4")]
 
-[node name="ThunderShield" parent="Shields" unique_id=523591599 instance=ExtResource("19")]
+[node name="ThunderShield" parent="Shields" unique_id=523591599 instance=ExtResource("27_8h70n")]
 
-[node name="FlameShield" parent="Shields" unique_id=969015555 instance=ExtResource("20")]
+[node name="FlameShield" parent="Shields" unique_id=969015555 instance=ExtResource("28_5j8mk")]
 
 [node name="None" type="Node2D" parent="Shields" unique_id=1619093414]
-script = ExtResource("22")
+script = ExtResource("29_nooum")
 
 [node name="Audios" type="Node2D" parent="." unique_id=1995586905]
-script = ExtResource("12")
+script = ExtResource("30_c7gn2")
 
-[node name="JumpAudio" parent="Audios" unique_id=1820704523 instance=ExtResource("15")]
+[node name="JumpAudio" parent="Audios" unique_id=1820704523 instance=ExtResource("31_v7g6w")]
 bus = &"SFX"
 
-[node name="BrakeAudio" parent="Audios" unique_id=1229194882 instance=ExtResource("14")]
+[node name="BrakeAudio" parent="Audios" unique_id=1229194882 instance=ExtResource("32_po8mp")]
 bus = &"SFX"
 
-[node name="SpinAudio" parent="Audios" unique_id=63301384 instance=ExtResource("13")]
+[node name="SpinAudio" parent="Audios" unique_id=63301384 instance=ExtResource("33_xoiye")]
 bus = &"SFX"
 
-[node name="Grab" type="AudioStreamPlayer" parent="Audios" unique_id=1346212719]
-stream = ExtResource("37_juqpa")
+[node name="Grab" type="AudioStreamPlayer" parent="Audios" unique_id=1480240774]
+stream = ExtResource("36_tth4q")
 
-[node name="Flying" type="AudioStreamPlayer" parent="Audios" unique_id=1916491038]
-stream = ExtResource("35_bq86a")
-volume_db = 3.607
+[node name="Flying" type="AudioStreamPlayer" parent="Audios" unique_id=1552333629]
+stream = ExtResource("34_j15rr")
+volume_db = 1.0
 
-[node name="FlyingTired" type="AudioStreamPlayer" parent="Audios" unique_id=2096486853]
-stream = ExtResource("36_ompvs")
-volume_db = 3.607
+[node name="FlyingTired" type="AudioStreamPlayer" parent="Audios" unique_id=1148314206]
+stream = ExtResource("35_cupud")
+volume_db = 1.0
 
 [node name="SpinDashCharge" type="AudioStreamPlayer" parent="Audios" unique_id=1017769341]
-stream = ExtResource("23")
+stream = ExtResource("34_wxecq")
 bus = &"SFX"
 
 [node name="SpinDashRelease" type="AudioStreamPlayer" parent="Audios" unique_id=202525965]
-stream = ExtResource("24")
+stream = ExtResource("35_da2oa")
 volume_db = 5.0
 bus = &"SFX"
 
 [node name="PeeloutCharge" type="AudioStreamPlayer" parent="Audios" unique_id=1898176167]
-stream = ExtResource("26")
+stream = ExtResource("36_3xd3h")
 bus = &"SFX"
 
 [node name="PeeloutRelease" type="AudioStreamPlayer" parent="Audios" unique_id=1037297863]
-stream = ExtResource("27")
+stream = ExtResource("37_y0lkk")
+bus = &"SFX"
+
+[node name="RingAudio" parent="Audios" unique_id=730165362 instance=ExtResource("44_jv0on")]
 bus = &"SFX"
 
 [node name="DropDash" type="AudioStreamPlayer" parent="Audios" unique_id=486211401]
-stream = ExtResource("30")
+stream = ExtResource("38_u8cvp")
 bus = &"SFX"
 
 [node name="Yes" type="AudioStreamPlayer" parent="Audios" unique_id=614764129]
-stream = ExtResource("31")
+stream = ExtResource("39_lqe8j")
 bus = &"SFX"
 
 [node name="Hurt" type="AudioStreamPlayer" parent="Audios" unique_id=416574196]
-stream = ExtResource("33")
+stream = ExtResource("40_axb2y")
 bus = &"SFX"
 
 [node name="LoseRings" type="AudioStreamPlayer" parent="Audios" unique_id=929569884]
-stream = ExtResource("36")
+stream = ExtResource("41_tsrl6")
 bus = &"SFX"
 
 [node name="Spike" type="AudioStreamPlayer" parent="Audios" unique_id=1151780699]
-stream = ExtResource("37")
+stream = ExtResource("42_2nhrl")
 bus = &"SFX"
 
 [node name="Transform" type="AudioStreamPlayer" parent="Audios" unique_id=1384950811]
-stream = ExtResource("44")
+stream = ExtResource("43_x5jg8")
 volume_db = 7.0
-bus = &"SFX"
-
-[node name="RingAudio" parent="Audios" unique_id=730165362 instance=ExtResource("38")]
 bus = &"SFX"
 
 [node name="Skin" type="Sprite2D" parent="." unique_id=57469865]
 material = SubResource("76")
-texture = ExtResource("42")
+texture = ExtResource("7_krnyb")
 offset = Vector2(0, -1)
 hframes = 10
 vframes = 11
 frame = 36
-script = ExtResource("10")
+script = ExtResource("45_4ekts")
 
 [node name="SpinDashDust" type="AnimatedSprite2D" parent="Skin" unique_id=1311439552]
+visible = false
 position = Vector2(-15, 8)
 sprite_frames = SubResource("36")
 autoplay = "default"
 frame_progress = 0.14091001
 
-[node name="PaletteSwapper" type="AnimationPlayer" parent="Skin" unique_id=486415377]
-libraries/ = SubResource("AnimationLibrary_kgrao")
+[node name="PaletteSwapper" type="AnimationPlayer" parent="Skin" unique_id=189554068]
+libraries/ = SubResource("AnimationLibrary_krnyb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin" unique_id=568133613]
 libraries/ = SubResource("AnimationLibrary_7dijq")
@@ -1215,6 +1400,31 @@ parameters/speed/scale = 1.0
 
 [node name="DropDustSpawn" type="Marker2D" parent="Skin" unique_id=950533299]
 position = Vector2(-8, 3)
+
+[node name="TailsParent" type="Node2D" parent="Skin" unique_id=1991754613]
+process_mode = 3
+show_behind_parent = true
+script = ExtResource("46_rqagd")
+
+[node name="Tails" type="Node2D" parent="Skin/TailsParent" unique_id=314784177]
+show_behind_parent = true
+position = Vector2(4, -9)
+scale = Vector2(1, -1)
+
+[node name="Rolling" type="AnimatedSprite2D" parent="Skin/TailsParent/Tails" unique_id=318096650]
+visible = false
+position = Vector2(-22.702486, 5.05936)
+sprite_frames = SubResource("SpriteFrames_a3dka")
+animation = &"45"
+autoplay = "default"
+frame_progress = 0.5574849
+speed_scale = 1.7
+
+[node name="Ground" type="AnimatedSprite2D" parent="Skin/TailsParent" unique_id=129826787]
+position = Vector2(-15, 7)
+sprite_frames = SubResource("SpriteFrames_onvgc")
+autoplay = "default"
+frame_progress = 0.6349319
 
 [node name="LedgeCheckers" type="Node2D" parent="." unique_id=2125050975]
 visible = false
@@ -1251,7 +1461,7 @@ collision_mask = 15
 
 [node name="RingDecreaser" type="Node2D" parent="." unique_id=949362818]
 process_mode = 1
-script = ExtResource("40")
+script = ExtResource("47_e5xbm")
 
 [node name="decrease_rings" type="Timer" parent="RingDecreaser" unique_id=1534567545]
 

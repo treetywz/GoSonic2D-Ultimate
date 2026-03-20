@@ -53,7 +53,7 @@ func _process(_delta):
 		
 func _handle_debug_labels():
 	if zone != null:
-		var player_position = zone.player.position
+		var player_position = zone.player.global_position
 		var player_velocity = zone.player.velocity
 		var statemachine = zone.player.state_machine
 		var vulnerable = zone.player.vulnerable

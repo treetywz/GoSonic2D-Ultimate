@@ -8,7 +8,7 @@ func step(player: Player, _delta: float):
 	player.velocity.y += player.current_stats.hurt_gravity_force
 
 func animate(player: Player, _delta: float):
-	player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.hurt)
+	player.skin.set_animation_state("hurt")
 
 func exit(player: Player):
 	player.iframes()

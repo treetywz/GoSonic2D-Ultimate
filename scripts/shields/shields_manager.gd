@@ -11,8 +11,8 @@ class_name ShieldsManager
 	"BubbleShield": $BubbleShield
 }
 
-@onready var shield_user = get_parent()
-@onready var default_shield = shields.InstaShield
+@onready var shield_user = get_parent() as Player
+@onready var default_shield = shields.InstaShield if shield_user.can_insta_shield else shields.None
 
 var current_shield: Shield
 
@@ -29,7 +29,7 @@ func change_to_default():
 	change(default_shield)
 
 func use_current():
-	if current_shield:
+	if current_shield and shield_user.can_use_shields:
 		current_shield.action()
 		
 func _on_player_rotated() -> void:

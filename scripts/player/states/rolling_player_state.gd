@@ -19,7 +19,7 @@ func step(player: Player, delta: float):
 		player.state_machine.change_state("Air")
 
 func animate(player: Player, _delta: float):
-	player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.rolling)
+	player.skin.set_animation_state("rolling")
 	player.skin.set_rolling_animation_speed(abs(player.velocity.x))
 	
 func _handle_physics(player: Player, delta: float):

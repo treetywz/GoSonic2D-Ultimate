@@ -19,7 +19,9 @@ class_name PlayerStateMachine
 	"Hurt": $Hurt,
 	"Transform": $Transform,
 	"Victory": $Victory,
-	"Snowboarding": $Snowboarding
+	"Snowboarding": $Snowboarding,
+	"Flying": $Flying,
+	"Hanging": $Hanging,
 }
 
 var current_state: String

@@ -61,14 +61,15 @@ func _process(delta):
 
 
 func _activate_bubble_drop():
-	# Set X Speed to 0
-	shield_user.velocity.x = 0
-	
-	# Set Y Speed to down_force
-	shield_user.velocity.y = DOWN_FORCE
-	
-	descending = true
-	set_attacking(true)
+	if shield_user.can_use_shields:
+		# Set X Speed to 0
+		shield_user.velocity.x = 0
+		
+		# Set Y Speed to down_force
+		shield_user.velocity.y = DOWN_FORCE
+		
+		descending = true
+		set_attacking(true)
 
 
 func set_attacking(value: bool):

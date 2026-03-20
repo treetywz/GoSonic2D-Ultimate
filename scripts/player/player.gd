@@ -8,19 +8,31 @@ signal detransform
 signal rotated_player
 
 # Exported properties
+@export_group("Main Player Properties")
 @export var player_id: String
 @export_enum("Smooth", "Original") var skin_rotation_mode: String = "Original"
 @export var bounds: Array[PlayerCollision]
 @export var stats: Array[PlayerStats]
+@export var super_ring_amount: int = 50
+
+@export_group("Collision")
 @export_flags_2d_physics var wall_layer = 1
 @export_flags_2d_physics var ground_layer = 1
 @export_flags_2d_physics var ceiling_layer = 1
+
+@export_group("Packed Scenes")
 @export var ring: PackedScene
 @export var super_music: AudioStream
 @export var super_player_texture: Texture2D
 @export var player_texture: Texture2D
-@export var super_ring_amount: int
 
+@export_group("Abilities")
+@export var can_spin_dash: bool = true
+@export var can_insta_shield: bool = false
+@export var can_drop_dash: bool = false
+@export var can_peel_out: bool = false
+@export var can_use_shields: bool = false
+@export var can_fly: bool = false
 
 # Node references
 @onready var skin = $Skin as PlayerSkin
@@ -31,14 +43,11 @@ signal rotated_player
 @onready var score_manager = get_node("/root/ScoreManager") as ScoreManager
 @onready var invis_frame_timer = $iframe_timer
 @onready var raycasts = $LedgeCheckers
-@onready var raycastspush = $PushCheckers
 @onready var ledge_left = raycasts.get_node("LeftChecker")
 @onready var ledge_right = raycasts.get_node("RightChecker")
 @onready var ledge_mid = raycasts.get_node("MidChecker")
 @onready var ledge_mid_right = raycasts.get_node("MidRightChecker")
 @onready var ledge_mid_left = raycasts.get_node("MidLeftChecker")
-@onready var left_push = raycastspush.get_node("Left")
-@onready var right_push = raycastspush.get_node("Right")
 @onready var dash_dust = skin.get_node("SpinDashDust")
 
 # Core variables
@@ -71,18 +80,23 @@ var is_looking_up: bool
 var is_control_locked: bool
 var is_locked_to_limits: bool
 var __is_grounded: bool
-var delay_cam: bool = false
 var colliding: bool = true
 var vulnerable: bool = true
-var can_collect_rings: bool = true
 var has_been_spiked: bool = false
 var flashing: bool = false
 var iframe_process: bool = false
 var super_state: bool = false
+var being_hanged_onto: bool = false
+
+# Toggleables
+var delay_cam: bool = false
+var can_collect_rings: bool = true
 var can_transform: bool = false
 var spun_sign_post: bool = false
 var can_move: bool = true
 var gravity_affected: bool = true
+var can_break_monitors: bool = true
+var invincible_but_hurtable: bool =  false
 
 # Artificial input flags
 # Artificial inputs are used for scripted events like cutscenes.
@@ -113,16 +127,19 @@ var chaos_emeralds = Global.chaos_emeralds
 var ground_colliding_object = null
 var wall_colliding_object = null
 var ceiling_colliding_object = null
+var hanging_object = null
 
 func _ready():
 	ScoreManager.time_over.connect(_on_time_over)
 	dash_dust.visible = false
+	_initialize_input_buffer()
 	_initialize_collider()
 	_initialize_resources()
 	_initialize_state_machine()
 	_initialize_skin()
 
 func _physics_process(delta):
+	_record_and_tick_input() 
 	handle_input()
 	handle_control_lock(delta)
 	handle_state_update(delta)
@@ -133,9 +150,10 @@ func _physics_process(delta):
 	handle_super_state()
 	handle_debug_key()
 
+
+
 func _process(_delta):
 	update_transformation_availability()
-	
 	if ScoreManager.rings == 0 and super_state:
 		set_super_state(false)
 
@@ -220,9 +238,10 @@ func hurt(type: String, hazard):
 	if !vulnerable:
 		return
 	
-	ScoreManager.times_hit += 1
+	if !artificial_input_enabled:
+		ScoreManager.times_hit += 1
 	
-	if score_manager.rings > 0:
+	if score_manager.rings > 0 or invincible_but_hurtable:
 		_hurt_routine(type, hazard)
 	else:
 		var instaShield = shields.shields.InstaShield
@@ -248,14 +267,17 @@ func handle_debug_key():
 func _hurt_routine(type: String, hazard):
 	if !vulnerable:
 		return
+		
+	var instaShield = shields.shields.InstaShield
+	var none = shields.shields.None
 	
 	state_machine.get_node("Hurt").launch(self, hazard)
 	state_machine.change_state("Hurt")
 	
 	if type == "spikes":
 		has_been_spiked = true
-	
-	if shields.current_shield == shields.shields.InstaShield:
+
+	if shields.current_shield in [instaShield, none] and !invincible_but_hurtable:
 		var rings_to_drop = min(32, score_manager.rings)
 		drop_rings(rings_to_drop)
 		audios.loserings.play()
@@ -324,6 +346,7 @@ func set_bounds(index: int):
 	
 	if last_bounds and last_bounds != current_bounds:
 		position += last_bounds.offset
+		
 
 func set_stats(index: int):
 	if index >= 0 and index < stats.size():
@@ -663,18 +686,21 @@ func change_parent(new_parent: Node):
 	new_parent.add_child(self)
 	global_transform = old_transform
 
+
+
+
 # ==================== ARTIFICIAL INPUT FUNCTIONS ====================
 # These functions are used to control the player during scripted events (cutscenes).
 
 ## Enable artificial input mode (disables normal input)
 func enable_artificial_input():
 	artificial_input_enabled = true
-	ScoreManager.time_stopped = true
+	#ScoreManager.time_stopped = true
 
 ## Disable artificial input mode (re-enables normal input)
 func disable_artificial_input():
 	artificial_input_enabled = false
-	ScoreManager.time_stopped = false
+	#ScoreManager.time_stopped = false
 	clear_artificial_inputs()
 
 ## Clear all artificial input flags
@@ -735,3 +761,66 @@ func artificial_stop_looking():
 	artificial_look_down = false
 
 # ==================== END ARTIFICIAL INPUT FUNCTIONS ====================
+
+
+
+
+
+
+
+# ==================== INPUT RECORDING ====================
+
+const REPLAY_DELAY_FRAMES = 16
+const BUFFER_SIZE =  1024  # Must be > REPLAY_DELAY_FRAMES
+
+# Struct-like dictionary snapshot of one frame's input
+var input_buffer: Array = []
+var buffer_write_index: int = 0
+
+func _initialize_input_buffer():
+	for i in range(BUFFER_SIZE):
+		input_buffer.append(_empty_input_frame())
+
+func _empty_input_frame() -> Dictionary:
+	return {
+		"move_left": false,
+		"move_right": false,
+		"look_up": false,
+		"look_down": false,
+		"jump_pressed": false,      # is_action_just_pressed equivalent
+		"jump_held": false,         # is_action_pressed equivalent
+		"jump_released": false,     # is_action_just_released equivalent
+	}
+
+func _record_real_input() -> Dictionary:
+	return {
+		"move_left":     Input.is_action_pressed("player_left"),
+		"move_right":    Input.is_action_pressed("player_right"),
+		"look_up":       Input.is_action_pressed("player_up"),
+		"look_down":     Input.is_action_pressed("player_down"),
+		"jump_pressed":  Input.is_action_just_pressed("player_a") or Input.is_action_just_pressed("player_b"),
+		"jump_held":     Input.is_action_pressed("player_a") or Input.is_action_pressed("player_b"),
+		"jump_released": Input.is_action_just_released("player_a") or Input.is_action_just_released("player_b"),
+	}
+
+func _write_input_to_buffer(frame: Dictionary):
+	input_buffer.insert(buffer_write_index, frame.duplicate())
+	buffer_write_index = (buffer_write_index + 1) % BUFFER_SIZE
+	
+func _read_delayed_input() -> Dictionary:
+	if input_buffer.size() < BUFFER_SIZE:
+		return _empty_input_frame()
+
+	var read_index = (buffer_write_index - REPLAY_DELAY_FRAMES + BUFFER_SIZE) % BUFFER_SIZE
+	return input_buffer[read_index]
+	
+func _record_and_tick_input():
+	if !artificial_input_enabled:
+		# Record the real human input this frame
+		_write_input_to_buffer(_record_real_input())
+		# If artificial input is active, don't record — the AI is driving
+
+func get_delayed_input() -> Dictionary:
+	return _read_delayed_input()
+
+# ==================== END INPUT RECORDING ====================

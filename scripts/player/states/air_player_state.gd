@@ -36,7 +36,7 @@ func _handle_landing(player: Player):
 	if drop_dash:
 		drop_dash = false
 		player.state_machine.change_state("DropDash")
-	elif player.input_direction.y < 0:
+	elif player.input_direction.y < 0 and abs(player.velocity.x) != 0:
 		player.state_machine.change_state("Rolling")
 	else:
 		player.state_machine.change_state("Regular")
@@ -59,6 +59,9 @@ func _handle_airborne_input(player: Player):
 	if _check_shield_input(player) and can_use_shield:
 		can_use_shield = false
 		player.shields.use_current()
+		
+	if _check_shield_input(player) and player.can_fly and player.is_rolling and player.state_machine.last_state != "Flying":
+		player.change_state("Flying")
 	
 	# Drop dash input
 	_handle_drop_dash_input(player)
@@ -102,12 +105,18 @@ func _handle_drop_dash_input(player: Player):
 		drop_dash = false
 
 func _can_use_drop_dash(player: Player) -> bool:
+	if !player.can_drop_dash:
+		return false
+		
 	if player.super_state:
 		return true
 	
 	var shield = player.shields.current_shield
-	return (shield == player.shields.shields.InstaShield or 
-			shield == player.shields.shields.BlueShield)
+	return (
+				shield == player.shields.shields.InstaShield or 
+				shield == player.shields.shields.BlueShield or 
+				shield == player.shields.shields.None
+			)
 
 func exit(_player: Player):
 	drop_dash_timer.stop()
@@ -119,18 +128,20 @@ func animate(player: Player, _delta: float):
 	var max_speed = max(last_absolute_horizontal_speed, last_absolute_vertical_speed)
 	
 	if drop_dash:
-		player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.dropdash)
+		player.skin.set_animation_state("dropdash")
 	elif player.state_machine.last_state == "Transform":
 		player.skin.set_running_animation_state(last_absolute_horizontal_speed)
 	elif player.is_rolling:
-		player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.rolling)
+		player.skin.set_animation_state("rolling")
 		if !player.is_jumping:
 			player.skin.set_rolling_animation_speed(max_speed)
+	elif player.state_machine.last_state == "Hanging":
+		player.skin.set_animation_state("hanging")
 	elif player.state_machine.last_state == "Regular":
 		player.skin.set_running_animation_state(max_speed)
 		player.skin.set_regular_animation_speed(max_speed)
 	else:
-		player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.walking)
+		player.skin.set_animation_state("walking")
 
 func dropdash_timer_timeout():
 	if !drop_dash:

@@ -16,3 +16,6 @@ class_name PlayerAudio
 @onready var spike = $Spike
 @onready var ring_audio = $RingAudio
 @onready var transform_audio = $Transform
+@onready var flying_audio = $Flying
+@onready var tired_flying_audio = $FlyingTired
+@onready var grab = $Grab

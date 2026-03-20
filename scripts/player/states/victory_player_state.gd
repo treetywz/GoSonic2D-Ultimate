@@ -21,4 +21,4 @@ func _reset_physics(player: Player):
 
 func _play_victory_animation(player: Player):
 	player.skin.set_animation_speed(1)
-	player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.victory)
+	player.skin.set_animation_state("victory")

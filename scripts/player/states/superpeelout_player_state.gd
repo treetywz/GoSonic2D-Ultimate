@@ -48,11 +48,11 @@ func exit(_player: Player):
 
 func animate(player: Player, _animator):
 	var anim_speed = max(-(8.0 / 60.0 - (animation_speed / 120.0)), 1.0)
-	player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.walking)
+	player.skin.set_animation_state("walking")
 	if animation_speed >= 360:
-		player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.running)
+		player.skin.set_animation_state("running")
 		
 	if animation_speed >= 720:
-		player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.peel_out)
+		player.skin.set_animation_state("peel_out")
 		
 	player.skin.set_animation_speed(anim_speed)

@@ -8,10 +8,13 @@
 [ext_resource type="AudioStream" uid="uid://ccq33dcwi8q5g" path="res://audios/music/th07_04.ogg" id="6_dl0fh"]
 [ext_resource type="Texture2D" uid="uid://ctklmabdb7c4b" path="res://sprites/players/super-sonic-s2.png" id="7_tddaf"]
 [ext_resource type="Texture2D" uid="uid://cl0se06uroopv" path="res://sprites/players/sonic-s2.png" id="8_tddaf"]
+[ext_resource type="Script" uid="uid://bq71d8sdj544j" path="res://scripts/player/player_hanging_detector.gd" id="9_2eske"]
 [ext_resource type="Script" uid="uid://btg81n1ed2el6" path="res://scripts/player/player_state_machine.gd" id="9_g24n1"]
 [ext_resource type="Script" uid="uid://w2kyrxl4a5ht" path="res://scripts/player/states/regular_player_state.gd" id="10_eolmb"]
 [ext_resource type="Script" uid="uid://d34cpt2p2sbgn" path="res://scripts/player/states/rolling_player_state.gd" id="11_v67nt"]
 [ext_resource type="Script" uid="uid://b52pxwam8fpfc" path="res://scripts/player/states/braking_player_state.gd" id="12_05uih"]
+[ext_resource type="Script" uid="uid://yh6eoi3oob5j" path="res://scripts/player/states/flying_player_state.gd" id="13_deao7"]
+[ext_resource type="Script" uid="uid://duptx86gvpkwe" path="res://scripts/player/states/hanging_player_state.gd" id="13_vvkyt"]
 [ext_resource type="Script" uid="uid://t3ibcomstpp" path="res://scripts/player/states/air_player_state.gd" id="13_x1dqi"]
 [ext_resource type="Script" uid="uid://bld28h1esjkes" path="res://scripts/player/states/spring_player_state.gd" id="14_px8f4"]
 [ext_resource type="Script" uid="uid://bwq22l7pdh0gp" path="res://scripts/player/states/spindash_player_state.gd" id="15_e4e0r"]
@@ -33,11 +36,14 @@
 [ext_resource type="PackedScene" path="res://objects/audios/JumpAudio.tscn" id="31_w2f7g"]
 [ext_resource type="PackedScene" path="res://objects/audios/BrakeAudio.tscn" id="32_6d46i"]
 [ext_resource type="PackedScene" path="res://objects/audios/SpinAudio.tscn" id="33_lbpca"]
+[ext_resource type="AudioStream" uid="uid://ys0ia4w24fw2" path="res://audios/effects/fly.wav" id="34_b3sle"]
 [ext_resource type="AudioStream" uid="uid://bi1c2cvshg5hj" path="res://audios/effects/spinDashCharge.wav" id="34_qb0xt"]
 [ext_resource type="AudioStream" uid="uid://bgdl65wyqxxc3" path="res://audios/effects/spinDashRelease.wav" id="35_6r2u7"]
+[ext_resource type="AudioStream" uid="uid://bpolkju72ofhx" path="res://audios/effects/tired_fly.wav" id="35_vvkyt"]
 [ext_resource type="AudioStream" uid="uid://bdadurpaqsji5" path="res://audios/effects/peelOutCharge.wav" id="36_2d8xb"]
 [ext_resource type="AudioStream" uid="uid://c4otidw3ymsj3" path="res://audios/effects/peelOutRelease.wav" id="37_sokih"]
 [ext_resource type="AudioStream" uid="uid://ciayuw5jmcnay" path="res://audios/effects/drop_dash.wav" id="38_rnmpe"]
+[ext_resource type="AudioStream" uid="uid://b2h4xhydt3d5m" path="res://audios/effects/grab.wav" id="39_6ca34"]
 [ext_resource type="AudioStream" uid="uid://cwlmoqdrswub3" path="res://audios/effects/yes.wav" id="39_kemln"]
 [ext_resource type="AudioStream" uid="uid://suxtv4ghw5hq" path="res://audios/effects/hurt.wav" id="40_rtwoo"]
 [ext_resource type="AudioStream" uid="uid://n8ee2d578g57" path="res://audios/effects/loseRings.wav" id="41_uaoai"]
@@ -83,6 +89,12 @@ air_acceleration = 1552.5
 max_jump_height = 480.0
 drpspd = 720.0
 drpmax = 780.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvkyt"]
+size = Vector2(13, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2eske"]
+size = Vector2(20, 2)
 
 [sub_resource type="ShaderMaterial" id="76"]
 shader = ExtResource("1_tddaf")
@@ -206,61 +218,8 @@ tracks/3/keys = {
 "values": [Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.8784314, 0.8784314, 0.8784314, 1), Color(0.7529412, 0.7529412, 0.8784314, 1), Color(0.627451, 0.627451, 0.8784314, 1), Color(0.5019608, 0.5019608, 0.8784314, 1)]
 }
 
-[sub_resource type="Animation" id="113"]
-resource_name = "NormalPalette"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/replace_0")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.1254902, 0.1254902, 0.627451, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/replace_1")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.1254902, 0.2509804, 0.7529412, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:material:shader_parameter/replace_2")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.2509804, 0.2509804, 0.8784314, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:material:shader_parameter/replace_3")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.033333335),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(0.3764706, 0.3764706, 0.8784314, 1)]
-}
-
 [sub_resource type="Animation" id="114"]
-length = 0.001
+resource_name = "NormalPalette"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -420,8 +379,7 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kgrao"]
 _data = {
 &"Detransform": SubResource("Animation_t4ont"),
-&"NormalPalette": SubResource("113"),
-&"RESET": SubResource("114"),
+&"NormalPalette": SubResource("114"),
 &"SuperPalette": SubResource("115"),
 &"Transform": SubResource("122")
 }
@@ -542,6 +500,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [87, 88, 89, 90, 87, 91, 89, 92, 87, 93, 89, 94, 87, 95, 89, 96]
+}
+
+[sub_resource type="Animation" id="Animation_b3sle"]
+resource_name = "hanging"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80, 81]
 }
 
 [sub_resource type="Animation" id="53"]
@@ -801,6 +776,7 @@ _data = {
 &"crouch": SubResource("22"),
 &"dead": SubResource("51"),
 &"dropdash": SubResource("37"),
+&"hanging": SubResource("Animation_b3sle"),
 &"hurt": SubResource("53"),
 &"idle": SubResource("5"),
 &"idle-wait": SubResource("44"),
@@ -835,6 +811,9 @@ animation = &"dead"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ewks"]
 animation = &"dropdash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b3sle"]
+animation = &"hanging"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_juqpa"]
 animation = &"hurt"
@@ -907,6 +886,8 @@ states/dead/node = SubResource("AnimationNodeAnimation_ompvs")
 states/dead/position = Vector2(744, 335)
 states/dropdash/node = SubResource("AnimationNodeAnimation_4ewks")
 states/dropdash/position = Vector2(573, 266)
+states/hanging/node = SubResource("AnimationNodeAnimation_b3sle")
+states/hanging/position = Vector2(662, 54)
 states/hurt/node = SubResource("AnimationNodeAnimation_juqpa")
 states/hurt/position = Vector2(872, 130)
 states/idle/node = SubResource("AnimationNodeAnimation_1adms")
@@ -942,7 +923,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_7dijq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="20"]
-graph_offset = Vector2(-142.99496, 142.8101)
+graph_offset = Vector2(-277.4892, 61.043)
 nodes/output/position = Vector2(580, 380)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_t2im0")
 nodes/StateMachine/position = Vector2(240, 380)
@@ -962,13 +943,19 @@ ring = ExtResource("5_qiqby")
 super_music = ExtResource("6_dl0fh")
 super_player_texture = ExtResource("7_tddaf")
 player_texture = ExtResource("8_tddaf")
-super_ring_amount = 50
+can_use_shields = true
 
 [node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=90345042]
 position = Vector2(0, 59)
 scale = Vector2(2.4, 8.25)
 rect = Rect2(-10, -10, 20, 34.60606)
 show_rect = false
+
+[node name="HangingDetector" type="Area2D" parent="." unique_id=1443973734]
+script = ExtResource("9_2eske")
+
+[node name="Collision" type="CollisionShape2D" parent="HangingDetector" unique_id=1936831643]
+shape = SubResource("RectangleShape2D_vvkyt")
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=933367911]
 script = ExtResource("9_g24n1")
@@ -983,6 +970,22 @@ script = ExtResource("11_v67nt")
 [node name="Braking" type="Node2D" parent="StateMachine" unique_id=1878226027]
 position = Vector2(-212, -716)
 script = ExtResource("12_05uih")
+
+[node name="Hanging" type="Node2D" parent="StateMachine" unique_id=1631323246]
+script = ExtResource("13_vvkyt")
+
+[node name="Flying" type="Node2D" parent="StateMachine" unique_id=462348946]
+script = ExtResource("13_deao7")
+
+[node name="HangingTrigger" type="Area2D" parent="StateMachine/Flying" unique_id=2047042489]
+position = Vector2(-1, 19)
+
+[node name="Collision" type="CollisionShape2D" parent="StateMachine/Flying/HangingTrigger" unique_id=1084395878]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_2eske")
+
+[node name="Stamina" type="Timer" parent="StateMachine/Flying" unique_id=10739535]
+wait_time = 8.0
 
 [node name="Air" type="Node2D" parent="StateMachine" unique_id=1877586750]
 script = ExtResource("13_x1dqi")
@@ -1044,6 +1047,17 @@ bus = &"SFX"
 
 [node name="SpinAudio" parent="Audios" unique_id=63301384 instance=ExtResource("33_lbpca")]
 bus = &"SFX"
+
+[node name="Flying" type="AudioStreamPlayer" parent="Audios" unique_id=709049882]
+stream = ExtResource("34_b3sle")
+volume_db = 3.607
+
+[node name="FlyingTired" type="AudioStreamPlayer" parent="Audios" unique_id=955717114]
+stream = ExtResource("35_vvkyt")
+volume_db = 3.607
+
+[node name="Grab" type="AudioStreamPlayer" parent="Audios" unique_id=461503194]
+stream = ExtResource("39_6ca34")
 
 [node name="SpinDashCharge" type="AudioStreamPlayer" parent="Audios" unique_id=1017769341]
 stream = ExtResource("34_qb0xt")
@@ -1121,9 +1135,6 @@ parameters/speed/scale = 1.0
 [node name="DropDustSpawn" type="Marker2D" parent="Skin" unique_id=950533299]
 position = Vector2(-8, 3)
 
-[node name="idle_timer" type="Timer" parent="Skin" unique_id=843284384]
-wait_time = 3.5
-
 [node name="LedgeCheckers" type="Node2D" parent="." unique_id=2125050975]
 visible = false
 
@@ -1157,19 +1168,6 @@ position = Vector2(9, 2)
 target_position = Vector2(0, 20)
 collision_mask = 15
 
-[node name="PushCheckers" type="Node2D" parent="." unique_id=167051114]
-visible = false
-
-[node name="Right" type="RayCast2D" parent="PushCheckers" unique_id=1304339168]
-position = Vector2(7, 0)
-rotation = -1.5708
-target_position = Vector2(-2.38419e-07, 5)
-
-[node name="Left" type="RayCast2D" parent="PushCheckers" unique_id=405410780]
-position = Vector2(-7, 0)
-rotation = 1.5708
-target_position = Vector2(2.18557e-07, 5)
-
 [node name="RingDecreaser" type="Node2D" parent="." unique_id=949362818]
 process_mode = 1
 script = ExtResource("47_sfmuq")
@@ -1183,9 +1181,10 @@ wait_time = 2.0
 [connection signal="rotated_player" from="." to="Shields" method="_on_player_rotated"]
 [connection signal="screen_entered" from="VisibleNotifier" to="Skin" method="_on_enter_screen"]
 [connection signal="screen_exited" from="VisibleNotifier" to="Skin" method="_on_exit_screen"]
+[connection signal="area_entered" from="HangingDetector" to="HangingDetector" method="_on_hanging_area_detected"]
+[connection signal="timeout" from="StateMachine/Flying/Stamina" to="StateMachine/Flying" method="_on_stamina_depleted"]
 [connection signal="timeout" from="StateMachine/Air/DropDashTimer" to="StateMachine/Air" method="dropdash_timer_timeout"]
 [connection signal="transformed" from="StateMachine/Transform" to="." method="_on_transformed"]
 [connection signal="animation_finished" from="Skin/PaletteSwapper" to="Skin" method="_on_palette_swap_finished"]
-[connection signal="timeout" from="Skin/idle_timer" to="Skin" method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="RingDecreaser/decrease_rings" to="RingDecreaser" method="_on_timeout"]
 [connection signal="timeout" from="iframe_timer" to="." method="_on_iframe_timer_timeout"]

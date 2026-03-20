@@ -14,7 +14,7 @@ func step(_player: Player, _delta: float):
 
 func animate(player: Player, _delta: float):
 	player.skin.set_animation_speed(1)
-	player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.transform)
+	player.skin.set_animation_state("transform")
 
 func exit(player: Player):
 	_cleanup_transformation(player)

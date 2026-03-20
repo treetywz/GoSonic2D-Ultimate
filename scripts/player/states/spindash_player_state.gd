@@ -7,12 +7,12 @@ func enter(player: Player):
 	player.is_looking_down = false
 	player.dash_dust.visible = true
 	player.audios.spindashcharge.play()
-	player.velocity = Vector2.ZERO
 	p = 0
 	player.is_rolling = true
 
 func step(player: Player, _delta):
 	player.is_looking_down = false
+	player.velocity = Vector2.ZERO
 	
 	var down_released: bool
 	var jump_pressed: bool
@@ -56,4 +56,4 @@ func exit(player: Player):
 
 func animate(player: Player, _delta: float):
 	player.skin.set_animation_speed(1)
-	player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.spindash)
+	player.skin.set_animation_state("spindash")

@@ -72,12 +72,12 @@ func _try_special_moves(player: Player, abs_velocity_x: float) -> bool:
 		return false
 	
 	# Spin Dash
-	if down_pressed:
+	if down_pressed and player.can_spin_dash:
 		player.state_machine.change_state("SpinDash")
 		return true
 	
 	# Super Peel Out
-	if up_pressed and abs_velocity_x < player.current_stats.min_speed_to_roll:
+	if up_pressed and abs_velocity_x < player.current_stats.min_speed_to_roll and player.can_peel_out:
 		player.state_machine.change_state("SuperPeelOut")
 		return true
 	
@@ -85,9 +85,7 @@ func _try_special_moves(player: Player, abs_velocity_x: float) -> bool:
 
 
 func _update_pushing_state(player: Player):
-	if player.input_direction.x > 0 and player.right_push.is_colliding():
-		player.is_pushing = true
-	elif player.input_direction.x < 0 and player.left_push.is_colliding():
+	if player.input_direction.x != 0 and player.wall_colliding_object:
 		player.is_pushing = true
 	else:
 		player.is_pushing = false
@@ -102,11 +100,11 @@ func animate(player: Player, _delta: float):
 	if abs_speed >= 0.3:
 		player.skin.set_running_animation_state(abs_speed)
 	elif player.is_pushing:
-		player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.pushing)
+		player.skin.set_animation_state("pushing")
 	elif player.is_looking_up:
-		player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.lookup)
+		player.skin.set_animation_state("lookup")
 	elif player.is_looking_down:
-		player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.crouch)
+		player.skin.set_animation_state("crouch")
 	elif abs_speed == 0:
 		_handle_ledge_balancing(player)
 	else:
@@ -152,20 +150,20 @@ func _handle_ledge_balancing(player: Player):
 
 func _set_idle_animation(player: Player):
 	if player.super_state:
-		player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.idle_super)
+		player.skin.set_animation_state("idle_super")
 	else:
-		player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.idle)
+		player.skin.set_animation_state("idle")
 
 
 func _set_balance_animation(player: Player, type: String, flip_left: bool):
 	player.skin.flip_h = flip_left
 	
 	if player.super_state:
-		player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.balancing_super)
+		player.skin.set_animation_state("balancing_super")
 	elif type == "panic":
-		player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.panic_balance)
+		player.skin.set_animation_state("panic_balance")
 	else:
-		player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.balance)
+		player.skin.set_animation_state("balance")
 
 
 func exit(player: Player):

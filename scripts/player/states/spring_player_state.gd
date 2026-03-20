@@ -19,4 +19,4 @@ func step(player: Player, delta: float):
 func animate(player: Player, _delta: float):
 	player.skin.set_animation_speed(1.5)
 	player.skin.handle_flip(player.input_direction.x)
-	player.skin.set_animation_state(PlayerSkin.ANIMATION_STATES.corkscrew)
+	player.skin.set_animation_state("corkscrew")
