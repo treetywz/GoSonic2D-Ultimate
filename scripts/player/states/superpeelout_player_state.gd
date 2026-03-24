@@ -22,9 +22,9 @@ func step(player: Player, delta):
 	
 	var up_released: bool
 	
-	if player.artificial_input_enabled:
-		# For artificial input - check if up was released (transition from true to false)
-		up_released = !player.artificial_look_up
+	if player.cpu_input_enabled:
+		# For cpu input - check if up was released (transition from true to false)
+		up_released = !player.cpu_look_up
 	else:
 		# For normal input
 		up_released = Input.is_action_just_released("player_up")

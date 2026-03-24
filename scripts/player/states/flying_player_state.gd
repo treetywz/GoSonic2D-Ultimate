@@ -5,6 +5,7 @@ class_name FlyingPlayerState
 const gravityDefault = 112.5
 const airAccel = 337.5
 const airDecel = 137.5
+const yVelocityGravCap = -56.25
 
 var gravity = 112.5
 var can_propel = true
@@ -25,19 +26,8 @@ func exit(player: Player):
 func step(player: Player, delta: float):
 	handle_air_acceleration(player, delta)
 	handle_gravity(player, delta)
-	
-	if can_propel and !player.audios.flying_audio.playing:
-		player.audios.tired_flying_audio.stop()
-		player.audios.flying_audio.play()
-	elif !can_propel and !player.audios.tired_flying_audio.playing:
-		player.audios.flying_audio.stop()
-		player.audios.tired_flying_audio.play()
-		
-	if (Input.is_action_just_pressed("player_a") and 
-		Input.is_action_pressed("player_down") and
-		!player.artificial_input_enabled):
-		player.is_rolling = true
-		player.change_state("Air")
+	handle_flying_audio(player)
+	handle_flight_cancel(player)
 	
 	if player.__is_grounded:
 		player.change_state("Regular")
@@ -57,12 +47,32 @@ func animate(player: Player, _delta: float):
 	else:
 		player.skin.set_animation_state("flying_tired")
 
+func handle_flying_audio(player):
+	if can_propel and !player.audios.flying_audio.playing:
+		player.audios.tired_flying_audio.stop()
+		player.audios.flying_audio.play()
+	elif !can_propel and !player.audios.tired_flying_audio.playing:
+		player.audios.flying_audio.stop()
+		player.audios.tired_flying_audio.play()
+
 func handle_gravity(player : Player, delta):
 	player.velocity.y += gravity * delta
-	if player.velocity.y < -56.25 or player.ceiling_colliding_object:
+	if player.velocity.y < yVelocityGravCap or player.ceiling_colliding_object:
+		# When the player reaches a certain y velocity (or touches the ceiling), stop cheating the
+		# laws of physics and make gravity go back to normal.
 		gravity = gravityDefault
 	if Input.is_action_just_pressed("player_a") and can_propel:
+		# Yes, it changes the gravity rather than simply applying force to the player.
+		# This is the same logic that's actually used in the original Genesis games.
 		gravity = -450
+
+func handle_flight_cancel(player):
+	if (Input.is_action_just_pressed("player_a") and 
+		Input.is_action_pressed("player_down") and
+		!player.cpu_input_enabled):
+
+		player.is_rolling = true
+		player.change_state("Air")
 
 func handle_air_acceleration(player, delta):
 	if sign(player.input_direction.x) == sign(player.velocity.x) or !player.__is_grounded:

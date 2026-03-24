@@ -57,12 +57,11 @@ func _try_special_moves(player: Player, abs_velocity_x: float) -> bool:
 	var down_pressed: bool
 	var up_pressed: bool
 	
-	if player.artificial_input_enabled:
-		# For artificial input, we need to track if jump was just triggered
-		# Since artificial_do_jump() is a one-frame trigger, we read it here
-		jump_pressed = player.artificial_jump
-		down_pressed = player.artificial_look_down
-		up_pressed = player.artificial_look_up
+	if player.cpu_input_enabled:
+		# For CPU input, we need to track if jump was just triggered
+		jump_pressed = player.cpu_jump
+		down_pressed = player.cpu_look_down
+		up_pressed = player.cpu_look_up
 	else:
 		jump_pressed = Input.is_action_just_pressed("player_a") or Input.is_action_just_pressed("player_b")
 		down_pressed = Input.is_action_pressed("player_down")

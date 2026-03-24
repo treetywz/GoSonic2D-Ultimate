@@ -1,7 +1,7 @@
 @tool
 extends Node2D
 
-# This is a tool script.
+# The Limits Visualizer script...
 # It runs in the editor to display those helpful lines that show the act boundaries.
 
 func _process(_delta):

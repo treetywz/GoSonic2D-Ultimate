@@ -19,16 +19,17 @@ func step(player: Player, _delta: float):
 	if !player.hanging_object:
 		player.change_state("Regular")
 		return
+		
 	if player.hanging_object is Player:
-		var ai = player.hanging_object
+		var cpu = player.hanging_object
 		player.velocity = Vector2.ZERO
 
-		if player.get_parent() != ai:
-			player.call_deferred("reparent", ai)
+		if player.get_parent() != cpu:
+			player.call_deferred("reparent", cpu)
 		else:
 			player.position = Vector2(0.0, 38.0)
 		
-		if is_colliding_with_ground(player, ai) or is_colliding_with_wall(player, ai):
+		if is_colliding_with_ground(player, cpu) or is_colliding_with_wall(player, cpu):
 			player.change_state("Air")
 			return
 			
@@ -39,10 +40,10 @@ func step(player: Player, _delta: float):
 			player.velocity.y -= player.current_stats.max_jump_height
 			player.change_state("Air")
 
-func is_colliding_with_ground(player, ai):
+func is_colliding_with_ground(player, cpu):
 	var ray_offset = player.transform.x * player.current_bounds.width_radius
 	var ray_size = player.current_bounds.height_radius
-	var exclude = [player, ai]
+	var exclude = [player, cpu]
 	var hits = GoPhysics.cast_parallel_rays(
 		player.get_world_2d(),
 		player.global_position,
@@ -54,9 +55,9 @@ func is_colliding_with_ground(player, ai):
 	)
 	return hits
 
-func is_colliding_with_wall(player, ai):
+func is_colliding_with_wall(player, cpu):
 	var wall_size = player.current_bounds.width_radius + player.current_bounds.push_radius
-	var exclude = [player, ai]
+	var exclude = [player, cpu]
 	var right_ray = GoPhysics.cast_ray(
 		player.get_world_2d(),
 		player.global_position,

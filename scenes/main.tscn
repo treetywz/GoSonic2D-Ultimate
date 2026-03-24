@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://be6wcpnkbavl3" path="res://scripts/zone/zones/test_zone.gd" id="1_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://bu88etc5e1kra" path="res://objects/players/sonic-s2.tscn" id="2_dp3eg"]
-[ext_resource type="AudioStream" uid="uid://dvh80x4r2d55v" path="res://audios/music/th06_06.ogg" id="3"]
+[ext_resource type="AudioStream" uid="uid://dvh80x4r2d55v" path="res://audios/music/th06_06.ogg" id="3_gqmmt"]
 [ext_resource type="Script" uid="uid://cqtrnkln07w16" path="res://scripts/zone/camera_limits.gd" id="5_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://dxri0c4a4d3r5" path="res://objects/rings/Ring.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://objects/activators/UpperTileActivatorBig.tscn" id="12"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://d4fc5h5ordpqw" path="res://objects/platforms/moving_platform.tscn" id="18_dp3eg"]
 [ext_resource type="Script" uid="uid://c0ffbrwdqsjna" path="res://scripts/zone/limits_visualizer.gd" id="19_0ld40"]
 [ext_resource type="PackedScene" uid="uid://c2finwlso86q0" path="res://objects/players/tails-s2.tscn" id="19_gqmmt"]
-[ext_resource type="Script" uid="uid://cfa8ckirxglog" path="res://scripts/player/ai_controller.gd" id="20_gqmmt"]
+[ext_resource type="Script" uid="uid://cfa8ckirxglog" path="res://scripts/player/cpu_controller.gd" id="20_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://bv5tesyqfyupr" path="res://objects/spikes/spike.tscn" id="23"]
 [ext_resource type="PackedScene" uid="uid://dww6pdxovqda0" path="res://objects/signpost/sign_post.tscn" id="27"]
 [ext_resource type="AudioStream" uid="uid://dyivovn348c1j" path="res://audios/musics/act-clear.wav" id="29"]
@@ -238,14 +238,14 @@ zone_name = "Test"
 amount_of_acts = 2
 next_scene = "res://scenes/title.tscn"
 player_resource = ExtResource("2_dp3eg")
-zone_music = ExtResource("3")
+zone_music = ExtResource("3_gqmmt")
 victory_music = ExtResource("29")
 acts = Array[Object]([SubResource("Resource_jbj1t"), SubResource("Resource_muem4")])
 
 [node name="Tails" parent="." unique_id=1596801330 instance=ExtResource("19_gqmmt")]
-position = Vector2(47, 650)
+position = Vector2(25, 641)
 
-[node name="AIController" type="Node2D" parent="Tails" unique_id=1958786577]
+[node name="Node2D" type="Node2D" parent="Tails" unique_id=969507984]
 script = ExtResource("20_gqmmt")
 
 [node name="StartPointAct1" type="Node2D" parent="." unique_id=1739833567]

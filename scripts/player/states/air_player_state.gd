@@ -44,9 +44,9 @@ func _handle_landing(player: Player):
 func _handle_airborne_input(player: Player):
 	var b_pressed: bool
 	
-	if player.artificial_input_enabled:
-		# For artificial input, check the artificial_jump flag
-		b_pressed = player.artificial_jump
+	if player.cpu_input_enabled:
+		# For CPU input, check the cpu_jump flag
+		b_pressed = player.cpu_jump
 	else:
 		b_pressed = Input.is_action_just_pressed("player_b")
 	
@@ -67,8 +67,8 @@ func _handle_airborne_input(player: Player):
 	_handle_drop_dash_input(player)
 
 func _check_shield_input(player: Player) -> bool:
-	if player.artificial_input_enabled:
-		return player.artificial_jump
+	if player.cpu_input_enabled:
+		return player.cpu_jump
 	else:
 		return Input.is_action_just_pressed("player_a") or Input.is_action_just_pressed("player_b")
 
@@ -78,12 +78,12 @@ func _handle_drop_dash_input(player: Player):
 	var a_released: bool
 	var b_released: bool
 	
-	if player.artificial_input_enabled:
-		# For artificial input
-		a_pressed = player.artificial_jump
-		b_pressed = player.artificial_jump
-		a_released = player.artificial_jump_release
-		b_released = player.artificial_jump_release
+	if player.cpu_input_enabled:
+		# For cpu input
+		a_pressed = player.cpu_jump
+		b_pressed = player.cpu_jump
+		a_released = player.cpu_jump_release
+		b_released = player.cpu_jump_release
 	else:
 		# For normal input
 		a_pressed = Input.is_action_just_pressed("player_a")

@@ -46,7 +46,7 @@ class_name Zone
 ## Camera limits for each act. Index 0 = Act 1, Index 1 = Act 2, etc.
 @export var acts: Array[CameraLimits] = [CameraLimits.new()]
 ## Editor only; determines what act's boundaries is displayed.
-@export_range(1, 9223372036854775807) var show_act: int = 1
+@export var show_act: int = 1
 
 
 # Runtime Variables

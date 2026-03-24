@@ -17,11 +17,11 @@ func step(player: Player, _delta):
 	var down_released: bool
 	var jump_pressed: bool
 	
-	if player.artificial_input_enabled:
-		# For artificial input
+	if player.cpu_input_enabled:
+		# For CPU input
 		# Check if down was released (transition from true to false)
-		down_released = !player.artificial_look_down
-		jump_pressed = player.artificial_jump
+		down_released = !player.cpu_look_down
+		jump_pressed = player.cpu_jump
 	else:
 		# For normal input
 		down_released = Input.is_action_just_released("player_down")

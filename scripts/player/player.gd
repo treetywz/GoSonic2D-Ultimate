@@ -98,15 +98,16 @@ var gravity_affected: bool = true
 var can_break_monitors: bool = true
 var invincible_but_hurtable: bool =  false
 
-# Artificial input flags
-# Artificial inputs are used for scripted events like cutscenes.
-var artificial_input_enabled: bool = false
-var artificial_move_left: bool = false
-var artificial_move_right: bool = false
-var artificial_jump: bool = false
-var artificial_jump_release: bool = false
-var artificial_look_up: bool = false
-var artificial_look_down: bool = false
+# CPU input flags
+# You can use CPU inputs for.. well, the CPU,
+# and also scripted events/cutscenes.
+var cpu_input_enabled: bool = false
+var cpu_move_left: bool = false
+var cpu_move_right: bool = false
+var cpu_jump: bool = false
+var cpu_jump_release: bool = false
+var cpu_look_up: bool = false
+var cpu_look_down: bool = false
 
 # Constants
 const RING_STARTING_ANGLE = deg_to_rad(101.25)
@@ -238,7 +239,8 @@ func hurt(type: String, hazard):
 	if !vulnerable:
 		return
 	
-	if !artificial_input_enabled:
+	if !cpu_input_enabled:
+		# We don't want the CPU costing us our Cool Bonus...
 		ScoreManager.times_hit += 1
 	
 	if score_manager.rings > 0 or invincible_but_hurtable:
@@ -259,6 +261,12 @@ func kick_off_board(hazard):
 
 func handle_debug_key():
 	if Input.is_action_just_pressed("player_debug"):
+		
+		# This is just a key used for testing features during development.
+		# You can ignore this! But if you're curious, the player_debug key is
+		# the tilde key (~).
+		# -treetywz
+		
 		#change_state("Dead")
 		#ScoreManager.time = 597
 		#ScoreManager.remove_ring(ScoreManager.rings)
@@ -370,12 +378,12 @@ func handle_input():
 	var up: bool
 	var down: bool
 	
-	if artificial_input_enabled:
-		# Use artificial inputs
-		right = artificial_move_right
-		left = artificial_move_left
-		up = artificial_look_up
-		down = artificial_look_down
+	if cpu_input_enabled:
+		# Use CPU inputs
+		right = cpu_move_right
+		left = cpu_move_left
+		up = cpu_look_up
+		down = cpu_look_down
 	else:
 		# Use normal player inputs
 		right = Input.is_action_pressed("player_right")
@@ -466,6 +474,7 @@ func handle_wall_collision():
 		if not left_ray.collider is SolidObject or left_ray.collider.is_enabled():
 			velocity.x = max(velocity.x, 0)
 			position += transform.x * (left_ray.penetration + GoPhysics.EPSILON)
+
 
 func handle_ceiling_collision():
 	if !colliding:
@@ -614,12 +623,12 @@ func handle_jump():
 	var jump_pressed: bool
 	var jump_released: bool
 	
-	if artificial_input_enabled:
-		jump_pressed = artificial_jump
-		jump_released = artificial_jump_release
+	if cpu_input_enabled:
+		jump_pressed = cpu_jump
+		jump_released = cpu_jump_release
 		# Reset one-frame flags after reading
-		artificial_jump = false
-		artificial_jump_release = false
+		cpu_jump = false
+		cpu_jump_release = false
 	else:
 		jump_pressed = Input.is_action_just_pressed("player_a") or Input.is_action_just_pressed("player_b")
 		jump_released = Input.is_action_just_released("player_a") or Input.is_action_just_released("player_b")
@@ -675,6 +684,7 @@ func handle_skin(delta):
 		else:  # Smooth
 			skin.rotation_degrees = round(ground_angle) if abs(ground_angle) > 10 else 0.0
 			
+			
 # Utility
 func change_parent(new_parent: Node):
 	var current_parent = get_parent()
@@ -689,91 +699,85 @@ func change_parent(new_parent: Node):
 
 
 
-# ==================== ARTIFICIAL INPUT FUNCTIONS ====================
-# These functions are used to control the player during scripted events (cutscenes).
+# CPU INPUT
+# These functions are used to handle the CPU player.
+# They can also be used in scripted events/cutscenes!
 
-## Enable artificial input mode (disables normal input)
-func enable_artificial_input():
-	artificial_input_enabled = true
+## Enable CPU input mode (disables normal input)
+func enable_cpu_input():
+	cpu_input_enabled = true
 	#ScoreManager.time_stopped = true
 
-## Disable artificial input mode (re-enables normal input)
-func disable_artificial_input():
-	artificial_input_enabled = false
+## Disable CPU input mode (re-enables normal input)
+func disable_cpu_input():
+	cpu_input_enabled = false
 	#ScoreManager.time_stopped = false
-	clear_artificial_inputs()
+	clear_cpu_inputs()
 
-## Clear all artificial input flags
-func clear_artificial_inputs():
-	artificial_move_left = false
-	artificial_move_right = false
-	artificial_jump = false
-	artificial_jump_release = false
-	artificial_look_up = false
-	artificial_look_down = false
+## Clear all CPU input flags
+func clear_cpu_inputs():
+	cpu_move_left = false
+	cpu_move_right = false
+	cpu_jump = false
+	cpu_jump_release = false
+	cpu_look_up = false
+	cpu_look_down = false
 
-## Artificially move the player left
-func artificial_move_player_left(enabled: bool = true):
-	artificial_move_left = enabled
+## Move the CPU left
+func cpu_move_player_left(enabled: bool = true):
+	cpu_move_left = enabled
 	if enabled:
-		artificial_move_right = false
+		cpu_move_right = false
 
-## Artificially move the player right
-func artificial_move_player_right(enabled: bool = true):
-	artificial_move_right = enabled
+## Move the CPU right
+func cpu_move_player_right(enabled: bool = true):
+	cpu_move_right = enabled
 	if enabled:
-		artificial_move_left = false
+		cpu_move_left = false
 
-## Artificially stop horizontal movement
-func artificial_stop_horizontal():
-	artificial_move_left = false
-	artificial_move_right = false
+## Stop CPU horizontal movement
+func cpu_stop_horizontal():
+	cpu_move_left = false
+	cpu_move_right = false
 
-## Artificially make the player jump (This spams/holds the jump button)
-func artificial_do_jump():
-	artificial_jump = true
+## Make the CPU jump (This spams/holds the jump button)
+func cpu_do_jump():
+	cpu_jump = true
 
-## Artificially release the jump button
-func artificial_release_jump():
-	artificial_jump_release = true
+## Make the CPU release the jump button
+func cpu_release_jump():
+	cpu_jump_release = true
 	
-## Artificially tap the jump button (for stuff like Spin Dash or Super Peel Out)
-func artificial_tap_jump():
-	artificial_jump = true
+## Make the CPU tap the jump button (for stuff like Spin Dash or Super Peel Out)
+func cpu_tap_jump():
+	cpu_jump = true
 	await get_tree().create_timer(0.001).timeout
-	artificial_jump = false
+	cpu_jump = false
 
-## Artificially make the player look up
-func artificial_do_look_up(enabled: bool = true):
-	artificial_look_up = enabled
+## Make the CPU look up
+func cpu_do_look_up(enabled: bool = true):
+	cpu_look_up = enabled
 	if enabled:
-		artificial_look_down = false
+		cpu_look_down = false
 
-## Artificially make the player look down
-func artificial_do_look_down(enabled: bool = true):
-	artificial_look_down = enabled
+## Make the CPU look down
+func cpu_do_look_down(enabled: bool = true):
+	cpu_look_down = enabled
 	if enabled:
-		artificial_look_up = false
+		cpu_look_up = false
 
-## Artificially stop looking up/down
-func artificial_stop_looking():
-	artificial_look_up = false
-	artificial_look_down = false
-
-# ==================== END ARTIFICIAL INPUT FUNCTIONS ====================
+## Stio the CPU from looking down or up
+func cpu_stop_looking():
+	cpu_look_up = false
+	cpu_look_down = false
 
 
-
-
-
-
-
-# ==================== INPUT RECORDING ====================
+# INPUT RECORDING
 
 const REPLAY_DELAY_FRAMES = 16
-const BUFFER_SIZE =  1024  # Must be > REPLAY_DELAY_FRAMES
+const BUFFER_SIZE =  1024  # HAS TO BE > REPLAY_DELAY_FRAMES
 
-# Struct-like dictionary snapshot of one frame's input
+# snapshot of one frame's input
 var input_buffer: Array = []
 var buffer_write_index: int = 0
 
@@ -815,12 +819,10 @@ func _read_delayed_input() -> Dictionary:
 	return input_buffer[read_index]
 	
 func _record_and_tick_input():
-	if !artificial_input_enabled:
+	if !cpu_input_enabled:
 		# Record the real human input this frame
 		_write_input_to_buffer(_record_real_input())
-		# If artificial input is active, don't record — the AI is driving
+		# If CPU input IS enabled, then don't record. duh.
 
 func get_delayed_input() -> Dictionary:
 	return _read_delayed_input()
-
-# ==================== END INPUT RECORDING ====================
