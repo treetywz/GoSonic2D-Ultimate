@@ -1,0 +1,999 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://treetywz.github.io/GoSonic2D-Ultimate/guides/creating-a-new-player/">
+      
+      
+        <link rel="prev" href="../placing-zone-objects/">
+      
+      
+        <link rel="next" href="../../classes/zone/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Creating a New Player - GoSonic2D Ultimate Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#creating-a-new-player" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="GoSonic2D Ultimate Docs" class="md-header__button md-logo" aria-label="GoSonic2D Ultimate Docs" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GoSonic2D Ultimate Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Creating a New Player
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="GoSonic2D Ultimate Docs" class="md-nav__button md-logo" aria-label="GoSonic2D Ultimate Docs" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    GoSonic2D Ultimate Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../creating-a-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creating a Zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../placing-zone-objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Placing Zone Objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creating a New Player
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creating a New Player
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#duplicating-the-player-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplicating the Player Scene
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-the-player-sprite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changing the Player Sprite
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changing the Player Sprite">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replacing-the-blue-blur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replacing the Blue Blur
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-new-sonic-on-the-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting New Sonic on the Scene
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-new-player-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a New Player ID
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a New Player ID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#giving-the-game-graphics-life-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giving the Game Graphics: Life Icons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giving-the-game-graphics-life-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giving the Game Graphics: Life Names
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giving-the-game-graphics-score-tally-graphic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giving the Game Graphics: Score Tally Graphic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giving-the-game-graphics-sign-posts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giving the Game Graphics: Sign Posts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FAQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Classes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../classes/zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#duplicating-the-player-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplicating the Player Scene
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-the-player-sprite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changing the Player Sprite
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changing the Player Sprite">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replacing-the-blue-blur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replacing the Blue Blur
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-new-sonic-on-the-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting New Sonic on the Scene
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-new-player-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a New Player ID
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a New Player ID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#giving-the-game-graphics-life-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giving the Game Graphics: Life Icons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giving-the-game-graphics-life-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giving the Game Graphics: Life Names
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giving-the-game-graphics-score-tally-graphic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giving the Game Graphics: Score Tally Graphic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giving-the-game-graphics-sign-posts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giving the Game Graphics: Sign Posts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FAQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="creating-a-new-player">Creating a New Player</h1>
+<p>This guide will explain how to create a duplicate of the exisitng <code>sonic.tscn</code> object, along with
+changing its spritesheet, and the UI graphics to go along with it! It's pretty simple and straightforward!</p>
+<h2 id="duplicating-the-player-scene">Duplicating the Player Scene</h2>
+<p>First, you'll need to duplicate <code>sonic.tscn</code> itself.</p>
+<p><img alt="" src="../player_images/duplicate.png" /></p>
+<p>This is done simply by right-clicking on <code>sonic.tscn</code> (found at <code>res://objects/players</code>) and clicking <strong>Duplicate</strong> or
+pressing <code>Ctrl + D</code> <em>(Windows)</em>.</p>
+<p>For this guide, I have named my new player scene <code>newsonic.tscn</code>. You can name it however you'd like.</p>
+<h2 id="changing-the-player-sprite">Changing the Player Sprite</h2>
+<p>Changing the player sprite may be a confusing, but I assure you, it's nothing special.</p>
+<p>To start, we would need a spritesheet that follows the same format as the pre-exisiting Sonic
+spritesheet (a <strong>10 x 11</strong> tiled grid made up of <strong>64px x 64px</strong> tiles; this can be changed, but for simplicity's sake,
+this guide will not cover how to do that).</p>
+<p><strong>If you already have one, you can skip to the next section.</strong></p>
+<p>To keep things simple, you can overlay your sprites on the provided Sonic spritesheet using any program of your choice.</p>
+<p><img alt="" src="../player_images/redsonic.png" /></p>
+<p>For the guide, I've made a modified version of the Sonic spritesheet, changing his signature blue to instead, a red that matches
+the color of his shoes.</p>
+<p>To stay organized, you can save this <code>.png</code> file of your spritesheet into <code>res://sprites/players</code>.</p>
+<h3 id="replacing-the-blue-blur">Replacing the Blue Blur</h3>
+<p>Now, you can go back into your duplicated player scene and your first instinct may be to change the <code>texture</code> property
+of the player's <code>Skin</code> node. However, while changes may reflect in the editor, it will not work in-game.</p>
+<p>This is because the player's sprite is overidden by the texture given in the <code>player_texture</code> property, located
+in the player's root node.</p>
+<p>To properly change the player's sprite, click on the topmost node, which, by default, is named <code>Sonic</code>:</p>
+<p><img alt="" src="../player_images/clicksonic.png" /></p>
+<p>Then, on the right-hand side, you'll see the <code>Player</code> scene's properties:</p>
+<p><img alt="" src="../player_images/playerproper.png" /></p>
+<p>For this guide, the only thing we will need to touch is <code>player_texture</code>. You can simply drag and drop
+your spritesheet from earlier into <code>player_texture</code>, and you're pretty much done!</p>
+<p><img alt="" src="../player_images/dragsonic.png" /></p>
+<h2 id="putting-new-sonic-on-the-scene">Putting New Sonic on the Scene</h2>
+<p>To replace the player scene of the <code>Zone</code>, you can check out <a href="../creating-a-zone/#putting-sonic-on-the-runway">the guide on how to set up zones</a>, as
+all you really need to do is instead of dragging and dropping <code>sonic.tscn</code>, you drag and drop
+your new duplicated player scene.</p>
+<p>After doing so, upon starting my game, I can now see that Sonic has turned red as expected!</p>
+<p><img alt="" src="../player_images/redsonic2.png" /></p>
+<h2 id="creating-a-new-player-id">Creating a New Player ID</h2>
+<p>For everything else in the game to properly identify just who you're actually playing as,
+it uses the player's <code>player_id</code> variable!</p>
+<p>That includes things like the UI, signposts, and even extra-life monitors!</p>
+<p>If you don't want to just use Sonic's <code>player_id</code> or you want to keep Sonic as a playable character,
+you're going to have to create a new <code>player_id</code>, so the game won't load the UI graphics for Sonic.</p>
+<p>All you really need to do is to go into the player's properties,
+and change the <code>player_id</code> to your name of choice! It can be anything, really.
+For this guide, I'll be changing mine to <code>NewSonic</code>:</p>
+<p><img alt="" src="../player_images/renameplayer.png" />
+<img alt="" src="../player_images/renameplayer2.png" /></p>
+<p>Now, when you start up the game, there'll be tons of warnings in the debugger:</p>
+<p><img alt="" src="../player_images/errors2.png" /></p>
+<p>This is to be expected, since now, you're going to need to actually give the game graphics
+to load for your character.</p>
+<h3 id="giving-the-game-graphics-life-icons">Giving the Game Graphics: Life Icons</h3>
+<p>First up, there's the life icon.
+It's the tiny little icon that shows up on the bottom left of the screen showing your player:</p>
+<p><img alt="" src="../player_images/lifeicon.png" /></p>
+<p>You're going to have to either <strong>provide or create your own</strong> using your software of choice!
+Each life icon is <strong>16x16px</strong> each in size.
+For example, I've created this very stylish icon for <code>NewSonic</code> that I'll be using:</p>
+<p><img alt="" src="../player_images/newicon.png" /></p>
+<p>The convenient thing is, all you need to do is save this sprite into <code>res://sprites/hud/life_icons/</code>,
+and make sure to name it <strong>exactly</strong> like your <code>player_id</code> (this includes upper/lowercase letters):</p>
+<p><img alt="" src="../player_images/foldericon.png" /></p>
+<p>And that's the life icons finished! Now the monitors and UI will properly display your character's icon.</p>
+<h3 id="giving-the-game-graphics-life-names">Giving the Game Graphics: Life Names</h3>
+<p>"Life Name" is just a weird name I came up with for the graphic that displays
+the player's name directly next to your player's life icon... <del>I'm open to better names.</del></p>
+<p>These sprites are stored in <code>res://sprites/hud/life_names/</code>.</p>
+<p><img alt="" src="../player_images/lifename.png" /></p>
+<p>These sprites are <strong>32x16px</strong> each, and contain both the character's name and
+that little <strong>X</strong> symbol at the bottom of the name.</p>
+<p>For the guide, I've created my own right here by using the pre-exisiting ones in the folder:</p>
+<p><img alt="" src="../player_images/conic.png" /></p>
+<p><em>It's not the most creative OC name, I know, but it'll work.</em></p>
+<p>You're going to be saving this sprite into <code>res://sprites/hud/life_names/</code>.
+Just like your life icon, <strong>make sure to name it exactly like your <code>player_id</code>.</strong></p>
+<p>And with that, that's another graphic done!</p>
+<h3 id="giving-the-game-graphics-score-tally-graphic">Giving the Game Graphics: Score Tally Graphic</h3>
+<p>When you finish a level in a Classic Sonic game, you're greeted with a score tally
+screen. The part we'll be adding next is the character's name that goes
+along with it:</p>
+<p><img alt="" src="../player_images/arrowpoint.png" /></p>
+<p>Each of these sprites are <strong>116x16px</strong>, and you'll want to make sure the actual name
+part of the graphic is to the rightmost edge of the sprite, as shown here:</p>
+<p><img alt="" src="../player_images/coniccorrect.png" /></p>
+<p>If I hadn't made it go to the rightmost edge, it would look something
+like this in game:</p>
+<p><img alt="" src="../player_images/offcenter.png" /></p>
+<p>It doesn't look <em>bad</em> necessarily, though it looks unusually spaced apart from the rest of the
+text. This is what it'd look like if I <em>had</em> made it go to the rightmost edge:</p>
+<p><img alt="" src="../player_images/correctconicnotcenteroff.png" /></p>
+<p>Of course, this is merely for aesthetics, so the game won't implode if you don't do this.</p>
+<p>You'll want to save this sprite into <code>res://sprites/scoretally/names/</code>, and again,
+just like the last two, <strong>make sure to name it exactly like your <code>player_id</code>.</strong></p>
+<p>With that, you'll be able to see your new player's name on the score tally screen!
+Though, if you noticed on the screenshots... <strong>the signpost graphics is missing!</strong></p>
+<h3 id="giving-the-game-graphics-sign-posts">Giving the Game Graphics: Sign Posts</h3>
+<p>For the final graphic, it's the sign post graphic!
+Yeah, great segue, right?</p>
+<p>To put it simply, it's the sprite shown after the sign post stops spinning when
+you run past it:</p>
+<p><img alt="" src="../player_images/signposts.png" /></p>
+<p>Each of these sprites are <strong>48x48px</strong>, and the ones used in the repository use
+the ones from Sonic the Hedgehog 3 as a base.</p>
+<p>I've made a signpost just for the guide, and it's what I'll be using:</p>
+<p><img alt="" src="../player_images/conicsign.png" /></p>
+<p>Now, all you need to do is save that sprite into <code>res://sprites/signpost/characters/</code>!</p>
+<p>And if you've been following the guide up until now, I'm sure you already know what I'll say next:</p>
+<p><strong>Make sure to name it exactly like your <code>player_id</code>.</strong></p>
+<p>I just need to drill it into your head just to make sure, you know?
+Can't have too many people asking me why their <code>.png</code>s aren't <code>.png</code>ing.</p>
+<hr />
+<p>And with that, when we boot up a level and zoom through the signpost, we can see that
+our custom character is complete! With the signpost, life icon, and everything else!</p>
+<p><img alt="" src="../player_images/conicgothrough.png" /></p>
+<h2 id="faq">FAQ</h2>
+<ul>
+<li><strong>What happens if I save the sprites as something other than the size you specified?</strong><ul>
+<li>It probably wouldn't be the end of the world. I mean, the only reason why I specified
+those sizes is because the framework was built with those sizes in mind. I suppose going a little
+larger than them wouldn't be too bad, but these guides won't cover how to accommodate for that,
+since you <em>should</em> know enough Godot to be able to know how to do that.</li>
+</ul>
+</li>
+<li>
+<p><strong>What about their Super form?</strong></p>
+<ul>
+<li>
+<p>Super forms use palette-swapping shaders in order to change the color of the player's sprite. It's actually the same
+technique used in the Genesis games!</p>
+</li>
+<li>
+<p>When the player is in their super form, it uses
+the <code>super_player_texture</code> for the player sprites. If you want to add a super form, you need to first add your own <code>super_player_texture</code> and
+change the player skin's <strong>Original Color</strong> shader parameters to match the colors you want to replace
+in your player's sprite (eg. Sonic's shades of blue), and after, you'd need to animate the <strong>Replacement Color</strong> shader parameters through the skin's <code>PaletteSwapper</code>
+(just an <code>AnimationPlayer</code> node).</p>
+<ul>
+<li>A full guide for the <code>playerPalette</code> shader in better detail is planned, but is currently not available.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>What about player-exclusive abilities?</strong></p>
+<ul>
+<li>As of writing, there is no implementation of such system yet. There are obviously plans to,
+and it will begin with the implementation of Tails and Knuckles in the future. Once those are
+done, <em>then</em> I'll consider writing about them.</li>
+</ul>
+</li>
+<li><strong>Is Godot case-sensitive to my filenames?</strong><ul>
+<li>Eh, it's a bit iffy on that. Sometimes it is, sometimes it's not. That's why you should just have
+a consistent capitalization style... <em>(I know the repository itself may not have one entirely, but it's getting there!)</em></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
